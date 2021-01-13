@@ -55,9 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.ServiceModel", "TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj", "{855ADC7E-8AF6-43AB-A582-510B119DA609}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Tests", "TemplateDomain.WebApi.Tests\TemplateDomain.WebApi.Tests.csproj", "{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.UnitTests", "TemplateDomain.WebApi.UnitTests\TemplateDomain.WebApi.UnitTests.csproj", "{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDomain.Common", "TemplateDomain.Common\TemplateDomain.Common.csproj", "{F9909985-A8CE-4312-BBD2-173A9A8AA64F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Common", "TemplateDomain.Common\TemplateDomain.Common.csproj", "{F9909985-A8CE-4312-BBD2-173A9A8AA64F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Common", "00_Common", "{CD1433C3-289E-4003-BCA9-B90CC1C868C4}"
 EndProject
