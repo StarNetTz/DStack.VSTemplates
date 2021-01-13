@@ -32,7 +32,7 @@ namespace TemplateDomain.WebApi.Tests
         public IServiceClient CreateClient() => new JsonServiceClient(BaseUri);
 
         [Fact]
-        public void Can_call_Hello_Service()
+        public void Can_Call_Hello_Service()
         {
             var client = CreateClient();
 
