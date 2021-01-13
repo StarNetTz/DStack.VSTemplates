@@ -47,6 +47,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Qu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests", "TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests\TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests.csproj", "{8B9547A7-7B12-4E4F-9B06-A11634BB3A04}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi", "TemplateDomain.WebApi\TemplateDomain.WebApi.csproj", "{51C7D9AD-58EA-4B03-94E8-2F3E5583372F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_WebApi", "04_WebApi", "{9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.ServiceInterface", "TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj", "{7D689109-34B2-4ED5-8FDE-181BA337CC3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.ServiceModel", "TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj", "{855ADC7E-8AF6-43AB-A582-510B119DA609}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Tests", "TemplateDomain.WebApi.Tests\TemplateDomain.WebApi.Tests.csproj", "{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +115,22 @@ Global
 		{8B9547A7-7B12-4E4F-9B06-A11634BB3A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B9547A7-7B12-4E4F-9B06-A11634BB3A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9547A7-7B12-4E4F-9B06-A11634BB3A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C7D9AD-58EA-4B03-94E8-2F3E5583372F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C7D9AD-58EA-4B03-94E8-2F3E5583372F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C7D9AD-58EA-4B03-94E8-2F3E5583372F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C7D9AD-58EA-4B03-94E8-2F3E5583372F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D689109-34B2-4ED5-8FDE-181BA337CC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D689109-34B2-4ED5-8FDE-181BA337CC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D689109-34B2-4ED5-8FDE-181BA337CC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D689109-34B2-4ED5-8FDE-181BA337CC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{855ADC7E-8AF6-43AB-A582-510B119DA609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855ADC7E-8AF6-43AB-A582-510B119DA609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855ADC7E-8AF6-43AB-A582-510B119DA609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855ADC7E-8AF6-43AB-A582-510B119DA609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A8A649-BCCF-422A-B4AB-1C2631FC2749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +155,10 @@ Global
 		{3163812D-6981-4F38-83FB-2300D6DE9540} = {BB17777B-4C37-4AE1-B628-2B11273908FC}
 		{695B2C7B-C4DB-4674-8417-55DEAF5B7472} = {3163812D-6981-4F38-83FB-2300D6DE9540}
 		{8B9547A7-7B12-4E4F-9B06-A11634BB3A04} = {3163812D-6981-4F38-83FB-2300D6DE9540}
+		{51C7D9AD-58EA-4B03-94E8-2F3E5583372F} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
+		{7D689109-34B2-4ED5-8FDE-181BA337CC3A} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
+		{855ADC7E-8AF6-43AB-A582-510B119DA609} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
+		{B2A8A649-BCCF-422A-B4AB-1C2631FC2749} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19C1B536-2174-4619-A125-D9DC2F1D53BC}
