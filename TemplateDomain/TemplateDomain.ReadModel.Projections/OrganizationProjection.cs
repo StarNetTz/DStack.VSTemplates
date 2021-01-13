@@ -27,13 +27,7 @@ namespace TemplateDomain.ReadModel.Projections
             var doc = await LoadOrCreateDoc(e.Id);
             doc.Id = e.Id;
             doc.Name = e.Name;
-            doc.Address = new Address { 
-                City = e.Address.City,
-                Country = e.Address.Country,
-                PostalCode = e.Address.PostalCode,
-                State = e.Address.State,
-                Street = e.Address.Street
-            };
+            doc.Address = e.Address;
             await Store.StoreAsync(doc);
         }
 

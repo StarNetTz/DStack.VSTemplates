@@ -10,7 +10,7 @@ namespace TemplateDomain.WebApi.Tests
     public class IntegrationTest : IDisposable
     {
         const string BaseUri = "http://localhost:2000/";
-        private readonly ServiceStackHost appHost;
+        private readonly ServiceStackHost Host;
 
         class AppHost : AppSelfHostBase
         {
@@ -23,7 +23,7 @@ namespace TemplateDomain.WebApi.Tests
 
         public IntegrationTest()
         {
-            appHost = new AppHost()
+            Host = new AppHost()
                 .Init()
                 .Start(BaseUri);
         }
@@ -43,7 +43,7 @@ namespace TemplateDomain.WebApi.Tests
 
         public void Dispose()
         {
-            appHost.Dispose();
+            Host.Dispose();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace TemplateDomain.PL
+﻿namespace TemplateDomain.Common
 {
     public record Address
     {

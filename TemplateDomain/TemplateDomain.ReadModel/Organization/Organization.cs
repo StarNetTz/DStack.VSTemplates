@@ -1,4 +1,5 @@
-﻿namespace TemplateDomain.ReadModel
+﻿using TemplateDomain.Common;
+namespace TemplateDomain.ReadModel
 {
     public class Organization
     {
