@@ -5,20 +5,58 @@ using NServiceBus.Testing;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
+using DStack.Aggregates;
+using System;
 
 namespace TemplateDomain.Domain.NSBus.Tests
 {
     public class RegisterOrganizationHandlerTests
     {
         [Fact]
-        public async Task ShouldExecute()
+        public async Task Should_Handle_And_Publish_Any_Produced_PublishEvents()
         {
-            var mock = new Mock<IOrganizationInteractor>();
-            mock.Setup(svc => svc.GetPublishedEvents()).Returns(new List<object>());
-            var mockObject = mock.Object;
-            var handler = new RegisterOrganizationHandler(mockObject);
+            var handler = new RegisterOrganizationHandler(CreateMockThatReturnsNoPublishedEvents());
             var context = new TestableMessageHandlerContext();
             await handler.Handle(new RegisterOrganization(), context).ConfigureAwait(false);
         }
+
+            static IOrganizationInteractor CreateMockThatReturnsNoPublishedEvents()
+            {
+                var mock = new Mock<IOrganizationInteractor>();
+                mock.Setup(svc => svc.GetPublishedEvents()).Returns(new List<object>() { new object() });
+                var mockObject = mock.Object;
+                return mockObject;
+            }
+
+        [Fact]
+        public async Task Should_Log_And_Ignore_DomainError()
+        {
+            var handler = new RegisterOrganizationHandler(CreateMockThatThrowsDomainError());
+            var context = new TestableMessageHandlerContext();
+            await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context).ConfigureAwait(false);
+        }
+
+            static IOrganizationInteractor CreateMockThatThrowsDomainError()
+            {
+                var mock = new Mock<IOrganizationInteractor>();
+                mock.Setup(svc => svc.Execute(It.IsAny<object>())).Throws<DomainError>();
+                var mockObject = mock.Object;
+                return mockObject;
+            }
+        [Fact]
+        public async Task Should_Log_And_Rethrow_Any_Non_DomainError()
+        {
+            var handler = new RegisterOrganizationHandler(CreateMockThatThrowsArgumentException());
+            var context = new TestableMessageHandlerContext();
+            await Assert.ThrowsAnyAsync<ArgumentException>(async () => await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context).ConfigureAwait(false));
+        }
+
+            static IOrganizationInteractor CreateMockThatThrowsArgumentException()
+            {
+                var mock = new Mock<IOrganizationInteractor>();
+                mock.Setup(svc => svc.Execute(It.IsAny<object>())).Throws<ArgumentException>();
+                var mockObject = mock.Object;
+                return mockObject;
+            }
     }
 }
