@@ -9,8 +9,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />
+    <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
+    <ProjectReference Include="..\TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>

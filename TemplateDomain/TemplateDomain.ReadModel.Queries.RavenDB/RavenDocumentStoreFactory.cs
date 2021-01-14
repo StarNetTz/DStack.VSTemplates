@@ -32,6 +32,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             store.Database = conf.DatabaseName;
             store.Initialize();
             IndexCreation.CreateIndexes(typeof(Organizations_Search).Assembly, store);
+            WarmUpStoreToAvoidLazyLoadingDuringFirstRequest(store);
             return store;
         }
 
@@ -44,6 +45,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             store.Initialize();
             EnsureDatabaseExists(store, conf.DatabaseName, true);
             IndexCreation.CreateIndexes(typeof(Organizations_Search).Assembly, store);
+            WarmUpStoreToAvoidLazyLoadingDuringFirstRequest(store);
             return store;
         }
 
@@ -73,5 +75,13 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
                     }
                 }
             }
+
+        static void WarmUpStoreToAvoidLazyLoadingDuringFirstRequest(IDocumentStore store)
+        {
+            using (var ses = store.OpenSession())
+            {
+                ses.Load<Organization>("Organizations-1");
+            }
+        }
     }
 }

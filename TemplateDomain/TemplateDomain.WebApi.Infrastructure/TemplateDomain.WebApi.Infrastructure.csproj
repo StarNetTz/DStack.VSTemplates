@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NServiceBus" Version="7.4.4" />
+    <PackageReference Include="NServiceBus.RabbitMQ" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
+    <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
+  </ItemGroup>
+
+</Project>
