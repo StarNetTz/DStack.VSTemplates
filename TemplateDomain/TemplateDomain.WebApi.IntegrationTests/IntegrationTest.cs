@@ -5,7 +5,7 @@ using TemplateDomain.WebApi.ServiceModel;
 using System;
 using Xunit;
 
-namespace TemplateDomain.WebApi.Tests
+namespace TemplateDomain.WebApi.IntegrationTests
 {
     public class IntegrationTest : IDisposable
     {

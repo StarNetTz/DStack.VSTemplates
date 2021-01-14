@@ -5,13 +5,13 @@ using TemplateDomain.WebApi.ServiceInterface;
 using TemplateDomain.WebApi.ServiceModel;
 using Xunit;
 
-namespace TemplateDomain.WebApi.Tests
+namespace TemplateDomain.WebApi.UnitTests.HelloServiceUnitTest
 {
-    public class UnitTest : IClassFixture<UnitTestFixture>
+    public class HelloServiceUnitTest : IClassFixture<TestFixture>
     {
         ServiceStackHost AppHost;
 
-        public UnitTest(UnitTestFixture fixture)
+        public HelloServiceUnitTest(TestFixture fixture)
         {
             AppHost = fixture.AppHost;
         }
@@ -27,11 +27,11 @@ namespace TemplateDomain.WebApi.Tests
         }
     }
 
-    public class UnitTestFixture : IDisposable
+    public class TestFixture : IDisposable
     {
         public ServiceStackHost AppHost;
 
-        public UnitTestFixture()
+        public TestFixture()
         {
             AppHost = new BasicAppHost().Init();
             AppHost.Container.AddTransient<MyServices>();
