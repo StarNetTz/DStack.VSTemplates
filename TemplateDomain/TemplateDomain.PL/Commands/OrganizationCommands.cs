@@ -1,4 +1,6 @@
-﻿namespace TemplateDomain.PL.Commands
+﻿using TemplateDomain.Common;
+
+namespace TemplateDomain.PL.Commands
 {
     public record RegisterOrganization : Command
     {

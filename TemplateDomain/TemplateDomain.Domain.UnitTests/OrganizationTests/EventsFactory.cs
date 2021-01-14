@@ -1,4 +1,5 @@
-﻿using TemplateDomain.PL.Events;
+﻿using TemplateDomain.Common;
+using TemplateDomain.PL.Events;
 using System;
 
 namespace TemplateDomain.Domain.UnitTests.OrganizationTests
@@ -12,7 +13,7 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
                 IssuedBy = "zeko",
                 Name = "Xamics Ltd",
                 TimeIssued = DateTime.MinValue,
-                Address = new PL.Address
+                Address = new Address
                 {
                     Street = "321 Bakers Street b",
                     City = "London",

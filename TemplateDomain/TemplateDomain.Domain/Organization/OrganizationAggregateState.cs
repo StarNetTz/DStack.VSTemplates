@@ -1,4 +1,4 @@
-﻿using TemplateDomain.PL;
+﻿using TemplateDomain.Common;
 using TemplateDomain.PL.Events;
 using DStack.Aggregates;
 

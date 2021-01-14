@@ -1,0 +1,59 @@
+<VSTemplate Version="2.0.0" Type="ProjectGroup" 
+    xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+        <Name>DStack Solution</Name>
+        <Description>DStack based DDD ES+CQRS template</Description>
+        <Icon>Icon.ico</Icon>
+        <ProjectType>CSharp</ProjectType>
+    </TemplateData>
+    <TemplateContent>
+        <ProjectCollection>
+           <SolutionFolder Name="00_Common">
+                <ProjectTemplateLink ProjectName="$projectname$.Common">TemplateDomain.Common\MyTemplate.vstemplate</ProjectTemplateLink>
+            </SolutionFolder>
+            <SolutionFolder Name="01_PublishedLanguage">
+                <ProjectTemplateLink ProjectName="$projectname$.PL" CopyParameters="true">TemplateDomain.PL\MyTemplate.vstemplate</ProjectTemplateLink>
+            </SolutionFolder>
+             <SolutionFolder Name="02_WriteModel">
+                <SolutionFolder Name="Application">
+                    <ProjectTemplateLink ProjectName="$projectname$.App" CopyParameters="true">TemplateDomain.App\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+                <SolutionFolder Name="Domain">
+                    <ProjectTemplateLink ProjectName="$projectname$.Domain" CopyParameters="true">TemplateDomain.Domain\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.Domain.Infrastructure" CopyParameters="true">TemplateDomain.Domain.Infrastructure\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.Domain.UnitTests" CopyParameters="true">TemplateDomain.Domain.UnitTests\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+				 <SolutionFolder Name="NSBus">
+                    <ProjectTemplateLink ProjectName="$projectname$.Domain.NSBus" CopyParameters="true">TemplateDomain.Domain.NSBus\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.Domain.NSBus.UnitTests" CopyParameters="true">TemplateDomain.Domain.NSBus.UnitTests\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+            </SolutionFolder>
+            <SolutionFolder Name="03_ReadModel">
+                <SolutionFolder Name="Application">
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.App" CopyParameters="true">TemplateDomain.ReadModel.App\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+                <SolutionFolder Name="Model">
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel" CopyParameters="true">TemplateDomain.ReadModel\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.Infrastructure" CopyParameters="true">TemplateDomain.ReadModel.Infrastructure\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+                <SolutionFolder Name="Projections">
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.Projections" CopyParameters="true">TemplateDomain.ReadModel.Projections\MyTemplate.vstemplate</ProjectTemplateLink>
+					<ProjectTemplateLink ProjectName="$projectname$.ReadModel.Projections.EventStoreDB" CopyParameters="true">TemplateDomain.ReadModel.Projections.EventStoreDB\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.Projections.UnitTests" CopyParameters="true">TemplateDomain.ReadModel.Projections.UnitTests\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+                <SolutionFolder Name="Queries">
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.Queries.RavenDB" CopyParameters="true">TemplateDomain.ReadModel.Queries.RavenDB\MyTemplate.vstemplate</ProjectTemplateLink>
+                    <ProjectTemplateLink ProjectName="$projectname$.ReadModel.Queries.RavenDB.IntegrationTests" CopyParameters="true">TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests\MyTemplate.vstemplate</ProjectTemplateLink>
+                </SolutionFolder>
+            </SolutionFolder>
+            <SolutionFolder Name="04_Api">
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi" CopyParameters="true">TemplateDomain.WebApi\MyTemplate.vstemplate</ProjectTemplateLink>
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi.Infrastructure" CopyParameters="true">TemplateDomain.WebApi.Infrastructure\MyTemplate.vstemplate</ProjectTemplateLink>
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi.ServiceInterface" CopyParameters="true">TemplateDomain.WebApi.ServiceInterface\MyTemplate.vstemplate</ProjectTemplateLink>
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi.ServiceModel" CopyParameters="true">TemplateDomain.WebApi.ServiceModel\MyTemplate.vstemplate</ProjectTemplateLink>
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi.UnitTests" CopyParameters="true">TemplateDomain.WebApi.UnitTests\MyTemplate.vstemplate</ProjectTemplateLink>
+                <ProjectTemplateLink ProjectName="$projectname$.WebApi.IntegrationTests" CopyParameters="true">TemplateDomain.WebApi.IntegrationTests\MyTemplate.vstemplate</ProjectTemplateLink>
+            </SolutionFolder>
+        </ProjectCollection>
+    </TemplateContent>
+</VSTemplate>
