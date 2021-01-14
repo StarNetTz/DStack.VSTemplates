@@ -1,5 +1,6 @@
 ﻿using ServiceStack;
 using System.Threading.Tasks;
+using TemplateDomain.Common;
 
 namespace TemplateDomain.WebApi.ServiceInterface
 {

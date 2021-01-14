@@ -6,6 +6,7 @@ using ServiceStack.Testing;
 using ServiceStack.Validation;
 using System;
 using Moq;
+using TemplateDomain.Common;
 
 namespace TemplateDomain.WebApi.UnitTests
 {

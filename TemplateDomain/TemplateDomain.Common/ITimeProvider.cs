@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TemplateDomain.WebApi.ServiceInterface
+namespace TemplateDomain.Common
 {
     public interface ITimeProvider
     {
