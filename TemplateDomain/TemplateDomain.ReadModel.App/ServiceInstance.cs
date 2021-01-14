@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DStack.Projections.EventStoreDB.Utils;
 using TemplateDomain.ReadModel.Projections.EventStoreDB;
+using TemplateDomain.ReadModel.Infrastructure;
 
 namespace TemplateDomain.ReadModel.App
 {
@@ -20,17 +21,20 @@ namespace TemplateDomain.ReadModel.App
         readonly IConfiguration Configuration;
         readonly IProjectionsFactory ProjectionsFactory;
         readonly IJSProjectionsFactory JSProjectionsFactory;
+        readonly ILookupsInitializer LookupsInitializer;
 
-        public ServiceInstance(ILogger<ServiceInstance> logger, IConfiguration configuration, IProjectionsFactory projectionsFactory, IJSProjectionsFactory jSProjectionsFactory)
+        public ServiceInstance(ILogger<ServiceInstance> logger, IConfiguration configuration, IProjectionsFactory projectionsFactory, IJSProjectionsFactory jSProjectionsFactory, ILookupsInitializer lookupsInitializer)
         {
             Logger = logger;
             Configuration = configuration;
             ProjectionsFactory = projectionsFactory;
             JSProjectionsFactory = jSProjectionsFactory;
+            LookupsInitializer = lookupsInitializer;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
+            await LookupsInitializer.Initialize();
             await CreateEventStoreProjections();
             await RunProjections();
         }
@@ -74,7 +78,6 @@ namespace TemplateDomain.ReadModel.App
                 else
                     return disabledProjectionsSetting.Split(";");
             }
-
 
             async Task RunProjections(IList<IProjection> projections, string[] enabledProjections, string[] disabledProjections)
             {

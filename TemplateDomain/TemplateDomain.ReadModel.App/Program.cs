@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using TemplateDomain.ReadModel.Infrastructure;
 using TemplateDomain.ReadModel.Projections;
 using TemplateDomain.ReadModel.Queries.RavenDB;
 
@@ -39,6 +40,7 @@ namespace TemplateDomain.ReadModel.App
                     services.AddTransient<ISubscriptionFactory, ESSubscriptionFactory>();
                     services.AddTransient<IProjectionsFactory, ProjectionsFactory>();
                     services.AddTransient<IJSProjectionsFactory, JSProjectionsFactory>();
+                    services.AddTransient<ILookupsInitializer, LookupsInitializer>();
 
                     RegisterProjectionHandlers(services);
 
