@@ -4,15 +4,15 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Funq;
 using ServiceStack;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.Common;
-using TemplateDomain.ReadModel;
-using TemplateDomain.ReadModel.Queries.RavenDB;
-using TemplateDomain.WebApi.Infrastructure;
+using $ext_projectname$.WebApi.ServiceInterface;
+using $ext_projectname$.Common;
+using $ext_projectname$.ReadModel;
+using $ext_projectname$.ReadModel.Queries.RavenDB;
+using $ext_projectname$.WebApi.Infrastructure;
 using ServiceStack.Validation;
 using ServiceStack.Auth;
 
-namespace TemplateDomain.WebApi
+namespace $safeprojectname$
 {
     public class Startup : ModularStartup
     {
@@ -46,7 +46,7 @@ namespace TemplateDomain.WebApi
 
     public class AppHost : AppHostBase
     {
-        public AppHost() : base("TemplateDomain.WebApi", typeof(MyServices).Assembly)
+        public AppHost() : base("$safeprojectname$", typeof(MyServices).Assembly)
         {
             //Licensing.RegisterLicense(Configuration["ServiceStack:Licence"]);
         }

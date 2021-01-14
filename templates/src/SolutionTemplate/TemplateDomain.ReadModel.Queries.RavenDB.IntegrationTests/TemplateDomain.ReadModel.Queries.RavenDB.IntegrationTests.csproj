@@ -169,8 +169,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />
-    <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.ReadModel.Queries.RavenDB\$ext_projectname$.ReadModel.Queries.RavenDB.csproj" />
+    <ProjectReference Include="..\$ext_projectname$.ReadModel\$ext_projectname$.ReadModel.csproj" />
   </ItemGroup>
 
 </Project>

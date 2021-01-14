@@ -61,15 +61,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Common", "Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Common", "00_Common", "{CD1433C3-289E-4003-BCA9-B90CC1C868C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{A0905FEA-C441-423F-A381-5790ACBA7180}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{A0905FEA-C441-423F-A381-5790ACBA7180}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDomain.ReadModel.App", "TemplateDomain.ReadModel.App\TemplateDomain.ReadModel.App.csproj", "{D83FEEE9-0C8A-42BA-BC1A-4BC059D1AA5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.App", "TemplateDomain.ReadModel.App\TemplateDomain.ReadModel.App.csproj", "{D83FEEE9-0C8A-42BA-BC1A-4BC059D1AA5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDomain.WebApi.IntegrationTests", "TemplateDomain.WebApi.IntegrationTests\TemplateDomain.WebApi.IntegrationTests.csproj", "{F0F065E3-0F7D-481E-942C-449ED12E4073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.IntegrationTests", "TemplateDomain.WebApi.IntegrationTests\TemplateDomain.WebApi.IntegrationTests.csproj", "{F0F065E3-0F7D-481E-942C-449ED12E4073}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDomain.WebApi.Infrastructure", "TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj", "{3849E981-AF47-4C35-9EA1-4B62950DE736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Infrastructure", "TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj", "{3849E981-AF47-4C35-9EA1-4B62950DE736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDomain.ReadModel.Infrastructure", "TemplateDomain.ReadModel.Infrastructure\TemplateDomain.ReadModel.Infrastructure.csproj", "{0AD676F1-4E1F-4E5E-911A-B944C2868372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Infrastructure", "TemplateDomain.ReadModel.Infrastructure\TemplateDomain.ReadModel.Infrastructure.csproj", "{0AD676F1-4E1F-4E5E-911A-B944C2868372}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -198,7 +198,7 @@ Global
 		{D83FEEE9-0C8A-42BA-BC1A-4BC059D1AA5A} = {A0905FEA-C441-423F-A381-5790ACBA7180}
 		{F0F065E3-0F7D-481E-942C-449ED12E4073} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
 		{3849E981-AF47-4C35-9EA1-4B62950DE736} = {9B73F1D2-0BC6-439E-A2C2-C9C41B3FC061}
-		{0AD676F1-4E1F-4E5E-911A-B944C2868372} = {A0905FEA-C441-423F-A381-5790ACBA7180}
+		{0AD676F1-4E1F-4E5E-911A-B944C2868372} = {E2CFC051-2B50-48C8-8177-165A958F6757}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19C1B536-2174-4619-A125-D9DC2F1D53BC}
