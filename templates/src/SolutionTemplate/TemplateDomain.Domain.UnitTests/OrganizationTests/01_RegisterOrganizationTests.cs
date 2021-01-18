@@ -28,7 +28,7 @@ namespace $safeprojectname$.OrganizationTests
         }
 
         [Fact]
-        public async Task NonIdempotent_Command__Should_Throw_DomainError()
+        public async Task NonIdempotent_Command_Should_Throw_DomainError()
         {
             string aggId = "Organizations-1";
             var cmd = CommandsFactory.CreateRegisterOrganizationCommand(aggId);

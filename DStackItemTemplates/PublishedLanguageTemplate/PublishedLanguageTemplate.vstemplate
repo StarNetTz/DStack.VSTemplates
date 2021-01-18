@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <DefaultName>AggregateName.cs</DefaultName>
+    <Name>DStack Aggregate Messages</Name>
+    <Description>Creates new Command and Event</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>10</SortOrder>
+    <Icon>PublishedLanguageTemplate.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <References />
+    <ProjectItem SubType="" TargetFileName="Commands\$fileinputname$Commands.cs" ReplaceParameters="true">CompanyCommands.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="Events\$fileinputname$Events.cs" ReplaceParameters="true">CompanyEvents.cs</ProjectItem>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>DStackItemTemplates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=f972ab9edd582320</Assembly>
+    <FullClassName>DStackItemTemplates.WizardImplementation</FullClassName>
+  </WizardExtension>
+</VSTemplate>
