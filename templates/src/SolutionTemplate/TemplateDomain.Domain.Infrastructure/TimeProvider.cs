@@ -1,4 +1,5 @@
 ﻿using System;
+using $ext_projectname$.Common;
 
 namespace $safeprojectname$
 {

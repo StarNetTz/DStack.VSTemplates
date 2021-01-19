@@ -21,7 +21,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="OrganizationAggregateState.cs">OrganizationAggregateState.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="OrganizationInteractor.cs">OrganizationInteractor.cs</ProjectItem>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="ITimeProvider.cs">ITimeProvider.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

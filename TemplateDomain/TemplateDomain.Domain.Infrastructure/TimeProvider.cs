@@ -1,4 +1,5 @@
 ﻿using System;
+using TemplateDomain.Common;
 
 namespace TemplateDomain.Domain.Infrastructure
 {
