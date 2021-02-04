@@ -40,7 +40,9 @@ namespace DStackItemTemplates
             WizardRunKind runKind, object[] customParams)
         {
             var nr = replacementsDictionary["$rootnamespace$"];
-            replacementsDictionary["$domain$"] = nr.Split('.')[0];
+            var parts = nr.Split('.');
+            var namespacePrefix = (parts.Length < 3) ? parts[0] : string.Join(".", parts[0], parts[1]);
+            replacementsDictionary["$domain$"] = namespacePrefix;
         }
 
         // This method is only called for item templates,
