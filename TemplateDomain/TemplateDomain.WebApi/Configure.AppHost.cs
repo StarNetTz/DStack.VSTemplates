@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 using Funq;
 using ServiceStack;
 using TemplateDomain.WebApi.ServiceInterface;
@@ -18,12 +16,7 @@ namespace TemplateDomain.WebApi;
 public class AppHost : AppHostBase, IHostingStartup
     {
         public void Configure(IWebHostBuilder builder) =>
-            builder.ConfigureAppConfiguration(
-                b => {
-                    b.AddJsonFile("config/appsettings.json");
-                    }
-                )
-            .ConfigureServices((ctx, services) =>
+            builder.ConfigureServices((ctx, services) =>
             {
 
                 var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(ctx.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED
