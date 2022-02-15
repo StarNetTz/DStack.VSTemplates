@@ -1,18 +1,11 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DStackItemTemplates
 {
     public class WizardImplementation : IWizard
     {
-
-
-
         // This method is called before opening any item that
         // has the OpenInEditor attribute.
         public void BeforeOpeningFile(ProjectItem projectItem)
