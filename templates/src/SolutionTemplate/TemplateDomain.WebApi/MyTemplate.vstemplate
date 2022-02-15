@@ -23,7 +23,9 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="dockerfile">dockerfile</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Configure.AppHost.cs">Configure.AppHost.cs</ProjectItem>
+	  <ProjectItem ReplaceParameters="true" TargetFileName="dtos.ts">dtos.ts</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="servicestack-client.d.ts">servicestack-client.d.ts</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>
