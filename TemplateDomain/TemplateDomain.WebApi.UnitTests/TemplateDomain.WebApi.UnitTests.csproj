@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
   </PropertyGroup>
@@ -10,10 +10,10 @@
     <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="ServiceStack" Version="5.12.0" />
-    <PackageReference Include="ServiceStack.Kestrel" Version="5.12.0" />
+    <PackageReference Include="ServiceStack" Version="6.0.2" />
+    <PackageReference Include="ServiceStack.Kestrel" Version="6.0.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
