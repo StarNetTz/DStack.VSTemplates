@@ -34,7 +34,7 @@ namespace DStackItemTemplates
         {
             var nr = replacementsDictionary["$rootnamespace$"];
             var parts = nr.Split('.');
-            var namespacePrefix = (parts.Length < 3) ? parts[0] : string.Join(".", parts[0], parts[1]);
+            var namespacePrefix = parts[0];
             replacementsDictionary["$domain$"] = namespacePrefix;
         }
 
