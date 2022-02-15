@@ -1,18 +1,11 @@
 ﻿using EnvDTE;
 using Microsoft.VisualStudio.TemplateWizard;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DStackItemTemplates
 {
     public class WizardImplementation : IWizard
     {
-
-
-
         // This method is called before opening any item that
         // has the OpenInEditor attribute.
         public void BeforeOpeningFile(ProjectItem projectItem)
@@ -41,7 +34,7 @@ namespace DStackItemTemplates
         {
             var nr = replacementsDictionary["$rootnamespace$"];
             var parts = nr.Split('.');
-            var namespacePrefix = (parts.Length < 3) ? parts[0] : string.Join(".", parts[0], parts[1]);
+            var namespacePrefix = parts[0];
             replacementsDictionary["$domain$"] = namespacePrefix;
         }
 

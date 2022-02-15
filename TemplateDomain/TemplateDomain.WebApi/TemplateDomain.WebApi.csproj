@@ -1,18 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\**" />
-    <Content Remove="wwwroot\**" />
-    <EmbeddedResource Remove="wwwroot\**" />
-    <None Remove="wwwroot\**" />
+    <None Include="wwwroot\dtos.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ServiceStack" Version="5.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+    <PackageReference Include="ServiceStack" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +20,10 @@
     <ProjectReference Include="..\TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="config\" />
   </ItemGroup>
 
 </Project>
