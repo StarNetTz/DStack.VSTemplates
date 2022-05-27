@@ -39,7 +39,7 @@ namespace TemplateDomain.Domain.NSBus.Tests
             static IOrganizationInteractor CreateMockThatThrowsDomainError()
             {
                 var mock = new Mock<IOrganizationInteractor>();
-                mock.Setup(svc => svc.Execute(It.IsAny<object>())).Throws<DomainError>();
+                mock.Setup(svc => svc.ExecuteAsync(It.IsAny<object>())).Throws<DomainError>();
                 var mockObject = mock.Object;
                 return mockObject;
             }
@@ -54,7 +54,7 @@ namespace TemplateDomain.Domain.NSBus.Tests
             static IOrganizationInteractor CreateMockThatThrowsArgumentException()
             {
                 var mock = new Mock<IOrganizationInteractor>();
-                mock.Setup(svc => svc.Execute(It.IsAny<object>())).Throws<ArgumentException>();
+                mock.Setup(svc => svc.ExecuteAsync(It.IsAny<object>())).Throws<ArgumentException>();
                 var mockObject = mock.Object;
                 return mockObject;
             }

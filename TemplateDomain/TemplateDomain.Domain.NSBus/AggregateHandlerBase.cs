@@ -14,7 +14,7 @@ namespace TemplateDomain.Domain.NSBus
         {
             try
             {
-                await svc.Execute(msg);
+                await svc.ExecuteAsync(msg);
                 foreach (var e in svc.GetPublishedEvents())
                     await context.Publish(e).ConfigureAwait(false);
             }
