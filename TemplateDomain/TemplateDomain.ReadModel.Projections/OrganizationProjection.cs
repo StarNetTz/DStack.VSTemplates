@@ -19,10 +19,10 @@ namespace TemplateDomain.ReadModel.Projections
             Store = store;
         }
 
-        public async Task Handle(dynamic @event, long checkpoint)
+        public async Task Handle(dynamic @event, ulong checkpoint)
             => await When(@event, checkpoint);
 
-        async Task When(OrganizationRegistered e, long checkpoint)
+        async Task When(OrganizationRegistered e, ulong checkpoint)
         {
             var doc = await LoadOrCreateDoc(e.Id);
             doc.Id = e.Id;
