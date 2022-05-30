@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using TemplateDomain.Common;
 using TemplateDomain.PL.Commands;
 
 namespace TemplateDomain.Testing.PL
