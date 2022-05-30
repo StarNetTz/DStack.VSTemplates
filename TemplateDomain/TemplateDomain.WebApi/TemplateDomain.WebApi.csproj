@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	<ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +21,6 @@
     <ProjectReference Include="..\TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="config\" />
   </ItemGroup>
 
 </Project>

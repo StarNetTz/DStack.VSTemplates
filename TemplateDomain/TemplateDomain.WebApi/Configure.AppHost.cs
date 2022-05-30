@@ -9,16 +9,21 @@ using ServiceStack.Auth;
 using TemplateDomain.Common;
 using TemplateDomain.ReadModel;
 using TemplateDomain.WebApi.Infrastructure;
+using ServiceStack.DataAnnotations;
 
 [assembly: HostingStartup(typeof(TemplateDomain.WebApi.AppHost))]
 namespace TemplateDomain.WebApi;
 
-public class AppHost : AppHostBase, IHostingStartup
+    public class AppHost : AppHostBase, IHostingStartup
     {
         public void Configure(IWebHostBuilder builder) =>
-            builder.ConfigureServices((ctx, services) =>
-            {
-
+                   builder.ConfigureAppConfiguration(
+                   b => {
+                       b.AddJsonFile("config/appsettings.json");
+                   })
+           .ConfigureServices((ctx, services) =>
+           {
+                //Licensing.RegisterLicense(ctx.Configuration["ServiceStack:Licence"]);
                 var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(ctx.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED
                 services.AddSingleton(store);
                 services.AddTransient<ITimeProvider, TimeProvider>();
@@ -39,6 +44,7 @@ public class AppHost : AppHostBase, IHostingStartup
 
         public AppHost() : base("TemplateDomain.WebApi", typeof(MyServices).Assembly)
         {
+            typeof(Authenticate).AddAttributes(new ExcludeAttribute(Feature.Metadata));
             ServiceStack.Text.JsConfig.TreatEnumAsInteger = true;
             ServiceStack.Text.JsConfig.AssumeUtc = true;
             ServiceStack.Text.JsConfig.AlwaysUseUtc = true;
@@ -50,22 +56,13 @@ public class AppHost : AppHostBase, IHostingStartup
             // Configure ServiceStack only IOC, Config & Plugins
             SetConfig(new HostConfig
             {
-              //  DefaultRedirectPath = "/metadata",
-                UseSameSiteCookies = true
+                DefaultRedirectPath = "/metadata",
+                UseSameSiteCookies = true,
+                UseSecureCookies = true
             });
             ConfigureCORS();
             Plugins.Add(new ValidationFeature());
-            Plugins.Add(new AuthFeature(() => new AuthUserSession(),
-                    new IAuthProvider[] {
-                    new JwtAuthProvider(AppSettings) {
-                        AuthKeyBase64 =  AppSettings.GetString("Jwt:Key"),
-                        RequireSecureConnection = false, //dev configuration
-                        EncryptPayload = false, //dev configuration
-                        HashAlgorithm = "HS256"
-                    }
-                }));
-
-    }
+        }
 
         void ConfigureCORS()
         {
