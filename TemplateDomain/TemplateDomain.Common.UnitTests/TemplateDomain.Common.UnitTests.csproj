@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
 
 </Project>
