@@ -5,40 +5,34 @@ using System.Threading.Tasks;
 using Xunit;
 using ServiceStack;
 using Moq;
-using Funq;
 
 namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests
 {
-    public class TypeaheadsServiceTests : IClassFixture<TestFixture<TypeaheadQueryService>>
-   {
-        TypeaheadQueryService Service;
+    [Collection("AppHost collection")]
+    public class TypeaheadsServiceTests
+    {
+        ServiceStackHost AppHost;
 
-        public TypeaheadsServiceTests(TestFixture<TypeaheadQueryService> f)
+        public TypeaheadsServiceTests(AppHostFixture fixture)
         {
-            Service = f.Service;
+            AppHost = fixture.AppHost;
+            AppHost.Container.Register(CreateIOrganizationSearchQueryMock());
         }
 
         [Fact]
-       public async Task can_execute_request()
-       {
-           var req = new FilterTypeahead();
-           var response = await Service.Any(req) as PaginatedResult<TypeaheadItem>;
-           Assert.NotNull(response);
-       }
-   }
-
-    public class TestFixture<T> : QueryServiceFixtureBase<T> where T : Service
-    {
-        public override void RegisterServices(Container container)
+        public async Task can_execute_request()
         {
-            container.Register(CreateIOrganizationSearchQueryMock());
+            var service = AppHost.Container.Resolve<TypeaheadQueryService>();
+            var req = new FilterTypeahead();
+            var response = await service.Any(req) as PaginatedResult<TypeaheadItem>;
+            Assert.NotNull(response);
         }
 
-            static ITypeaheadSearchQuery CreateIOrganizationSearchQueryMock()
-            {
-                var queryByIdMock = new Mock<ITypeaheadSearchQuery>();
-                queryByIdMock.Setup(x => x.Execute(It.IsAny<ISearchQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
-                return queryByIdMock.Object;
-            }
+        static ITypeaheadQueries CreateIOrganizationSearchQueryMock()
+        {
+            var queryByIdMock = new Mock<ITypeaheadQueries>();
+            queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
+            return queryByIdMock.Object;
+        }
     }
 }

@@ -6,43 +6,52 @@ using System.Threading.Tasks;
 
 namespace TemplateDomain.ReadModel.Queries.RavenDB
 {
-    public class OrganizationSearchQuery : SearchQuery<Organization>, IOrganizationSearchQuery
+    public class OrganizationSearchQuery : QueryBase<Organization>, IOrganizationQueries
     {
         public OrganizationSearchQuery(IDocumentStore documentStore) : base(documentStore) { }
 
-        protected override async Task<QueryResult<Organization>> SearchAsync(ISearchQueryRequest qry)
+        protected override async Task<QueryResult<Organization>> ExecuteAsync(PaginatedQueryRequest req)
         {
-            QueryResult<Organization> retVal = new QueryResult<Organization>();
-            QueryStatistics statsRef = new QueryStatistics();
+            var result = new QueryResult<Organization>();
+            var stats = new QueryStatistics();
             using (var ses = DocumentStore.OpenAsyncSession())
             {
-                var searchResult = await ses.Query<Organization, Organizations_Search>()
-                   .Statistics(out statsRef)
-                   .Search(x => x.Name, $"{qry.Qry}")
-                   .OrderByScoreDescending()
-                   .Skip(qry.CurrentPage * qry.PageSize)
-                   .Take(qry.PageSize)
+                var searchResult = await QueryData(req, out stats, ses)
+                   .Skip(req.CurrentPage * req.PageSize)
+                   .Take(req.PageSize)
+                   .OfType<Organization>()
                    .ToListAsync();
 
-                retVal.Data = searchResult;
-                retVal.Statistics = statsRef;
+                if (searchResult != null)
+                    result.Data = searchResult;
+
+                result.Statistics = stats;
             }
-            return retVal;
+            return result;
+        }
+
+        IQueryable<Organizations_Search.Result> QueryData(PaginatedQueryRequest req, out QueryStatistics? qryStats, IAsyncDocumentSession ses)
+        {
+            return ses.Query<Organizations_Search.Result, Organizations_Search>()
+                   .Statistics(out qryStats).Search(x => x.Query, GetParamValue(req, OrganizationQueriesKeys.SearchKey), @operator: Raven.Client.Documents.Queries.SearchOperator.And);
         }
     }
 
-    public class Organizations_Search : AbstractMultiMapIndexCreationTask<Organization>
+    public class Organizations_Search : AbstractIndexCreationTask<Organization>
     {
+        public class Result
+        {
+            public string[] Query { get; set; }
+        }
         public Organizations_Search()
         {
-            AddMap<Organization>(companies => from c in companies
-                                              select new
+            Map = organizations => from c in organizations
+                                              select new Result
                                               {
-                                                  c.Id,
-                                                  c.Name
-                                              });
+                                                  Query = new string[] { c.Name }
+                                              };
 
-            Index(x => x.Name, FieldIndexing.Search);
+            Index("Query", FieldIndexing.Search);
         }
     }
 }

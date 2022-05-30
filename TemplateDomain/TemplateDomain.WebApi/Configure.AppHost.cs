@@ -27,9 +27,9 @@ namespace TemplateDomain.WebApi;
                 var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(ctx.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED
                 services.AddSingleton(store);
                 services.AddTransient<ITimeProvider, TimeProvider>();
-                services.AddTransient<ITypeaheadSearchQuery, TypeaheadSearchQuery>();
+                services.AddTransient<ITypeaheadQueries, TypeaheadQueries>();
                 services.AddTransient<IMessageBus, NSBus>();
-                services.AddTransient<IOrganizationSearchQuery, OrganizationSearchQuery>();
+                services.AddTransient<IOrganizationQueries, OrganizationSearchQuery>();
                 services.AddTransient<IQueryById, QueryById>();
 
                 // Configure ASP.NET Core IOC Dependencies

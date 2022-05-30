@@ -6,52 +6,50 @@ using Xunit;
 using Funq;
 using Moq;
 using ServiceStack;
+using System.Collections.Generic;
 
 namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests
 {
-    public class OrganizationQueryServiceTests : IClassFixture<TestFixture<OrganizationQueryService>>
+    [Collection("AppHost collection")]
+    public class OrganizationQueryServiceTests
     {
+        ServiceStackHost AppHost;
         OrganizationQueryService Service;
 
-        public OrganizationQueryServiceTests(TestFixture<OrganizationQueryService> fixture)
+        public OrganizationQueryServiceTests(AppHostFixture fixture)
         {
-            Service = fixture.Service;
+            AppHost = fixture.AppHost;
+            AppHost.Register(CreateQueryByIdMock());
+            AppHost.Register(CreateIOrganizationSearchQueryMock());
+            Service = AppHost.Container.Resolve<OrganizationQueryService>();
         }
+
         [Fact]
-         public async Task Should_Search()
+         public async Task Should_search()
          {
-             var response = await Service.Any(new FindOrganizations { CurrentPage = 0, PageSize = 10, Qry = "*" }) as PaginatedResult<Organization>;
+             var response = await Service.Any(new FindOrganizations { CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { OrganizationQueriesKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
              Assert.NotNull(response);
          }
    
          [Fact]
-         public async Task can_get_by_id()
+         public async Task Should_find_by_id()
          {
-             var response = await Service.Any(new FindOrganizations { Id = "Organizations-1" }) as PaginatedResult<Organization>;
+             var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { OrganizationQueriesKeys.FindByIdParamKey, "Organizations-1" } } }) as PaginatedResult<Organization>;
              Assert.NotNull(response.Data);
          }
-    }
 
-    public class TestFixture<T> : QueryServiceFixtureBase<T> where T : Service
-    {
-        public override void RegisterServices(Container container)
+        static IQueryById CreateQueryByIdMock()
         {
-            container.Register(CreateQueryByIdMock());
-            container.Register(CreateIOrganizationSearchQueryMock());
+            var queryByIdMock = new Mock<IQueryById>();
+            queryByIdMock.Setup(x => x.GetById<Organization>(It.IsAny<string>())).ReturnsAsync(new Organization());
+            return queryByIdMock.Object;
         }
 
-            static IQueryById CreateQueryByIdMock()
-            {
-                var queryByIdMock = new Mock<IQueryById>();
-                queryByIdMock.Setup(x => x.GetById<Organization>(It.IsAny<string>())).ReturnsAsync(new Organization());
-                return queryByIdMock.Object;
-            }
-
-            static IOrganizationSearchQuery CreateIOrganizationSearchQueryMock()
-            {
-                var queryByIdMock = new Mock<IOrganizationSearchQuery>();
-                queryByIdMock.Setup(x => x.Execute(It.IsAny<ISearchQueryRequest>())).ReturnsAsync(new PaginatedResult<Organization>());
-                return queryByIdMock.Object;
-            }
+        static IOrganizationQueries CreateIOrganizationSearchQueryMock()
+        {
+            var queryByIdMock = new Mock<IOrganizationQueries>();
+            queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<Organization>());
+            return queryByIdMock.Object;
+        }
     }
 }

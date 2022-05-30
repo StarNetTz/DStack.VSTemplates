@@ -8,10 +8,10 @@ namespace TemplateDomain.WebApi.ServiceInterface
 {
     public class OrganizationQueryService : Service
     {
-        readonly IOrganizationSearchQuery Query;
+        readonly IOrganizationQueries Query;
         readonly IQueryById QueryById;
 
-        public OrganizationQueryService(IOrganizationSearchQuery query, IQueryById queryById)
+        public OrganizationQueryService(IOrganizationQueries query, IQueryById queryById)
         {
             Query = query;
             QueryById = queryById;
@@ -19,22 +19,16 @@ namespace TemplateDomain.WebApi.ServiceInterface
 
         public async Task<object> Any(FindOrganizations req)
         {
-            if (!string.IsNullOrEmpty(req.Id))
+            if (req.Qry.ContainsKey(OrganizationQueriesKeys.FindByIdParamKey))
                 return await GetById(req);
-            return await Search(req);
+            else
+                return await Query.Execute(req);
         }
 
         async Task<object> GetById(FindOrganizations req)
         {
-            var c = await QueryById.GetById<Organization>(req.Id);
+            var c = await QueryById.GetById<Organization>(req.Qry[OrganizationQueriesKeys.FindByIdParamKey]);
             return c == null ? new PaginatedResult<Organization>() : new PaginatedResult<Organization>() { PageSize = 1, TotalItems = 1, CurrentPage = 0, TotalPages = 1, Data = new List<Organization>() { c } };
-        }
-
-        async Task<object> Search(FindOrganizations req)
-        {
-            var SearchRequest = req.ConvertTo<SearchQueryRequest>();
-            var res = await Query.Execute(SearchRequest);
-            return res;
         }
     }
 }
