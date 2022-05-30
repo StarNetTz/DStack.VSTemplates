@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using TemplateDomain.Testing.PL;
 using Xunit;
 
 namespace TemplateDomain.Domain.UnitTests.OrganizationTests
@@ -11,16 +12,16 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         {
             string aggId = "Organizations-1";
             Given();
-            When(CommandsFactory.CreateRegisterOrganizationCommand(aggId));
-            await Expect(EventsFactory.CreateOrganizationRegisteredEvent(aggId));
+            When(OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId));
+            await Expect(OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId));
         }
 
         [Fact]
         public async Task Command_Is_Idempotent()
         {
             string aggId = "Organizations-1";
-            var cmd = CommandsFactory.CreateRegisterOrganizationCommand(aggId);
-            var evt = EventsFactory.CreateOrganizationRegisteredEvent(aggId);
+            var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
+            var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);
 
             Given(evt);
             When(cmd);
@@ -31,9 +32,9 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         public async Task NonIdempotent_Command_Should_Throw_DomainError()
         {
             string aggId = "Organizations-1";
-            var cmd = CommandsFactory.CreateRegisterOrganizationCommand(aggId);
+            var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
             cmd.Address.Country = "Some other";
-            var evt = EventsFactory.CreateOrganizationRegisteredEvent(aggId);
+            var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);
 
             Given(evt);
             When(cmd);

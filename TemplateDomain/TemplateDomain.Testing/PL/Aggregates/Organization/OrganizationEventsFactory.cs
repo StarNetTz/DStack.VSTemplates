@@ -1,10 +1,15 @@
-﻿using TemplateDomain.Common;
-using TemplateDomain.PL.Events;
+﻿using TemplateDomain.PL.Events;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TemplateDomain.PL.Commands;
+using TemplateDomain.Common;
 
-namespace TemplateDomain.Domain.UnitTests.OrganizationTests
+namespace TemplateDomain.Testing.PL
 {
-    public class EventsFactory
+    public class OrganizationEventsFactory
     {
         public static OrganizationRegistered CreateOrganizationRegisteredEvent(string id)
             => new OrganizationRegistered()
@@ -13,14 +18,7 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
                 IssuedBy = "zeko",
                 Name = "Xamics Ltd",
                 TimeIssued = DateTime.MinValue,
-                Address = new Address
-                {
-                    Street = "321 Bakers Street b",
-                    City = "London",
-                    Country = "UK",
-                    State = "Essex",
-                    PostalCode = "3021"
-                }
+                Address = CommonTestData.CreateAddress()
             };
 
         public static OrganizationNameCorrected CreateOrganizationNameCorrectedEvent(string id)
@@ -32,4 +30,5 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
                 Name = "New name"
             };
     }
+
 }
