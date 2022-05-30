@@ -24,6 +24,7 @@ namespace TemplateDomain.WebApi.UnitTests
 
         public AppHostFixture()
         {
+            //Licensing.RegisterLicense("");
             AppHost = new BasicAppHost(typeof(OrganizationService).Assembly)
             {
                 TestMode = true,
@@ -39,7 +40,6 @@ namespace TemplateDomain.WebApi.UnitTests
                 }
             };
             AppHost.Plugins.Add(new ValidationFeature());
-            //Licensing.RegisterLicense("");
             AppHost.Init();
         }
 

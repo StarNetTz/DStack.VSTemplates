@@ -7,12 +7,18 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
     public static class TypeaheadConsts
     {
         public const string CollectionKey = "collection";
+        public const string SearchParamKey = "search";
 
         public const string OrganizationsCollection = "organizations";
     }
     public class TypeaheadQueries :  ITypeaheadQueries
     {
         IOrganizationQueries OrganizationQueries;
+
+        public TypeaheadQueries(IOrganizationQueries organizationQueries)
+        {
+            OrganizationQueries = organizationQueries;
+        }
 
         public async Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest req)
         {

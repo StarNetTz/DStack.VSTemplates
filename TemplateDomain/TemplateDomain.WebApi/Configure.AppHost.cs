@@ -29,7 +29,7 @@ namespace TemplateDomain.WebApi;
                 services.AddTransient<ITimeProvider, TimeProvider>();
                 services.AddTransient<ITypeaheadQueries, TypeaheadQueries>();
                 services.AddTransient<IMessageBus, NSBus>();
-                services.AddTransient<IOrganizationQueries, OrganizationSearchQuery>();
+                services.AddTransient<IOrganizationQueries, OrganizationQueries>();
                 services.AddTransient<IQueryById, QueryById>();
 
                 // Configure ASP.NET Core IOC Dependencies

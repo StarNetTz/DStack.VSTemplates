@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TemplateDomain.ReadModel.Queries.RavenDB
 {
-    public class OrganizationSearchQuery : QueryBase<Organization>, IOrganizationQueries
+    public class OrganizationQueries : QueryBase<Organization>, IOrganizationQueries, ITypeaheadQuery
     {
-        public OrganizationSearchQuery(IDocumentStore documentStore) : base(documentStore) { }
+        public OrganizationQueries(IDocumentStore documentStore) : base(documentStore) { }
 
         protected override async Task<QueryResult<Organization>> ExecuteAsync(PaginatedQueryRequest req)
         {
@@ -30,10 +30,17 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             return result;
         }
 
+
         IQueryable<Organizations_Search.Result> QueryData(PaginatedQueryRequest req, out QueryStatistics? qryStats, IAsyncDocumentSession ses)
         {
             return ses.Query<Organizations_Search.Result, Organizations_Search>()
                    .Statistics(out qryStats).Search(x => x.Query, GetParamValue(req, OrganizationQueriesKeys.SearchKey), @operator: Raven.Client.Documents.Queries.SearchOperator.And);
+        }
+
+        async Task<PaginatedResult<TypeaheadItem>> ITypeaheadQuery.Execute(PaginatedQueryRequest req)
+        {
+            var res = await Execute(req);
+            return PaginatedResult<Organization>.CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem()).ToList());
         }
     }
 
@@ -43,6 +50,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
         {
             public string[] Query { get; set; }
         }
+
         public Organizations_Search()
         {
             Map = organizations => from c in organizations
