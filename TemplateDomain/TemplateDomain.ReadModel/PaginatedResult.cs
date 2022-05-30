@@ -30,6 +30,4 @@ namespace TemplateDomain.ReadModel
             };
         }
     }
-
-    
 }

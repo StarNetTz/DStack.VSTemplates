@@ -19,7 +19,7 @@ namespace TemplateDomain.WebApi.ServiceInterface
 
         public async Task<object> Any(FindOrganizations req)
         {
-            if (req.Qry.ContainsKey(OrganizationQueriesKeys.FindByIdParamKey))
+            if (req.Qry.ContainsKey(QueriesKeys.FindByIdKey))
                 return await GetById(req);
             else
                 return await Query.Execute(req);
@@ -27,7 +27,7 @@ namespace TemplateDomain.WebApi.ServiceInterface
 
         async Task<object> GetById(FindOrganizations req)
         {
-            var c = await QueryById.GetById<Organization>(req.Qry[OrganizationQueriesKeys.FindByIdParamKey]);
+            var c = await QueryById.GetById<Organization>(req.Qry[QueriesKeys.FindByIdKey]);
             return c == null ? new PaginatedResult<Organization>() : new PaginatedResult<Organization>() { PageSize = 1, TotalItems = 1, CurrentPage = 0, TotalPages = 1, Data = new List<Organization>() { c } };
         }
     }

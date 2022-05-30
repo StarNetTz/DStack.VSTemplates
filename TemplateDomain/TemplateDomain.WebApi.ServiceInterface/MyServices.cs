@@ -4,7 +4,7 @@ using TemplateDomain.WebApi.ServiceModel;
 
 namespace TemplateDomain.WebApi.ServiceInterface
 {
-    public class MyServices : Service
+    public class HelloServices : Service
     {
         public object Any(Hello request)
         {

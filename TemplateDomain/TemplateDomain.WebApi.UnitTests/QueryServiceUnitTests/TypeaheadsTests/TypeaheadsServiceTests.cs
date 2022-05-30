@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xunit;
 using ServiceStack;
 using Moq;
+using System.Collections.Generic;
 
 namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests
 {
@@ -20,7 +21,7 @@ namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests
         }
 
         [Fact]
-        public async Task can_execute_request()
+        public async Task Should_execute()
         {
             var service = AppHost.Container.Resolve<TypeaheadQueryService>();
             var req = new FilterTypeahead();
@@ -28,11 +29,11 @@ namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests
             Assert.NotNull(response);
         }
 
-        static ITypeaheadQueries CreateIOrganizationSearchQueryMock()
-        {
-            var queryByIdMock = new Mock<ITypeaheadQueries>();
-            queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
-            return queryByIdMock.Object;
-        }
+            static ITypeaheadQueries CreateIOrganizationSearchQueryMock()
+            {
+                var queryByIdMock = new Mock<ITypeaheadQueries>();
+                queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
+                return queryByIdMock.Object;
+            }
     }
 }

@@ -11,6 +11,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
 
         public const string OrganizationsCollection = "organizations";
     }
+
     public class TypeaheadQueries :  ITypeaheadQueries
     {
         IOrganizationQueries OrganizationQueries;
@@ -25,22 +26,22 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             return await GetQueryByCollection(req).Execute(req);
         }
 
-        ITypeaheadQuery GetQueryByCollection(PaginatedQueryRequest req)
-        {
-            if (req.Qry.ContainsKey(TypeaheadConsts.CollectionKey))
+            ITypeaheadQuery GetQueryByCollection(PaginatedQueryRequest req)
             {
-                var collection = req.Qry[TypeaheadConsts.CollectionKey];
-
-                switch (collection)
+                if (req.Qry.ContainsKey(TypeaheadConsts.CollectionKey))
                 {
-                    case TypeaheadConsts.OrganizationsCollection:
-                        return (ITypeaheadQuery)OrganizationQueries;
+                    var collection = req.Qry[TypeaheadConsts.CollectionKey];
+
+                    switch (collection)
+                    {
+                        case TypeaheadConsts.OrganizationsCollection:
+                            return (ITypeaheadQuery)OrganizationQueries;
                  
-                    default:
-                        throw new NotImplementedException();
+                        default:
+                            throw new NotImplementedException();
+                    }
                 }
+                throw new NotImplementedException();
             }
-            throw new NotImplementedException();
-        }
     }
 }

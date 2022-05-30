@@ -27,14 +27,14 @@ namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests
         [Fact]
          public async Task Should_search()
          {
-             var response = await Service.Any(new FindOrganizations { CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { OrganizationQueriesKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
+             var response = await Service.Any(new FindOrganizations { CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { QueriesKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
              Assert.NotNull(response);
          }
    
          [Fact]
          public async Task Should_find_by_id()
          {
-             var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { OrganizationQueriesKeys.FindByIdParamKey, "Organizations-1" } } }) as PaginatedResult<Organization>;
+             var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { QueriesKeys.FindByIdKey, "Organizations-1" } } }) as PaginatedResult<Organization>;
              Assert.NotNull(response.Data);
          }
 

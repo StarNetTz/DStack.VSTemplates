@@ -42,7 +42,7 @@ namespace TemplateDomain.WebApi;
 
             });
 
-        public AppHost() : base("TemplateDomain.WebApi", typeof(MyServices).Assembly)
+        public AppHost() : base("TemplateDomain.WebApi", typeof(HelloServices).Assembly)
         {
             typeof(Authenticate).AddAttributes(new ExcludeAttribute(Feature.Metadata));
             ServiceStack.Text.JsConfig.TreatEnumAsInteger = true;

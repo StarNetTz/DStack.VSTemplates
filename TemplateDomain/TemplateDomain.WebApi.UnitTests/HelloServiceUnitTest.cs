@@ -13,14 +13,13 @@ namespace TemplateDomain.WebApi.UnitTests.HelloServiceUnitTest
         public HelloServiceUnitTest(AppHostFixture fixture)
         {
             AppHost = fixture.AppHost;
-            AppHost.Container.AddTransient<MyServices>();
+            AppHost.Container.AddTransient<HelloServices>();
         }
 
-
         [Fact]
-        public void Can_call_MyServices()
+        public void Should_say_hello()
         {
-            var service = AppHost.Container.Resolve<MyServices>();
+            var service = AppHost.Container.Resolve<HelloServices>();
 
             var response = (HelloResponse)service.Any(new Hello { Name = "World" });
 

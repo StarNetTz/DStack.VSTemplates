@@ -30,26 +30,31 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             return result;
         }
 
-
         IQueryable<Organizations_Search.Result> QueryData(PaginatedQueryRequest req, out QueryStatistics? qryStats, IAsyncDocumentSession ses)
         {
             return ses.Query<Organizations_Search.Result, Organizations_Search>()
-                   .Statistics(out qryStats).Search(x => x.Query, GetParamValue(req, OrganizationQueriesKeys.SearchKey), @operator: Raven.Client.Documents.Queries.SearchOperator.And);
+                    .Statistics(out qryStats).Search(x => x.Query,
+                        GetParamValue(req, QueriesKeys.SearchKey),
+                        @operator: Raven.Client.Documents.Queries.SearchOperator.And
+                        );
         }
 
         async Task<PaginatedResult<TypeaheadItem>> ITypeaheadQuery.Execute(PaginatedQueryRequest req)
         {
             var res = await Execute(req);
-            return PaginatedResult<Organization>.CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem()).ToList());
+            var lng = GetParamValue(req, QueriesKeys.LanguageKey);
+            return PaginatedResult<Organization>.CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem(lng)).ToList());
         }
     }
 
     public class Organizations_Search : AbstractIndexCreationTask<Organization>
     {
+        //ncrunch: no coverage start
         public class Result
         {
             public string[] Query { get; set; }
         }
+        //ncrunch: no coverage end
 
         public Organizations_Search()
         {
