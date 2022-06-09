@@ -22,8 +22,10 @@ namespace TemplateDomain.WebApi.Infrastructure
 
         static EndpointConfiguration CreateEndpointConfiguration()
         {
-            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
+            var config = new ConfigurationBuilder().AddJsonFile("config/appsettings.json", true, true).Build();
             var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
+            endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
+            endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
             transport.UseConventionalRoutingTopology();

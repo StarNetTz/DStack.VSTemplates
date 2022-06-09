@@ -4,6 +4,7 @@
     <MetricsExclusionList>
       <Value>RavenDocumentStoreFactory.cs:TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj</Value>
       <Value>CommandServicesUnitTests\LicenceRegistrator.cs:TemplateDomain.WebApi.UnitTests\TemplateDomain.WebApi.UnitTests.csproj</Value>
+      <Value>AppHostFixture.cs:TemplateDomain.WebApi.UnitTests\TemplateDomain.WebApi.UnitTests.csproj</Value>
     </MetricsExclusionList>
     <SolutionConfigured>True</SolutionConfigured>
   </Settings>

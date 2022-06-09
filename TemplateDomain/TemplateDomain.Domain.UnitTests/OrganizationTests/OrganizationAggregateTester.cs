@@ -14,7 +14,7 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
             var repository = new BDDAggregateRepository();
             repository.Preload(cmd.Id, given);
             var svc = new OrganizationInteractor(repository);
-            await svc.Execute(cmd).ConfigureAwait(false);
+            await svc.ExecuteAsync(cmd).ConfigureAwait(false);
             var publishedEvents = svc.GetPublishedEvents();
             var arr = (repository.Appended != null) ? repository.Appended.Cast<IEvent>().ToArray() : null;
             return new ExecuteCommandResult<IEvent> { ProducedEvents = arr ?? new IEvent[0], PublishedEvents = publishedEvents.Cast<IEvent>().ToArray() };

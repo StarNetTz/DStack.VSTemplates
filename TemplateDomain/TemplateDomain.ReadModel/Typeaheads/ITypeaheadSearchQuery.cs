@@ -2,8 +2,13 @@
 
 namespace TemplateDomain.ReadModel
 {
-    public interface ITypeaheadSearchQuery
+    public interface ITypeaheadQueries
     {
-        Task<PaginatedResult<TypeaheadItem>> Execute(ISearchQueryRequest qry);
+        Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
+    }
+
+    public interface ITypeaheadQuery
+    {
+        Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
     }
 }

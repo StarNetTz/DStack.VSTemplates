@@ -6,21 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Aggregates" Version="3.0.0" />
-    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="DStack.Aggregates" Version="4.0.1" />
+    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="4.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-    <PackageReference Include="NLog" Version="4.7.13" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
-    <PackageReference Include="Npgsql" Version="6.0.3" />
-    <PackageReference Include="NServiceBus" Version="7.6.0" />
+    <PackageReference Include="NLog" Version="5.0.0" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Npgsql" Version="6.0.4" />
+    <PackageReference Include="NServiceBus" Version="7.7.3" />
     <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
     <PackageReference Include="NServiceBus.Extensions.Logging" Version="1.0.0" />
     <PackageReference Include="NServiceBus.Heartbeat" Version="3.0.1" />
-    <PackageReference Include="NServiceBus.Metrics" Version="3.0.0" />
+    <PackageReference Include="NServiceBus.Metrics" Version="3.1.0" />
     <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="3.0.6" />
-    <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.5.0" />
+    <PackageReference Include="NServiceBus.Newtonsoft.Json" Version="2.3.0" />
+    <PackageReference Include="NServiceBus.Persistence.Sql" Version="6.5.1" />
     <PackageReference Include="NServiceBus.RabbitMQ" Version="6.1.1" />
   </ItemGroup>
 
@@ -30,10 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
+    <None Update="config\appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="nlog.config">
+    <None Update="config\nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

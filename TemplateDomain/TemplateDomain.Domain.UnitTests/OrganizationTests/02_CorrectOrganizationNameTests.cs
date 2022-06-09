@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using TemplateDomain.Testing.PL;
 using Xunit;
 
 namespace TemplateDomain.Domain.UnitTests.OrganizationTests
@@ -9,9 +10,9 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         public async Task Should_Execute_Command()
         {
             var aggId = "Organizations-1";
-            Given(EventsFactory.CreateOrganizationRegisteredEvent(aggId));
-            When(CommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
-            await Expect(EventsFactory.CreateOrganizationNameCorrectedEvent(aggId));
+            Given(OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId));
+            When(OrganizationCommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
+            await Expect(OrganizationEventsFactory.CreateOrganizationNameCorrectedEvent(aggId));
         }
 
         [Fact]
@@ -19,7 +20,7 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         {
             var aggId = "Organizations-1";
             Given();
-            When(CommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
+            When(OrganizationCommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
             await ExpectError("OrganizationDoesNotExist");
         }
 
@@ -28,10 +29,10 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         {
             var aggregateId = "Organizations-1";
             Given(
-                EventsFactory.CreateOrganizationRegisteredEvent(aggregateId),
-                EventsFactory.CreateOrganizationNameCorrectedEvent(aggregateId));
+                OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggregateId),
+                OrganizationEventsFactory.CreateOrganizationNameCorrectedEvent(aggregateId));
 
-            When(CommandsFactory.CreateCorrectOrganizationNameCommand(aggregateId));
+            When(OrganizationCommandsFactory.CreateCorrectOrganizationNameCommand(aggregateId));
 
             await ExpectNoEvents();
         }

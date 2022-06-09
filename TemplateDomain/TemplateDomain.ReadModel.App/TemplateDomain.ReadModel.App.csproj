@@ -6,14 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="3.1.0" />
-    <PackageReference Include="DStack.Projections.EventStoreDB" Version="3.0.1" />
-    <PackageReference Include="DStack.Projections.RavenDB" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="DStack.Projections" Version="4.0.1" />
+    <PackageReference Include="DStack.Projections.EventStoreDB" Version="4.0.1" />
+    <PackageReference Include="DStack.Projections.RavenDB" Version="4.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="1.7.4" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,10 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
+    <None Update="config\appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="nlog.config">
+    <None Update="config\nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

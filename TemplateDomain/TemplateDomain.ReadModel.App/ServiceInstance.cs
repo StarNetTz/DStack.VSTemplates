@@ -48,7 +48,7 @@ namespace TemplateDomain.ReadModel.App
 
         async Task RunProjections()
         {
-            var projections = await ProjectionsFactory.Create(Assembly.GetAssembly(typeof(OrganizationProjection)));
+            var projections = await ProjectionsFactory.CreateAsync(Assembly.GetAssembly(typeof(OrganizationProjection)));
             await RunProjections(projections, GetEnabledProjctions(projections), GetDisabledProjections());
 
         }
@@ -86,7 +86,7 @@ namespace TemplateDomain.ReadModel.App
                     if (enabledProjections.Contains(p.Name) && (!disabledProjections.Contains(p.Name)))
                     {
                         Logger.LogInformation($"Starting projection {p.Name} on stream {p.Subscription.StreamName}.");
-                        await p.Start();
+                        await p.StartAsync();
                     }
                 }
             }

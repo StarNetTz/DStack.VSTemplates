@@ -40,7 +40,7 @@ namespace TemplateDomain.Domain.Organization
                 await AggRepository.StoreAsync(agg);
         }
 
-        public override async Task Execute(object command)
+        public override async Task ExecuteAsync(object command)
             => await When((dynamic)command);
 
         async Task When(RegisterOrganization c)

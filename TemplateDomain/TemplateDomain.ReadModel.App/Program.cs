@@ -21,7 +21,7 @@ namespace TemplateDomain.ReadModel.App
     {
         async static Task Main(string[] args)
         {
-            NLog.LogManager.LoadConfiguration("nlog.config");
+            NLog.LogManager.LoadConfiguration("config/nlog.config");
             await CreateHostBuilder(args).Build().RunAsync();
         }
 
@@ -49,7 +49,7 @@ namespace TemplateDomain.ReadModel.App
                 .ConfigureHostConfiguration(configHost =>
                 {
                     configHost.SetBasePath(Directory.GetCurrentDirectory());
-                    configHost.AddJsonFile("appsettings.json", optional: false);
+                    configHost.AddJsonFile("config/appsettings.json", optional: false);
                     configHost.AddEnvironmentVariables(prefix: "STARNET_");
                     configHost.AddCommandLine(args);
                 }).ConfigureLogging(logging =>

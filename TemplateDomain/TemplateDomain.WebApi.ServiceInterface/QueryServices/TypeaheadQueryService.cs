@@ -7,12 +7,12 @@ namespace TemplateDomain.WebApi.ServiceInterface
 {
     public class TypeaheadQueryService : Service
     {
-        readonly ITypeaheadSearchQuery Query;
+        readonly ITypeaheadQueries Query;
 
-        public TypeaheadQueryService(ITypeaheadSearchQuery query)
+        public TypeaheadQueryService(ITypeaheadQueries query)
             => Query = query;
 
         public async Task<object> Any(FilterTypeahead req)
-            => await Query.Execute(req.ConvertTo<SearchQueryRequest>());
+            => await Query.Execute(req);
     }
 }

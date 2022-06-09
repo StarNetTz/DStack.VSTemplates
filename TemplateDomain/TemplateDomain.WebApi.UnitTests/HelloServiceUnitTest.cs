@@ -1,45 +1,29 @@
 using ServiceStack;
-using ServiceStack.Testing;
-using System;
 using TemplateDomain.WebApi.ServiceInterface;
 using TemplateDomain.WebApi.ServiceModel;
 using Xunit;
 
 namespace TemplateDomain.WebApi.UnitTests.HelloServiceUnitTest
 {
-    public class HelloServiceUnitTest : IClassFixture<TestFixture>
+    [Collection("AppHost collection")]
+    public class HelloServiceUnitTest
     {
         ServiceStackHost AppHost;
 
-        public HelloServiceUnitTest(TestFixture fixture)
+        public HelloServiceUnitTest(AppHostFixture fixture)
         {
             AppHost = fixture.AppHost;
+            AppHost.Container.AddTransient<HelloServices>();
         }
 
         [Fact]
-        public void Can_call_MyServices()
+        public void Should_say_hello()
         {
-            var service = AppHost.Container.Resolve<MyServices>();
+            var service = AppHost.Container.Resolve<HelloServices>();
 
             var response = (HelloResponse)service.Any(new Hello { Name = "World" });
 
             Assert.Equal("Hello, World!", response.Result);
-        }
-    }
-
-    public class TestFixture : IDisposable
-    {
-        public ServiceStackHost AppHost;
-
-        public TestFixture()
-        {
-            AppHost = new BasicAppHost().Init();
-            AppHost.Container.AddTransient<MyServices>();
-        }
-
-        public void Dispose()
-        {
-            AppHost.Dispose();
         }
     }
 }
