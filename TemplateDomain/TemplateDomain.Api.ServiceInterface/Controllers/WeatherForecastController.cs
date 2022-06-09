@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using TemplateDomain.Api.ServiceModel;
 
-namespace TemplateDomain.Api.Controllers
+namespace TemplateDomain.Api.ServiceInterface
 {
     [ApiController]
     [Route("api/forecasts")]
@@ -9,14 +10,14 @@ namespace TemplateDomain.Api.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+     //   private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController()
         {
-            _logger = logger;
+          //  _logger = logger;
         }
 
         [HttpGet]

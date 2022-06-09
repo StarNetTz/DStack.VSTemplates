@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TemplateDomain.Api.ServiceInterface\TemplateDomain.Api.ServiceInterface.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Api.ServiceModel\TemplateDomain.Api.ServiceModel.csproj" />
+  </ItemGroup>
+
 </Project>
