@@ -1,4 +1,4 @@
-namespace TemplateDomain.Api
+namespace TemplateDomain.Api.ServiceModel
 {
     public class WeatherForecast
     {
