@@ -1,5 +1,4 @@
 using FluentValidation.AspNetCore;
-using TemplateDomain.Api;
 using TemplateDomain.Api.Infrastructure;
 using TemplateDomain.Api.ServiceInterface;
 using TemplateDomain.Common;
@@ -15,7 +14,7 @@ builder.WebHost.ConfigureAppConfiguration(bld =>
 
 // Add services to the container.
 
-var a = typeof(TemplateDomain.Api.ServiceInterface.OrganizationQueryController).Assembly;
+var a = typeof(OrganizationQueryController).Assembly;
 builder.Services.AddControllers()
     .AddApplicationPart(a)
     .AddControllersAsServices()
@@ -39,7 +38,7 @@ builder.Services.AddTransient<IOrganizationQueries, OrganizationQueries>();
 builder.Services.AddTransient<IQueryById, QueryById>();
 #endregion
 
-builder.Services.AddAutoMapper(typeof(TemplateDomain.Api.ServiceInterface.MapperProfiles.CommandProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(CommandsProfile).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

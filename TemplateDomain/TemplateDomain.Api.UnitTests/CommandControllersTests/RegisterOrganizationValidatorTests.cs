@@ -1,5 +1,5 @@
 ﻿using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.Api.ServiceModel;
+using TemplateDomain.Api.ServiceModel.Commands;
 using Xunit;
 
 namespace TemplateDomain.Api.UnitTests
@@ -16,6 +16,18 @@ namespace TemplateDomain.Api.UnitTests
         {
             var obj = new RegisterOrganization();
             await AssertRuleBroken(obj, property, errorCode);
+        }
+
+        [Fact]
+        public void a()
+        {
+            var srcAssembly = typeof(ServiceModel.Commands.RegisterOrganization).Assembly;
+            var dstAssembly = typeof(PL.Commands.RegisterOrganization).Assembly;
+            var svcModelCommands = srcAssembly.GetTypes().Where(x => x.FullName.Contains("ServiceModel.Commands"));
+            foreach (var t in svcModelCommands)
+            {
+                var destType = dstAssembly.GetTypes().Where(x=>x.Name == t.Name).FirstOrDefault();
+            }
         }
 
         [Theory]

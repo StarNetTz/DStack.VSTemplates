@@ -24,12 +24,12 @@ namespace TemplateDomain.Api.UnitTests
         [Fact]
         public async Task Should_Register()
         {
-            await Controller.Register(new ServiceModel.RegisterOrganization { Id = "", Name = "", Address = new Address()});
+            await Controller.Register(new ServiceModel.Commands.RegisterOrganization { Id = "", Name = "", Address = new Address()});
         }
 
         IMapper CreateMapper()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<RegisterOrganization, PL.Commands.RegisterOrganization>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ServiceModel.Commands.RegisterOrganization, PL.Commands.RegisterOrganization>());
             return config.CreateMapper();
         }
 

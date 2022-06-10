@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TemplateDomain.Api.ServiceModel;
+using TemplateDomain.Api.ServiceModel.Commands;
 using TemplateDomain.Common;
 
 namespace TemplateDomain.Api.ServiceInterface

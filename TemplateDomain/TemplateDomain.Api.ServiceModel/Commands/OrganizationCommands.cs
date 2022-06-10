@@ -1,6 +1,6 @@
 ﻿using TemplateDomain.Common;
 
-namespace TemplateDomain.Api.ServiceModel
+namespace TemplateDomain.Api.ServiceModel.Commands
 {
     public class RegisterOrganization 
     {
