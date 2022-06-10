@@ -1,11 +1,8 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Funq;
 using ServiceStack;
 using TemplateDomain.WebApi.ServiceInterface;
 using TemplateDomain.ReadModel.Queries.RavenDB;
 using ServiceStack.Validation;
-using ServiceStack.Auth;
 using TemplateDomain.Common;
 using TemplateDomain.ReadModel;
 using TemplateDomain.WebApi.Infrastructure;
