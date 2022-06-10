@@ -16,7 +16,8 @@ namespace TemplateDomain.Testing
 
     public static class AuditTestData
     {
-        public static string DefaultIssuedBy  => "johndoe@mail.com"; 
+        public static string DefaultIssuedBy  => "johndoe@mail.com";
+        public static string AdminRole => "adminjohndoe@mail.com";
 
         public static DateTime DefaultTimeIssued => new DateTime(2008, 5, 5, 7, 15, 21);
     }

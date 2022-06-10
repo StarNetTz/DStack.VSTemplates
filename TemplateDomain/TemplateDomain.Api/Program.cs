@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using TemplateDomain.Api;
 using TemplateDomain.Api.Infrastructure;
 using TemplateDomain.Api.ServiceInterface;
@@ -10,13 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureAppConfiguration(bld =>
 {
     bld.AddJsonFile("config/appsettings.json", optional: false);
-
 });
 
 // Add services to the container.
 
-var a = typeof(TemplateDomain.Api.ServiceInterface.WeatherForecastController).Assembly;
-builder.Services.AddControllers().AddApplicationPart(a).AddControllersAsServices();
+var a = typeof(TemplateDomain.Api.ServiceInterface.OrganizationQueryController).Assembly;
+builder.Services.AddControllers()
+    .AddApplicationPart(a)
+    .AddControllersAsServices()
+    .AddFluentValidation(fvc=>fvc.RegisterValidatorsFromAssembly(a));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,6 +39,7 @@ builder.Services.AddTransient<IOrganizationQueries, OrganizationQueries>();
 builder.Services.AddTransient<IQueryById, QueryById>();
 #endregion
 
+builder.Services.AddAutoMapper(typeof(TemplateDomain.Api.ServiceInterface.MapperProfiles.CommandProfile).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

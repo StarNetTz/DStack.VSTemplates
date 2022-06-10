@@ -5,6 +5,7 @@
       <Value>RavenDocumentStoreFactory.cs:TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj</Value>
       <Value>CommandServicesUnitTests\LicenceRegistrator.cs:TemplateDomain.WebApi.UnitTests\TemplateDomain.WebApi.UnitTests.csproj</Value>
       <Value>AppHostFixture.cs:TemplateDomain.WebApi.UnitTests\TemplateDomain.WebApi.UnitTests.csproj</Value>
+      <Value>TemplateDomain.Api.ServiceInterface\TemplateDomain.Api.ServiceInterface.csproj\MapperProfiles</Value>
     </MetricsExclusionList>
     <SolutionConfigured>True</SolutionConfigured>
   </Settings>
