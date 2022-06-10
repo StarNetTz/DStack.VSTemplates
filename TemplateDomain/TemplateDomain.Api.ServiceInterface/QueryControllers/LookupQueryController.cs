@@ -1,18 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using TemplateDomain.Api.ServiceModel;
 using TemplateDomain.ReadModel;
 
 namespace TemplateDomain.Api.ServiceInterface
 {
     [ApiController]
     [Route("lookups")]
-    public class LookupsController : ControllerBase
+    public class LookupQueryController : ControllerBase
     {
         readonly IQueryById QueryById;
 
-        //   private readonly ILogger<WeatherForecastController> _logger;
-        public LookupsController(IQueryById queryById)
+        public LookupQueryController(IQueryById queryById)
         {
             QueryById = queryById;
         }
@@ -23,6 +20,4 @@ namespace TemplateDomain.Api.ServiceInterface
             return await QueryById.GetById<Lookup>(id);
         }
     }
-
-   
 }

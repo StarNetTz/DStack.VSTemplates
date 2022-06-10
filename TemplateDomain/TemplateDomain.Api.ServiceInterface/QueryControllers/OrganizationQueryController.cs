@@ -5,12 +5,12 @@ namespace TemplateDomain.Api.ServiceInterface
 {
     [ApiController]
     [Route("organizations")]
-    public class OrganizationsController : ControllerBase
+    public class OrganizationQueryController : ControllerBase
     {
         readonly IOrganizationQueries Query;
         readonly IQueryById QueryById;
 
-        public OrganizationsController(IOrganizationQueries query, IQueryById queryById)
+        public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById)
         {
             Query = query;
             QueryById = queryById;
@@ -30,13 +30,7 @@ namespace TemplateDomain.Api.ServiceInterface
             var c = await QueryById.GetById<Organization>(req.Qry[QueriesKeys.FindByIdKey]);
             return c == null ?
                 new PaginatedResult<Organization>() :
-                new PaginatedResult<Organization>() {
-                    PageSize = 1,
-                    TotalItems = 1,
-                    CurrentPage = 0,
-                    TotalPages = 1,
-                    Data = new List<Organization>() { c }
-                };
+                PaginatedResult<Organization>.CreateFromSingleItem(c);
         }
     }
 }

@@ -29,5 +29,17 @@ namespace TemplateDomain.ReadModel
                 Data = data
             };
         }
+
+        public static PaginatedResult<T> CreateFromSingleItem(T item)
+        {
+            return new PaginatedResult<T>
+            {
+                CurrentPage = 0,
+                PageSize = 1,
+                TotalItems = 1,
+                TotalPages = 1,
+                Data = new List<T>() {item}
+            };
+        }
     }
 }

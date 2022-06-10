@@ -8,12 +8,12 @@ namespace TemplateDomain.Common.UnitTests
         [Fact]
         public void Should_Use_Value_Based_Equality_Test()
         {
-            var a = new RecordDictionary<string, Address> { { "a", CommonTestData.CreateAddress() } };
-            var b = new RecordDictionary<string, Address> { { "a", CommonTestData.CreateAddress() } };
-            var c = new RecordDictionary<string, Address> { { "c", CommonTestData.CreateAddress() } };
+            var a = new RecordDictionary<string, Address> { { "a", AddressTestData.CreateDefault() } };
+            var b = new RecordDictionary<string, Address> { { "a", AddressTestData.CreateDefault() } };
+            var c = new RecordDictionary<string, Address> { { "c", AddressTestData.CreateDefault() } };
 
-            object e = new RecordDictionary<string, Address> { { "a", CommonTestData.CreateAddress() } };
-            object f = new RecordDictionary<string, Address> { { "a", CommonTestData.CreateAddress() } };
+            object e = new RecordDictionary<string, Address> { { "a", AddressTestData.CreateDefault() } };
+            object f = new RecordDictionary<string, Address> { { "a", AddressTestData.CreateDefault() } };
 
             RecordDictionary<string, Address> d = null;
 

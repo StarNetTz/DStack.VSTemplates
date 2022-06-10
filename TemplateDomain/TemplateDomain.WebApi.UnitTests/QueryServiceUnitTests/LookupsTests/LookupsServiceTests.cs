@@ -24,7 +24,7 @@ namespace TemplateDomain.WebApi.UnitTests.LookupsServiceTests
         public async Task Should_GetLookup()
         {
             var req = new GetLookup();
-            var service = AppHost.Container.Resolve<LookupsService>();
+            var service = AppHost.Container.Resolve<LookupService>();
             var response = await service.Any(req) as Lookup;
             var doc = response.Data.First();
 

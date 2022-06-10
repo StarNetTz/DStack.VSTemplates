@@ -1,5 +1,4 @@
-﻿using System;
-using TemplateDomain.PL.Commands;
+﻿using TemplateDomain.PL.Commands;
 
 namespace TemplateDomain.Testing.PL
 {
@@ -9,18 +8,18 @@ namespace TemplateDomain.Testing.PL
             => new RegisterOrganization()
             {
                 Id = id,
-                IssuedBy = "zeko",
+                IssuedBy = AuditTestData.DefaultIssuedBy,
+                TimeIssued = AuditTestData.DefaultTimeIssued,
                 Name = "Xamics Ltd",
-                TimeIssued = DateTime.MinValue,
-                Address = CommonTestData.CreateAddress()
+                Address = AddressTestData.CreateDefault()
             };
 
         public static CorrectOrganizationName CreateCorrectOrganizationNameCommand(string id)
             => new CorrectOrganizationName()
             {
                 Id = id,
-                IssuedBy = "zeko",
-                TimeIssued = DateTime.MinValue,
+                IssuedBy = AuditTestData.DefaultIssuedBy,
+                TimeIssued = AuditTestData.DefaultTimeIssued,
                 Name = "New name"
             };
     }

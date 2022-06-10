@@ -1,11 +1,4 @@
 ﻿using TemplateDomain.PL.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TemplateDomain.PL.Commands;
-using TemplateDomain.Common;
 
 namespace TemplateDomain.Testing.PL
 {
@@ -15,18 +8,18 @@ namespace TemplateDomain.Testing.PL
             => new OrganizationRegistered()
             {
                 Id = id,
-                IssuedBy = "zeko",
+                IssuedBy = AuditTestData.DefaultIssuedBy,
+                TimeIssued = AuditTestData.DefaultTimeIssued,
                 Name = "Xamics Ltd",
-                TimeIssued = DateTime.MinValue,
-                Address = CommonTestData.CreateAddress()
+                Address = AddressTestData.CreateDefault()
             };
 
         public static OrganizationNameCorrected CreateOrganizationNameCorrectedEvent(string id)
             => new OrganizationNameCorrected()
             {
                 Id = id,
-                IssuedBy = "zeko",
-                TimeIssued = DateTime.MinValue,
+                IssuedBy = AuditTestData.DefaultIssuedBy,
+                TimeIssued = AuditTestData.DefaultTimeIssued,
                 Name = "New name"
             };
     }

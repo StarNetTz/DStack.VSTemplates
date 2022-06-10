@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections\TemplateDomain.ReadModel.Projections.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace TemplateDomain.WebApi.ServiceInterface
 {
-    public class LookupsService : Service
+    public class LookupService : Service
     {
         readonly IQueryById QueryById;
 
-        public LookupsService(IQueryById queryById)
+        public LookupService(IQueryById queryById)
         {
             QueryById = queryById;
         }
