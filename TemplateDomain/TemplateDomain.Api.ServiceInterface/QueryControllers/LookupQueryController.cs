@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TemplateDomain.ReadModel;
 
@@ -13,7 +14,7 @@ namespace TemplateDomain.Api.ServiceInterface
         {
             QueryById = queryById;
         }
-
+        
         [HttpGet]
         public async Task<Lookup> Get(string id)
         {

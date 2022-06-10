@@ -11,7 +11,7 @@ namespace TemplateDomain.Api.ServiceInterface
     
     [Route("commands/organization")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class OrganizationCommandController : CommandControllerBase
     {
         public OrganizationCommandController(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper) : base(bus, timeProvider, mapper)

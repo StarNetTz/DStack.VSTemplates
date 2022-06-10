@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using Microsoft.IdentityModel.Tokens;
 using TemplateDomain.Api.Infrastructure;
 using TemplateDomain.Api.ServiceInterface;
 using TemplateDomain.Common;
@@ -20,6 +21,26 @@ builder.Services.AddControllers()
     .AddControllersAsServices()
     .AddFluentValidation(fvc=>fvc.RegisterValidatorsFromAssembly(a));
 
+
+    builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://localhost:5001";
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = false
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ApiScope", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", "raapi");
+    });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,12 +72,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.UseEndpoints( endpoints =>
 {
-    endpoints.MapControllers();
+    endpoints.MapControllers().RequireAuthorization("ApiScope");
 });
 
 app.Run();
