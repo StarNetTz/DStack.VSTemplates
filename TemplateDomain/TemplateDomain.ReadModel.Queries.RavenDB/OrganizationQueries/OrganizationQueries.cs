@@ -1,6 +1,7 @@
 ﻿using Raven.Client.Documents;
 using Raven.Client.Documents.Indexes;
 using Raven.Client.Documents.Session;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,7 +35,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
         {
             return ses.Query<Organizations_Search.Result, Organizations_Search>()
                     .Statistics(out qryStats).Search(x => x.Query,
-                        GetParamValue(req, QueriesKeys.SearchKey),
+                        GetParamValue(req, QueryKeys.SearchKey),
                         @operator: Raven.Client.Documents.Queries.SearchOperator.And
                         );
         }
@@ -42,9 +43,21 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
         async Task<PaginatedResult<TypeaheadItem>> ITypeaheadQuery.Execute(PaginatedQueryRequest req)
         {
             var res = await Execute(req);
-            var lng = GetParamValue(req, QueriesKeys.LanguageKey);
-            return PaginatedResult<Organization>.CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem(lng)).ToList());
+            var lng = GetParamValue(req, QueryKeys.LanguageKey);
+            return CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem(lng)).ToList());
         }
+
+            static PaginatedResult<TypeaheadItem> CreateFrom(IPaginatedResult src, List<TypeaheadItem> data)
+            {
+                return new PaginatedResult<TypeaheadItem>
+                {
+                    CurrentPage = src.CurrentPage,
+                    PageSize = src.PageSize,
+                    TotalItems = src.TotalItems,
+                    TotalPages = src.TotalPages,
+                    Data = data
+                };
+            }
     }
 
     public class Organizations_Search : AbstractIndexCreationTask<Organization>

@@ -18,7 +18,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests
         public async Task Should_Execute()
         {
             var qry = new OrganizationQueries(DocumentStore);
-            var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueriesKeys.SearchKey,"*"} }, CurrentPage = 0, PageSize = 10 });
+            var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueryKeys.SearchKey,"*"} }, CurrentPage = 0, PageSize = 10 });
             Assert.Equal(2, res.Data.Count);
         }
         
@@ -26,7 +26,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests
         public async Task OverflownQuery_Should_Return_FirstPage()
         {
             var qry = new OrganizationQueries(DocumentStore);
-            var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueriesKeys.SearchKey, "*" } }, CurrentPage = 100, PageSize = 10 });
+            var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueryKeys.SearchKey, "*" } }, CurrentPage = 100, PageSize = 10 });
             Assert.Equal(2, res.Data.Count);
         }
         

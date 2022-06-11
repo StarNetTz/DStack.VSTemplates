@@ -19,7 +19,7 @@ namespace TemplateDomain.Api.ServiceInterface
         [HttpPost]
         public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
         {
-            if (req.Qry.ContainsKey(QueriesKeys.FindByIdKey))
+            if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
                 return await GetById(req);
             else
                 return await Query.Execute(req);
@@ -27,7 +27,7 @@ namespace TemplateDomain.Api.ServiceInterface
 
         async Task<PaginatedResult<Organization>> GetById(PaginatedQueryRequest req)
         {
-            var c = await QueryById.GetById<Organization>(req.Qry[QueriesKeys.FindByIdKey]);
+            var c = await QueryById.GetById<Organization>(req.Qry[QueryKeys.FindByIdKey]);
             return c == null ?
                 new PaginatedResult<Organization>() :
                 PaginatedResult<Organization>.CreateFromSingleItem(c);

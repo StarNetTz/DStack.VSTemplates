@@ -18,7 +18,7 @@ namespace TemplateDomain.Api.UnitTests
         [Fact]
         public async Task Should_GetById()
         {
-            var res = await Controller.Find(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueriesKeys.FindByIdKey,"" } } });
+            var res = await Controller.Find(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueryKeys.FindByIdKey,"" } } });
             Assert.NotNull(res);
         }
 
