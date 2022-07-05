@@ -17,7 +17,7 @@ namespace TemplateDomain.Api.UnitTests
 
         public OrganizationCommandControllerTests()
         {
-            Controller = new OrganizationCommandController(new Mock<IMessageBus>().Object, new Mock<ITimeProvider>().Object, CreateMapper());
+            Controller = new OrganizationCommandController(new Mock<IMessageBus>().Object, new MockTimeProvider(), CreateMapper());
             Controller.ControllerContext = CreateTestHttpContext();
         }
 

@@ -1,4 +1,3 @@
-using TemplateDomain.Common;
 using TemplateDomain.WebApi.ServiceInterface;
 using Moq;
 using ServiceStack;
@@ -7,6 +6,7 @@ using ServiceStack.Testing;
 using ServiceStack.Validation;
 using System;
 using Xunit;
+using TemplateDomain.Testing;
 
 namespace TemplateDomain.WebApi.UnitTests
 {
@@ -31,7 +31,7 @@ namespace TemplateDomain.WebApi.UnitTests
                 ConfigureContainer = container =>
                 {
                     container.Register(new Mock<IMessageBus>().Object);
-                    container.Register(CreateStubTimeProvider());
+                    container.Register(new MockTimeProvider());
                     container.Register<IAuthSession>(c => new AuthUserSession
                     {
                         Email = "admin@mail.com"
@@ -41,13 +41,6 @@ namespace TemplateDomain.WebApi.UnitTests
             };
             AppHost.Plugins.Add(new ValidationFeature());
             AppHost.Init();
-        }
-
-        public ITimeProvider CreateStubTimeProvider()
-        {
-            var m = new Mock<ITimeProvider>();
-            m.Setup(x => x.GetUtcTime()).Returns(DateTime.MinValue);
-            return m.Object;
         }
 
         public void Dispose()
