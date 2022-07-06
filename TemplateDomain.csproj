@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="TemplateDomain\**\*" Exclude="TemplateDomain\**\bin\**;TemplateDomain\**\obj\**;TemplateDomain\**\*.ncrunch*;TemplateDomain\**\*.editorconfig;TemplateDomain\_NCrunch_TemplateDomain.App\**;TemplateDomain\.cr\**;TemplateDomain\.vs\**" />" />
+    <Content Include="TemplateDomain\**\*" Exclude="TemplateDomain\**\bin\**;TemplateDomain\**\obj\**;TemplateDomain\**\*.ncrunch*;TemplateDomain\**\*.editorconfig;TemplateDomain\_NCrunch_TemplateDomain.App\**;TemplateDomain\.cr\**;TemplateDomain\.vs\**"  />
     <Compile Remove="**\*" />
   </ItemGroup>
 </Project>
