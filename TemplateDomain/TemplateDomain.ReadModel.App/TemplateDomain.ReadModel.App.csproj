@@ -6,14 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="4.0.1" />
-    <PackageReference Include="DStack.Projections.EventStoreDB" Version="4.0.1" />
-    <PackageReference Include="DStack.Projections.RavenDB" Version="4.0.1" />
+    <PackageReference Include="DStack.Projections" Version="4.0.2" />
+    <PackageReference Include="DStack.Projections.EventStoreDB" Version="4.0.2" />
+    <PackageReference Include="DStack.Projections.RavenDB" Version="4.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>

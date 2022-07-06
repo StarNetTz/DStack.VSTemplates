@@ -1,9 +1,9 @@
-﻿using TemplateDomain.Common;
-using TemplateDomain.PL.Events;
-using DStack.Projections.Testing;
+﻿using DStack.Projections.Testing;
 using System;
 using System.Threading.Tasks;
 using Xunit;
+using TemplateDomain.Testing.ReadModel;
+using TemplateDomain.Testing.PL;
 
 namespace TemplateDomain.ReadModel.Projections.Tests
 {
@@ -13,8 +13,8 @@ namespace TemplateDomain.ReadModel.Projections.Tests
         public async Task Should_Project_OrganizationRegistered()
         {
             var id = $"Organization-{Guid.NewGuid()}";
-            await Given(new OrganizationRegistered() { Id = id, Name = "Betting Shop Royal", Address = new Address { Street = "My street", City = "My City", Country = "My Country", State = "TK", PostalCode = "75000" } });
-            await Expect(new Organization() { Id = id, Name = "Betting Shop Royal", Address = new Address { Street = "My street", City = "My City", Country = "My Country", State = "TK", PostalCode = "75000" } });
+            await Given(OrganizationEventsFactory.CreateOrganizationRegisteredEvent(id));
+            await Expect(OrganizationTestData.CreateDefault(id));
         }
     }
 }

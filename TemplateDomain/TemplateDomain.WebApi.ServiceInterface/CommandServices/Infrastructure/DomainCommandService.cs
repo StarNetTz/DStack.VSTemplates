@@ -1,5 +1,4 @@
 ﻿using ServiceStack;
-using System;
 using System.Threading.Tasks;
 using TemplateDomain.Common;
 
@@ -15,24 +14,6 @@ namespace TemplateDomain.WebApi.ServiceInterface
             T cmd = command.ConvertTo<T>();
             AddAuditInfoToCommand(cmd as PL.Commands.Command);
             await Bus.Send(cmd);
-            return new ResponseStatus();
-        }
-
-        protected async Task<ResponseStatus> TryProcessRequest<T>(object command, Action<T> action)
-        {
-            T cmd = command.ConvertTo<T>();
-            AddAuditInfoToCommand(cmd as PL.Commands.Command);
-            action(cmd);
-            await Bus.Send(cmd).ConfigureAwait(false);
-            return new ResponseStatus();
-        }
-
-        protected async Task<ResponseStatus> TryProcessRequest<T>(object command, Func<T, Task> func)
-        {
-            T cmd = command.ConvertTo<T>();
-            AddAuditInfoToCommand(cmd as PL.Commands.Command);
-            await func(cmd);
-            await Bus.Send(cmd).ConfigureAwait(false);
             return new ResponseStatus();
         }
 

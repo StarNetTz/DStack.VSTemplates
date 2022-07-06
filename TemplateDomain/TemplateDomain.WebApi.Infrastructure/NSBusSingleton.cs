@@ -8,23 +8,23 @@ namespace TemplateDomain.WebApi.Infrastructure
     public class NSBus : IMessageBus
     {
         public async Task Send(object message)
-            => await NSBusSingleton.TemplateDomainAppEndpointInstance.Send(message);
+            => await NSBusSingleton.AppEndpointInstance.Send(message);
     }
 
     class NSBusSingleton
     {
-        public static IEndpointInstance TemplateDomainAppEndpointInstance;
+        public static IEndpointInstance AppEndpointInstance;
 
         static NSBusSingleton()
         {
-            TemplateDomainAppEndpointInstance = Endpoint.Start(CreateEndpointConfiguration()).GetAwaiter().GetResult();
+            AppEndpointInstance = Endpoint.Start(CreateEndpointConfiguration()).GetAwaiter().GetResult();
         }
 
         static EndpointConfiguration CreateEndpointConfiguration()
         {
             var config = new ConfigurationBuilder().AddJsonFile("config/appsettings.json", true, true).Build();
             var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
-            endpointConfiguration.UseSerialization<NewtonsoftSerializer>();
+            endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
             endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();

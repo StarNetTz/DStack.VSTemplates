@@ -20,9 +20,4 @@
     <ProjectReference Include="..\TemplateDomain.Domain.NSBus\TemplateDomain.Domain.NSBus.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ServiceHandlersTests\" />
-    <Folder Include="SagaHandlersTests\" />
-  </ItemGroup>
-
 </Project>

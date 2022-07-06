@@ -18,15 +18,20 @@ namespace TemplateDomain.ReadModel
         public int TotalItems { get; set; }
         public int TotalPages { get; set; }
 
-        public static PaginatedResult<TypeaheadItem> CreateFrom(IPaginatedResult src, List<TypeaheadItem> data)
+        public PaginatedResult()
         {
-            return new PaginatedResult<TypeaheadItem>
+            Data = new List<T>();
+        }
+
+        public static PaginatedResult<T> CreateFromSingleItem(T item)
+        {
+            return new PaginatedResult<T>
             {
-                CurrentPage = src.CurrentPage,
-                PageSize = src.PageSize,
-                TotalItems = src.TotalItems,
-                TotalPages = src.TotalPages,
-                Data = data
+                CurrentPage = 0,
+                PageSize = 1,
+                TotalItems = 1,
+                TotalPages = 1,
+                Data = new List<T>() {item}
             };
         }
     }

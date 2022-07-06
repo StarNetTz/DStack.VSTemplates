@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceModel\TemplateDomain.WebApi.ServiceModel.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
