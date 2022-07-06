@@ -91,13 +91,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.ServiceI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.Infrastructure", "TemplateDomain.Api.Infrastructure\TemplateDomain.Api.Infrastructure.csproj", "{6258F211-A8E7-4E6D-A90A-32E48772FF70}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C31A0A6-88B9-4CE2-91A1-AE303A619F30}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.template.config\ide.host.json = .template.config\ide.host.json
-		.template.config\template.json = .template.config\template.json
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
