@@ -14,6 +14,8 @@ namespace TemplateDomain.App
         public EndpointConfiguration Create(IConfiguration config)
         {
             var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
+            endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
+            endpointConfiguration.LicensePath("config/license.xml");
             RegisterComponents(config, endpointConfiguration);
             InitializeTransport(config, endpointConfiguration);
             InitializePostgreSQLPersistence(config, endpointConfiguration);
