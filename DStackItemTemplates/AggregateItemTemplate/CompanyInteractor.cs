@@ -43,7 +43,7 @@ namespace $rootnamespace$.$fileinputname$
                 await AggRepository.StoreAsync(agg);
         }
 
-        public override async Task Execute(object command)
+        public override async Task ExecuteAsync(object command)
             => await When((dynamic)command);
 
         private async Task When(Create$fileinputname$ c)

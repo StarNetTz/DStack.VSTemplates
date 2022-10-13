@@ -14,7 +14,7 @@ namespace $rootnamespace$.$fileinputname$Tests
             var repository = new BDDAggregateRepository();
             repository.Preload(cmd.Id, given);
             var svc = new $fileinputname$Interactor(repository);
-            await svc.Execute(cmd).ConfigureAwait(false);
+            await svc.ExecuteAsync(cmd).ConfigureAwait(false);
             var arr = repository.Appended != null ? repository.Appended.Cast<IEvent>().ToArray() : null;
 			var publishedEvents = svc.GetPublishedEvents();
 			return new ExecuteCommandResult<IEvent> { ProducedEvents = arr ?? new IEvent[0], PublishedEvents = publishedEvents.Cast<IEvent>().ToArray() };
