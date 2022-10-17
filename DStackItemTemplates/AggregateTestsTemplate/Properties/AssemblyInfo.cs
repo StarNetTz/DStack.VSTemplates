@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AggregateTestsTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Zvjezdan Tomicevic")]
+[assembly: AssemblyCompany("Starnet")]
 [assembly: AssemblyProduct("AggregateTestsTemplate")]
-[assembly: AssemblyCopyright("Copyright © Zvjezdan Tomicevic 2021")]
+[assembly: AssemblyCopyright("Copyright © Starnet 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
