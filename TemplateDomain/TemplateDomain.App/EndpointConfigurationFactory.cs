@@ -42,7 +42,6 @@ namespace TemplateDomain.App
                 var client = new EventStoreClient(settings);
                 AssertEventStoreAvailable(client);
                 return new ESAggregateRepository(client);
-
             }
 
                 void AssertEventStoreAvailable(EventStoreClient client)
