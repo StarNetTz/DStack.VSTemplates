@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NServiceBus;
 using System.Threading.Tasks;
 
-namespace TemplateDomain.WebApi.Infrastructure
+namespace TemplateDomain.WebApi.Impl
 {
     public class NSBus : IMessageBus
     {
@@ -28,7 +28,7 @@ namespace TemplateDomain.WebApi.Infrastructure
             endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.UseConventionalRoutingTopology();
+            transport.UseConventionalRoutingTopology(QueueType.Classic);
 
             transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
 

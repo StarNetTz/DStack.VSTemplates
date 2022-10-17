@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TemplateDomain.ReadModel.Infrastructure
+namespace TemplateDomain.ReadModel.Impl
 {
     public interface ILookupsInitializer
     {

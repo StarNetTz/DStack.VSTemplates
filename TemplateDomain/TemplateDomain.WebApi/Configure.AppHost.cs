@@ -5,7 +5,7 @@ using TemplateDomain.ReadModel.Queries.RavenDB;
 using ServiceStack.Validation;
 using TemplateDomain.Common;
 using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.Infrastructure;
+using TemplateDomain.WebApi.Impl;
 using ServiceStack.DataAnnotations;
 
 [assembly: HostingStartup(typeof(TemplateDomain.WebApi.AppHost))]

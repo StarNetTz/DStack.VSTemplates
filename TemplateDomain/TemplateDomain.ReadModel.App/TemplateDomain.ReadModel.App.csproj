@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,19 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="4.0.2" />
-    <PackageReference Include="DStack.Projections.EventStoreDB" Version="4.0.2" />
-    <PackageReference Include="DStack.Projections.RavenDB" Version="4.0.2" />
+    <PackageReference Include="DStack.Projections" Version="4.0.3" />
+    <PackageReference Include="DStack.Projections.EventStoreDB" Version="4.0.3" />
+    <PackageReference Include="DStack.Projections.RavenDB" Version="4.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.1" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
-    <ProjectReference Include="..\TemplateDomain.ReadModel.Infrastructure\TemplateDomain.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\TemplateDomain.ReadModel.Impl\TemplateDomain.ReadModel.Impl.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections.EventStoreDB\TemplateDomain.ReadModel.Projections.EventStoreDB.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections\TemplateDomain.ReadModel.Projections.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />

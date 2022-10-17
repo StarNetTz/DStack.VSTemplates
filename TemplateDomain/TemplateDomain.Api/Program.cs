@@ -1,6 +1,6 @@
 using FluentValidation.AspNetCore;
 using Microsoft.IdentityModel.Tokens;
-using TemplateDomain.Api.Infrastructure;
+using TemplateDomain.Api.Impl;
 using TemplateDomain.Api.ServiceInterface;
 using TemplateDomain.Common;
 using TemplateDomain.ReadModel;

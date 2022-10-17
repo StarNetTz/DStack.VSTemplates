@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.6</PackageVersion>
     <PackageId>Starnet.DDD.Templates</PackageId>
     <Title>Starnet DDD Templates</Title>
     <Authors>Zvjezdan Tomicevic</Authors>

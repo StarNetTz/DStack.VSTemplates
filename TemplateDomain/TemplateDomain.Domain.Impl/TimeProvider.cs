@@ -1,7 +1,7 @@
 ﻿using System;
 using TemplateDomain.Common;
 
-namespace TemplateDomain.Domain.Infrastructure
+namespace TemplateDomain.Domain.Impl
 {
     public class TimeProvider : ITimeProvider
     {

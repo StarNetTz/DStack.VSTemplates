@@ -2,7 +2,7 @@
 using NServiceBus;
 using TemplateDomain.Api.ServiceInterface;
 
-namespace TemplateDomain.Api.Infrastructure
+namespace TemplateDomain.Api.Impl
 {
     public class NSBus : IMessageBus
     {
@@ -27,7 +27,7 @@ namespace TemplateDomain.Api.Infrastructure
             endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.UseConventionalRoutingTopology();
+            transport.UseConventionalRoutingTopology(QueueType.Classic);
 
             transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
 

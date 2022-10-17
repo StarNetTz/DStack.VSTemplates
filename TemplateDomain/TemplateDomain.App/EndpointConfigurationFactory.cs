@@ -1,4 +1,4 @@
-﻿using TemplateDomain.Domain.Infrastructure;
+﻿using TemplateDomain.Domain.Impl;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
@@ -42,7 +42,6 @@ namespace TemplateDomain.App
                 var client = new EventStoreClient(settings);
                 AssertEventStoreAvailable(client);
                 return new ESAggregateRepository(client);
-
             }
 
                 void AssertEventStoreAvailable(EventStoreClient client)
@@ -57,7 +56,7 @@ namespace TemplateDomain.App
             static void InitializeTransport(IConfiguration config, EndpointConfiguration endpointConfiguration)
             {
                 var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-                transport.UseConventionalRoutingTopology();
+                transport.UseConventionalRoutingTopology(QueueType.Classic);
                 transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
             }
 
