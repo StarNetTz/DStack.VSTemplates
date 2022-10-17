@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DStack.Projections.EventStoreDB.Utils;
 using TemplateDomain.ReadModel.Projections.EventStoreDB;
-using TemplateDomain.ReadModel.Infrastructure;
+using TemplateDomain.ReadModel.Impl;
 
 namespace TemplateDomain.ReadModel.App
 {

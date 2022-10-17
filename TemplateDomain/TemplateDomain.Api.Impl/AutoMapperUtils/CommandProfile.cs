@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace TemplateDomain.Api.Infrastructure
+namespace TemplateDomain.Api.Impl
 {
     public class CommandsProfile : Profile
     {

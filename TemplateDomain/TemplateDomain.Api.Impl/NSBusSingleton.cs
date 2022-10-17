@@ -1,9 +1,8 @@
-﻿using TemplateDomain.WebApi.ServiceInterface;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using NServiceBus;
-using System.Threading.Tasks;
+using TemplateDomain.Api.ServiceInterface;
 
-namespace TemplateDomain.WebApi.Infrastructure
+namespace TemplateDomain.Api.Impl
 {
     public class NSBus : IMessageBus
     {

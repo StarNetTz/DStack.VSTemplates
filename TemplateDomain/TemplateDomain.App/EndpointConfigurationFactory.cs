@@ -1,4 +1,4 @@
-﻿using TemplateDomain.Domain.Infrastructure;
+﻿using TemplateDomain.Domain.Impl;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;

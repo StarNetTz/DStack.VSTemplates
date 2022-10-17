@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateDomain.Domain.Infrastructure\TemplateDomain.Domain.Infrastructure.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Domain.Impl\TemplateDomain.Domain.Impl.csproj" />
     <ProjectReference Include="..\TemplateDomain.Domain.NSBus\TemplateDomain.Domain.NSBus.csproj" />
   </ItemGroup>
 

@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using TemplateDomain.ReadModel.Infrastructure;
+using TemplateDomain.ReadModel.Impl;
 using TemplateDomain.ReadModel.Projections;
 using TemplateDomain.ReadModel.Queries.RavenDB;
 

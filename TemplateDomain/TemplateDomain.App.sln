@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Domain", "Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{70760C75-ABDE-4459-9E11-0A09763AC8D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Domain.Infrastructure", "TemplateDomain.Domain.Infrastructure\TemplateDomain.Domain.Infrastructure.csproj", "{8CFB9AE8-88CA-475C-A1DD-831E1458EC8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Domain.Impl", "TemplateDomain.Domain.Impl\TemplateDomain.Domain.Impl.csproj", "{8CFB9AE8-88CA-475C-A1DD-831E1458EC8B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Domain.UnitTests", "TemplateDomain.Domain.UnitTests\TemplateDomain.Domain.UnitTests.csproj", "{7EB480A1-CE23-4910-9440-58A188F9BA55}"
 EndProject
@@ -67,15 +67,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.IntegrationTests", "TemplateDomain.WebApi.IntegrationTests\TemplateDomain.WebApi.IntegrationTests.csproj", "{F0F065E3-0F7D-481E-942C-449ED12E4073}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Infrastructure", "TemplateDomain.WebApi.Infrastructure\TemplateDomain.WebApi.Infrastructure.csproj", "{3849E981-AF47-4C35-9EA1-4B62950DE736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.WebApi.Impl", "TemplateDomain.WebApi.Impl\TemplateDomain.WebApi.Impl.csproj", "{3849E981-AF47-4C35-9EA1-4B62950DE736}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Infrastructure", "TemplateDomain.ReadModel.Infrastructure\TemplateDomain.ReadModel.Infrastructure.csproj", "{0AD676F1-4E1F-4E5E-911A-B944C2868372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.ReadModel.Impl", "TemplateDomain.ReadModel.Impl\TemplateDomain.ReadModel.Impl.csproj", "{0AD676F1-4E1F-4E5E-911A-B944C2868372}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06_Testing", "06_Testing", "{4FEA8D3C-AE32-4CCD-9E5F-692431C7D2C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Testing", "TemplateDomain.Testing\TemplateDomain.Testing.csproj", "{6E56FED7-1A87-4730-835F-580FA4C0A29C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{23EB85C5-4021-4113-A841-F008E13D20CF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Impl", "Impl", "{23EB85C5-4021-4113-A841-F008E13D20CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Common.UnitTests", "TemplateDomain.Common.UnitTests\TemplateDomain.Common.UnitTests.csproj", "{A73B9B2F-70D0-4B3A-A50C-CEFA3A6622E2}"
 EndProject
@@ -89,7 +89,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.ServiceInterface", "TemplateDomain.Api.ServiceInterface\TemplateDomain.Api.ServiceInterface.csproj", "{0DEFD2B8-C4B5-42CD-9AB6-5E6A66E9E173}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.Infrastructure", "TemplateDomain.Api.Infrastructure\TemplateDomain.Api.Infrastructure.csproj", "{6258F211-A8E7-4E6D-A90A-32E48772FF70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.Impl", "TemplateDomain.Api.Impl\TemplateDomain.Api.Impl.csproj", "{6258F211-A8E7-4E6D-A90A-32E48772FF70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

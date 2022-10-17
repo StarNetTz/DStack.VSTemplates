@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateDomain.Api.Infrastructure\TemplateDomain.Api.Infrastructure.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Api.Impl\TemplateDomain.Api.Impl.csproj" />
     <ProjectReference Include="..\TemplateDomain.Api.ServiceInterface\TemplateDomain.Api.ServiceInterface.csproj" />
     <ProjectReference Include="..\TemplateDomain.Api.ServiceModel\TemplateDomain.Api.ServiceModel.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
-    <ProjectReference Include="..\TemplateDomain.ReadModel.Infrastructure\TemplateDomain.ReadModel.Infrastructure.csproj" />
+    <ProjectReference Include="..\TemplateDomain.ReadModel.Impl\TemplateDomain.ReadModel.Impl.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections.EventStoreDB\TemplateDomain.ReadModel.Projections.EventStoreDB.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections\TemplateDomain.ReadModel.Projections.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />
