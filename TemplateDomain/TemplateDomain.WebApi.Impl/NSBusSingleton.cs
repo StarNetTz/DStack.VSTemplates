@@ -28,7 +28,7 @@ namespace TemplateDomain.WebApi.Impl
             endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.UseConventionalRoutingTopology();
+            transport.UseConventionalRoutingTopology(QueueType.Classic);
 
             transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
 

@@ -56,7 +56,7 @@ namespace TemplateDomain.App
             static void InitializeTransport(IConfiguration config, EndpointConfiguration endpointConfiguration)
             {
                 var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-                transport.UseConventionalRoutingTopology();
+                transport.UseConventionalRoutingTopology(QueueType.Classic);
                 transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
             }
 
