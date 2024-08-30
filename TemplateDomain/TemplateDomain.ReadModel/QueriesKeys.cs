@@ -1,9 +1,8 @@
-﻿namespace TemplateDomain.ReadModel
+﻿namespace TemplateDomain.ReadModel;
+
+public class QueryKeys
 {
-    public class QueryKeys
-    {
-        public const string FindByIdKey = "byId";
-        public const string SearchKey = "search";
-        public const string LanguageKey = "lng";
-    }
+    public const string FindByIdKey = "byId";
+    public const string SearchKey = "search";
+    public const string LanguageKey = "lng";
 }

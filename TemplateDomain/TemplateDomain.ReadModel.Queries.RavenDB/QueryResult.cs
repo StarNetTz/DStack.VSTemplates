@@ -1,17 +1,16 @@
 ﻿using Raven.Client.Documents.Session;
 using System.Collections.Generic;
 
-namespace TemplateDomain.ReadModel.Queries.RavenDB
+namespace TemplateDomain.ReadModel.Queries.RavenDB;
+
+public class QueryResult<T>
 {
-    public class QueryResult<T>
+    public List<T> Data { get; set; }
+
+    public QueryStatistics Statistics { get; set; }
+
+    public QueryResult()
     {
-        public List<T> Data { get; set; }
-
-        public QueryStatistics Statistics { get; set; }
-
-        public QueryResult()
-        {
-            Data = new List<T>();
-        }
+        Data = new List<T>();
     }
 }

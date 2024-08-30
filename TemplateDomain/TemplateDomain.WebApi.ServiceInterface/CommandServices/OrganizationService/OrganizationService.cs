@@ -1,11 +1,10 @@
 ﻿using TemplateDomain.WebApi.ServiceModel;
 using System.Threading.Tasks;
 
-namespace TemplateDomain.WebApi.ServiceInterface
+namespace TemplateDomain.WebApi.ServiceInterface;
+
+public class OrganizationService : DomainCommandService
 {
-    public class OrganizationService : DomainCommandService
-    {
-        public async Task<object> Any(RegisterOrganization request)
-            => await TryProcessRequest<PL.Commands.RegisterOrganization>(request);
-    }
+    public async Task<object> Any(RegisterOrganization request)
+        => await TryProcessRequest<PL.Commands.RegisterOrganization>(request);
 }

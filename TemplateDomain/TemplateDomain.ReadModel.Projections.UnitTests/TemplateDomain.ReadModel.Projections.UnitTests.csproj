@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="4.0.3" />
-    <PackageReference Include="DStack.Projections.Testing" Version="4.0.3" />
+    <PackageReference Include="DStack.Projections" Version="9.0.0-alpha004" />
+    <PackageReference Include="DStack.Projections.Testing" Version="9.0.0-alpha004" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
     <PackageReference Include="xunit" Version="2.9.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">

@@ -1,16 +1,15 @@
 ﻿using System;
 
-namespace TemplateDomain.PL.Commands
-{
-    public interface ICommand
-    {
-        string Id { get; }
-    }
+namespace TemplateDomain.PL.Commands;
 
-    public abstract record Command : ICommand
-    {
-        public string Id { get; set; }
-        public string IssuedBy { get; set; }
-        public DateTime TimeIssued { get; set; }
-    }
+public interface ICommand
+{
+    string Id { get; }
+}
+
+public abstract record Command : ICommand
+{
+    public string Id { get; set; }
+    public string IssuedBy { get; set; }
+    public DateTime TimeIssued { get; set; }
 }

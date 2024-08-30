@@ -6,32 +6,31 @@ using TemplateDomain.Api.ServiceModel;
 using TemplateDomain.Api.ServiceModel.Commands;
 using TemplateDomain.Common;
 
-namespace TemplateDomain.Api.ServiceInterface
-{
-    
-    [Route("commands/organization")]
-    [ApiController]
-    [Authorize]
-    public class OrganizationCommandController : CommandControllerBase
-    {
-        public OrganizationCommandController(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper) : base(bus, timeProvider, mapper)
-        {
-        }
+namespace TemplateDomain.Api.ServiceInterface;
 
-        [HttpPost("register")]
-        public async Task Register([FromBody]RegisterOrganization cmd)
-        {
-            await TryProcessRequest<PL.Commands.RegisterOrganization>(cmd);
-        }
+
+[Route("commands/organization")]
+[ApiController]
+[Authorize]
+public class OrganizationCommandController : CommandControllerBase
+{
+    public OrganizationCommandController(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper) : base(bus, timeProvider, mapper)
+    {
     }
 
-    public class RegisterOrganizationValidator : AbstractValidator<RegisterOrganization>
+    [HttpPost("register")]
+    public async Task Register([FromBody]RegisterOrganization cmd)
     {
-        public RegisterOrganizationValidator()
-        {
-            RuleFor(c => c.Id).NotEmpty().Matches("Organizations-\\w");
-            RuleFor(c => c.Name).NotEmpty().Length(2, 150);
-            RuleFor(c => c.Address).NotEmpty().SetValidator(new AddressValidator());
-        }
+        await TryProcessRequest<PL.Commands.RegisterOrganization>(cmd);
+    }
+}
+
+public class RegisterOrganizationValidator : AbstractValidator<RegisterOrganization>
+{
+    public RegisterOrganizationValidator()
+    {
+        RuleFor(c => c.Id).NotEmpty().Matches("Organizations-\\w");
+        RuleFor(c => c.Name).NotEmpty().Length(2, 150);
+        RuleFor(c => c.Address).NotEmpty().SetValidator(new AddressValidator());
     }
 }

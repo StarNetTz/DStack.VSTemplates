@@ -1,28 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
 using TemplateDomain.ReadModel;
 
-namespace TemplateDomain.Api.ServiceInterface
+namespace TemplateDomain.Api.ServiceInterface;
+
+[ApiController]
+[Route("organizations")]
+public class OrganizationQueryController : QueryControllerBase
 {
-    [ApiController]
-    [Route("organizations")]
-    public class OrganizationQueryController : QueryControllerBase
+    readonly IOrganizationQueries Query;
+
+    public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById) : base(queryById)
     {
-        readonly IOrganizationQueries Query;
-
-        public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById) : base(queryById)
-        {
-            Query = query;
-        }
-
-        [HttpPost]
-        public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
-        {
-            if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
-                return await GetById<Organization>(req);
-            else
-                return await Query.Execute(req);
-        }
-
-
+        Query = query;
     }
+
+    [HttpPost]
+    public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
+    {
+        if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
+            return await GetById<Organization>(req);
+        else
+            return await Query.Execute(req);
+    }
+
+
 }

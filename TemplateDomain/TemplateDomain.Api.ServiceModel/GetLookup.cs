@@ -1,4 +1,1 @@
-namespace TemplateDomain.Api.ServiceModel
-{
-
-}
+namespace TemplateDomain.Api.ServiceModel;

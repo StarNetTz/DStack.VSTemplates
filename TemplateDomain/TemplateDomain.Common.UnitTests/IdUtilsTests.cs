@@ -1,18 +1,17 @@
 ﻿using Xunit;
 
-namespace TemplateDomain.Common.UnitTests
+namespace TemplateDomain.Common.UnitTests;
+
+public partial class RecordDictionaryTests
 {
-    public partial class RecordDictionaryTests
+    public class IdUtilsTests
     {
-        public class IdUtilsTests
+        [Theory]
+        [InlineData("Teams-1", 1L)]
+
+        public void Should_ConvertToInt64(string inp, long exp)
         {
-            [Theory]
-            [InlineData("Teams-1", 1L)]
-    
-            public void Should_ConvertToInt64(string inp, long exp)
-            {
-                Assert.Equal(exp, IdUtils.ToInt64(inp));
-            }
+            Assert.Equal(exp, IdUtils.ToInt64(inp));
         }
     }
 }

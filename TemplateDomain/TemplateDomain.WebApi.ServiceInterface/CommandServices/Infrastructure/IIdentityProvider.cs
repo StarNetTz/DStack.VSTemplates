@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace TemplateDomain.WebApi.ServiceInterface
+namespace TemplateDomain.WebApi.ServiceInterface;
+
+public interface IIdentityProvider
 {
-    public interface IIdentityProvider
-    {
-        Task<string> GetId(string aggregateName);
-    }
+    Task<string> GetId(string aggregateName);
 }

@@ -2,46 +2,45 @@
 using System.Threading.Tasks;
 
 
-namespace TemplateDomain.ReadModel.Queries.RavenDB
+namespace TemplateDomain.ReadModel.Queries.RavenDB;
+
+public static class TypeaheadConsts
 {
-    public static class TypeaheadConsts
-    {
-        public const string CollectionKey = "collection";
-        public const string SearchParamKey = "search";
+    public const string CollectionKey = "collection";
+    public const string SearchParamKey = "search";
 
-        public const string OrganizationsCollection = "organizations";
+    public const string OrganizationsCollection = "organizations";
+}
+
+public class TypeaheadQueries :  ITypeaheadQueries
+{
+    IOrganizationQueries OrganizationQueries;
+
+    public TypeaheadQueries(IOrganizationQueries organizationQueries)
+    {
+        OrganizationQueries = organizationQueries;
     }
 
-    public class TypeaheadQueries :  ITypeaheadQueries
+    public async Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest req)
     {
-        IOrganizationQueries OrganizationQueries;
+        return await GetQueryByCollection(req).Execute(req);
+    }
 
-        public TypeaheadQueries(IOrganizationQueries organizationQueries)
+        ITypeaheadQuery GetQueryByCollection(PaginatedQueryRequest req)
         {
-            OrganizationQueries = organizationQueries;
-        }
-
-        public async Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest req)
-        {
-            return await GetQueryByCollection(req).Execute(req);
-        }
-
-            ITypeaheadQuery GetQueryByCollection(PaginatedQueryRequest req)
+            if (req.Qry.ContainsKey(TypeaheadConsts.CollectionKey))
             {
-                if (req.Qry.ContainsKey(TypeaheadConsts.CollectionKey))
-                {
-                    var collection = req.Qry[TypeaheadConsts.CollectionKey];
+                var collection = req.Qry[TypeaheadConsts.CollectionKey];
 
-                    switch (collection)
-                    {
-                        case TypeaheadConsts.OrganizationsCollection:
-                            return (ITypeaheadQuery)OrganizationQueries;
-                 
-                        default:
-                            throw new NotImplementedException();
-                    }
+                switch (collection)
+                {
+                    case TypeaheadConsts.OrganizationsCollection:
+                        return (ITypeaheadQuery)OrganizationQueries;
+             
+                    default:
+                        throw new NotImplementedException();
                 }
-                throw new NotImplementedException();
             }
-    }
+            throw new NotImplementedException();
+        }
 }

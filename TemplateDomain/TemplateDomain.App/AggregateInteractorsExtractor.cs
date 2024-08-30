@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Reflection;
 using DStack.Aggregates;
 
-namespace TemplateDomain.App
+namespace TemplateDomain.App;
+
+public class AggregateInteractorsExtractor
 {
-    public class AggregateInteractorsExtractor
+    public static Dictionary<Type, Type> GetInteractors()
     {
-        public static Dictionary<Type, Type> GetInteractors()
+        var ret = new Dictionary<Type, Type>();
+        var assembly = Assembly.GetAssembly(typeof(OrganizationInteractor));
+        var data = assembly.GetTypes().Where(p => typeof(IInteractor).IsAssignableFrom(p) && p.IsClass).ToList();
+        foreach (var t in data)
         {
-            var ret = new Dictionary<Type, Type>();
-            var assembly = Assembly.GetAssembly(typeof(OrganizationInteractor));
-            var data = assembly.GetTypes().Where(p => typeof(IInteractor).IsAssignableFrom(p) && p.IsClass).ToList();
-            foreach (var t in data)
-            {
-                var itype = t.GetInterfaces().Where(x => x.Name != "IInteractor").First();
-                ret.Add(itype, t);
-            }
-            return ret;
+            var itype = t.GetInterfaces().Where(x => x.Name != "IInteractor").First();
+            ret.Add(itype, t);
         }
+        return ret;
     }
 }

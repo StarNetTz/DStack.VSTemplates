@@ -9,47 +9,46 @@ using TemplateDomain.Common;
 using TemplateDomain.Testing;
 using Xunit;
 
-namespace TemplateDomain.Api.UnitTests
+namespace TemplateDomain.Api.UnitTests;
+
+public class OrganizationCommandControllerTests
 {
-    public class OrganizationCommandControllerTests
+    OrganizationCommandController Controller;
+
+    public OrganizationCommandControllerTests()
     {
-        OrganizationCommandController Controller;
+        Controller = new OrganizationCommandController(new Mock<IMessageBus>().Object, new MockTimeProvider(), CreateMapper());
+        Controller.ControllerContext = CreateTestHttpContext();
+    }
 
-        public OrganizationCommandControllerTests()
+    [Fact]
+    public async Task Should_Register()
+    {
+        await Controller.Register(new ServiceModel.Commands.RegisterOrganization { Id = "", Name = "", Address = AddressTestData.CreateDefault()});
+    }
+
+    IMapper CreateMapper()
+    {
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<ServiceModel.Commands.RegisterOrganization, PL.Commands.RegisterOrganization>());
+        return config.CreateMapper();
+    }
+
+    static ControllerContext CreateTestHttpContext()
+    {
+        var hc = new DefaultHttpContext();
+        var claims = new List<Claim>()
         {
-            Controller = new OrganizationCommandController(new Mock<IMessageBus>().Object, new MockTimeProvider(), CreateMapper());
-            Controller.ControllerContext = CreateTestHttpContext();
-        }
+            new Claim(ClaimTypes.Name, AuditTestData.DefaultIssuedBy),
+            new Claim(ClaimTypes.Role, AuditTestData.AdminRole)
+        };
+        var claimsIdentity = new ClaimsIdentity(claims);
+        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-        [Fact]
-        public async Task Should_Register()
+        hc.User = claimsPrincipal;
+        var ctx = new ControllerContext
         {
-            await Controller.Register(new ServiceModel.Commands.RegisterOrganization { Id = "", Name = "", Address = AddressTestData.CreateDefault()});
-        }
-
-        IMapper CreateMapper()
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<ServiceModel.Commands.RegisterOrganization, PL.Commands.RegisterOrganization>());
-            return config.CreateMapper();
-        }
-
-        static ControllerContext CreateTestHttpContext()
-        {
-            var hc = new DefaultHttpContext();
-            var claims = new List<Claim>()
-            {
-                new Claim(ClaimTypes.Name, AuditTestData.DefaultIssuedBy),
-                new Claim(ClaimTypes.Role, AuditTestData.AdminRole)
-            };
-            var claimsIdentity = new ClaimsIdentity(claims);
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
-            hc.User = claimsPrincipal;
-            var ctx = new ControllerContext
-            {
-                HttpContext = hc
-            };
-            return ctx;
-        }
+            HttpContext = hc
+        };
+        return ctx;
     }
 }
