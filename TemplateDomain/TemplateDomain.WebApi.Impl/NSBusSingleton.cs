@@ -1,12 +1,15 @@
-﻿using TemplateDomain.WebApi.ServiceInterface;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using NServiceBus;
-using System.Threading.Tasks;
 
 namespace TemplateDomain.WebApi.Impl
 {
     public class NSBus : IMessageBus
     {
+        public Task Publish(object message)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task Send(object message)
             => await NSBusSingleton.AppEndpointInstance.Send(message);
     }

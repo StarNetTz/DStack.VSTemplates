@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <DebugType>portable</DebugType>
     <OutputType>Library</OutputType>
   </PropertyGroup>
@@ -27,5 +27,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="Xunit" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+	</ItemGroup>
 
 </Project>

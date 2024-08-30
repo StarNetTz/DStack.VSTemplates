@@ -33,7 +33,7 @@ namespace TemplateDomain.Domain.UnitTests.OrganizationTests
         {
             string aggId = "Organizations-1";
             var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
-            cmd.Address.Country = "Some other";
+            cmd.Address.Country = new Starnet.Common.Ref { Id = "DE" , Val = "Germany" };
             var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);
 
             Given(evt);

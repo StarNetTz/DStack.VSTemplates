@@ -1,5 +1,4 @@
 ﻿using ServiceStack;
-using TemplateDomain.Common;
 
 namespace TemplateDomain.WebApi.ServiceModel
 {

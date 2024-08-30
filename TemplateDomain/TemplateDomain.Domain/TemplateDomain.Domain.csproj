@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,5 +11,11 @@
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.PL\TemplateDomain.PL.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+	</ItemGroup>
 
 </Project>

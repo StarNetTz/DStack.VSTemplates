@@ -4,7 +4,7 @@ using ServiceStack;
 namespace TemplateDomain.WebApi.ServiceModel
 {
     [Route("/organizations", Verbs = "GET")]
-    public class FindOrganizations : PaginatedQueryRequest, IReturn<PaginatedResult<Organization>>
+    public record FindOrganizations : PaginatedQueryRequest, IReturn<PaginatedResult<Organization>>
     {
     }
 }

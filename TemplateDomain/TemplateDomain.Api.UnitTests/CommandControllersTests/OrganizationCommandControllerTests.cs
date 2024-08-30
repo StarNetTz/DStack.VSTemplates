@@ -24,7 +24,7 @@ namespace TemplateDomain.Api.UnitTests
         [Fact]
         public async Task Should_Register()
         {
-            await Controller.Register(new ServiceModel.Commands.RegisterOrganization { Id = "", Name = "", Address = new Address()});
+            await Controller.Register(new ServiceModel.Commands.RegisterOrganization { Id = "", Name = "", Address = AddressTestData.CreateDefault()});
         }
 
         IMapper CreateMapper()

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -19,5 +19,12 @@
     <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
     <ProjectReference Include="..\TemplateDomain.PL\TemplateDomain.PL.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Starnet.Common" />
+	</ItemGroup>
 
 </Project>

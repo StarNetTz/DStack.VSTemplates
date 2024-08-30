@@ -5,32 +5,24 @@ namespace TemplateDomain.Api.ServiceInterface
 {
     [ApiController]
     [Route("organizations")]
-    public class OrganizationQueryController : ControllerBase
+    public class OrganizationQueryController : QueryControllerBase
     {
         readonly IOrganizationQueries Query;
-        readonly IQueryById QueryById;
 
-        public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById)
+        public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById) : base(queryById)
         {
             Query = query;
-            QueryById = queryById;
         }
 
         [HttpPost]
         public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
         {
             if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
-                return await GetById(req);
+                return await GetById<Organization>(req);
             else
                 return await Query.Execute(req);
         }
 
-        async Task<PaginatedResult<Organization>> GetById(PaginatedQueryRequest req)
-        {
-            var c = await QueryById.GetById<Organization>(req.Qry[QueryKeys.FindByIdKey]);
-            return c == null ?
-                new PaginatedResult<Organization>() :
-                PaginatedResult<Organization>.CreateFromSingleItem(c);
-        }
+
     }
 }

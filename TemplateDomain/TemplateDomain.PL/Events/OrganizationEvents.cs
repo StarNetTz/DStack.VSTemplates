@@ -1,6 +1,4 @@
-﻿using TemplateDomain.Common;
-
-namespace TemplateDomain.PL.Events
+﻿namespace TemplateDomain.PL.Events
 {
     public record OrganizationRegistered : Event
     {

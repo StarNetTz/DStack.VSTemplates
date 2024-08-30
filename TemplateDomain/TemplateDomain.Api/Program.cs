@@ -49,7 +49,7 @@ builder.Services.AddSwaggerGen();
 
 #region AddServices
 
-builder.Services.AddTransient<ITimeProvider, TimeProvider>();
+builder.Services.AddTransient<ITimeProvider, StarnetTimeProvider>();
 builder.Services.AddTransient<IMessageBus, NSBus>();
 
 var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(builder.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED

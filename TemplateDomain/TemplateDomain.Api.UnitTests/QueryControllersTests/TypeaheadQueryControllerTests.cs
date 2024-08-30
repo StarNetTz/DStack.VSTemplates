@@ -1,7 +1,7 @@
 ﻿using Moq;
 using TemplateDomain.Api.ServiceInterface;
 using TemplateDomain.ReadModel;
-using Xunit;
+
 
 namespace TemplateDomain.Api.UnitTests
 {

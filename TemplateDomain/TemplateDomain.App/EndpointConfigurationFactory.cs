@@ -1,9 +1,7 @@
-﻿using TemplateDomain.Domain.Impl;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
 using NServiceBus;
-using System;
 using DStack.Aggregates.EventStoreDB;
 using EventStore.Client;
 
@@ -32,7 +30,7 @@ namespace TemplateDomain.App
                 var esAggRep = CreateEventStoreAggregateRepository(config);
                 reg.ConfigureComponent(() => esAggRep, DependencyLifecycle.SingleInstance);
                 reg.ConfigureComponent(() => config, DependencyLifecycle.SingleInstance);
-                reg.ConfigureComponent<TimeProvider>(DependencyLifecycle.InstancePerCall);
+                reg.ConfigureComponent<StarnetTimeProvider>(DependencyLifecycle.InstancePerCall);
                 RegisterAggregateInteractors(reg);
             });
 

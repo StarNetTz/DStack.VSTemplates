@@ -27,7 +27,7 @@ namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests
         [Fact]
          public async Task Should_search()
          {
-             var response = await Service.Any(new FindOrganizations { CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { QueryKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
+             var response = await Service.Any(new FindOrganizations {  CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { QueryKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
              Assert.NotNull(response);
          }
    

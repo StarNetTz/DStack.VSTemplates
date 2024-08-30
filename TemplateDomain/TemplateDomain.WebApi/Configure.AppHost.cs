@@ -23,7 +23,7 @@ namespace TemplateDomain.WebApi;
                 //Licensing.RegisterLicense(ctx.Configuration["ServiceStack:Licence"]);
                 var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(ctx.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED
                 services.AddSingleton(store);
-                services.AddTransient<ITimeProvider, TimeProvider>();
+                services.AddTransient<ITimeProvider, StarnetTimeProvider>();
                 services.AddTransient<ITypeaheadQueries, TypeaheadQueries>();
                 services.AddTransient<IMessageBus, NSBus>();
                 services.AddTransient<IOrganizationQueries, OrganizationQueries>();

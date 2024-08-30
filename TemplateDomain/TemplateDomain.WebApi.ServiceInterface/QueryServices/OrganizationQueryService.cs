@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace TemplateDomain.WebApi.ServiceInterface
 {
-    public class OrganizationQueryService : Service
+    public class OrganizationQueryService : QueryServiceBase
     {
         readonly IOrganizationQueries Query;
-        readonly IQueryById QueryById;
 
-        public OrganizationQueryService(IOrganizationQueries query, IQueryById queryById)
+        public OrganizationQueryService(IOrganizationQueries query, IQueryById queryById): base(queryById)
         {
             Query = query;
-            QueryById = queryById;
         }
 
         public async Task<object> Any(FindOrganizations req)

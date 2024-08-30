@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -21,5 +21,12 @@
     <ProjectReference Include="..\TemplateDomain.Api.ServiceModel\TemplateDomain.Api.ServiceModel.csproj" />
     <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="Xunit" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+	</ItemGroup>
 
 </Project>

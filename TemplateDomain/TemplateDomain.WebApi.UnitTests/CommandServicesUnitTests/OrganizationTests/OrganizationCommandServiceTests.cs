@@ -26,7 +26,7 @@ namespace TemplateDomain.WebApi.UnitTests
                 Address = new Address
                 {
                     City = "Cardiff",
-                    Country = "UK",
+                    Country = new Ref { Id = "EN", Val = "England" },
                     State = "Essex",
                     Street = "Baker 223",
                     PostalCode = "9876"
