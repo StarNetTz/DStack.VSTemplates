@@ -1,36 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
 using TemplateDomain.ReadModel;
 
-namespace TemplateDomain.Api.ServiceInterface
+namespace TemplateDomain.Api.ServiceInterface;
+
+[ApiController]
+[Route("organizations")]
+public class OrganizationQueryController : QueryControllerBase
 {
-    [ApiController]
-    [Route("organizations")]
-    public class OrganizationQueryController : ControllerBase
+    readonly IOrganizationQueries Query;
+
+    public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById) : base(queryById)
     {
-        readonly IOrganizationQueries Query;
-        readonly IQueryById QueryById;
-
-        public OrganizationQueryController(IOrganizationQueries query, IQueryById queryById)
-        {
-            Query = query;
-            QueryById = queryById;
-        }
-
-        [HttpPost]
-        public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
-        {
-            if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
-                return await GetById(req);
-            else
-                return await Query.Execute(req);
-        }
-
-        async Task<PaginatedResult<Organization>> GetById(PaginatedQueryRequest req)
-        {
-            var c = await QueryById.GetById<Organization>(req.Qry[QueryKeys.FindByIdKey]);
-            return c == null ?
-                new PaginatedResult<Organization>() :
-                PaginatedResult<Organization>.CreateFromSingleItem(c);
-        }
+        Query = query;
     }
+
+    [HttpPost]
+    public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
+    {
+        if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
+            return await GetById<Organization>(req);
+        else
+            return await Query.Execute(req);
+    }
+
+
 }

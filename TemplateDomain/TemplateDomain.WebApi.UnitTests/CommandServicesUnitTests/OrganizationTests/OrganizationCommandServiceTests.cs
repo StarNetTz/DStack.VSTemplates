@@ -5,35 +5,34 @@ using System.Threading.Tasks;
 using Xunit;
 using TemplateDomain.Common;
 
-namespace TemplateDomain.WebApi.UnitTests
+namespace TemplateDomain.WebApi.UnitTests;
+
+public class OrganizationCommandServiceTests : IClassFixture<CommandServiceTestBase<OrganizationService>>
 {
-    public class OrganizationCommandServiceTests : IClassFixture<CommandServiceTestBase<OrganizationService>>
+    OrganizationService Service;
+
+    public OrganizationCommandServiceTests(CommandServiceTestBase<OrganizationService> fixture)
     {
-        OrganizationService Service;
+        Service = fixture.Service;
+    }
 
-        public OrganizationCommandServiceTests(CommandServiceTestBase<OrganizationService> fixture)
+    [Fact]
+    public async Task can_execute_register_company()
+    {
+        var response = await Service.Any(new RegisterOrganization
         {
-            Service = fixture.Service;
-        }
-
-        [Fact]
-        public async Task can_execute_register_company()
-        {
-            var response = await Service.Any(new RegisterOrganization
+            Id = $"{Consts.IdPrefixes.Organization}1",
+            Name = "My company",
+            Address = new Address
             {
-                Id = "Organizations-1",
-                Name = "My company",
-                Address = new Address
-                {
-                    City = "Cardiff",
-                    Country = "UK",
-                    State = "Essex",
-                    Street = "Baker 223",
-                    PostalCode = "9876"
-                }
-            }) as ResponseStatus;
+                City = "Cardiff",
+                Country = new Ref { Id = "EN", Val = "England" },
+                State = "Essex",
+                Street = "Baker 223",
+                PostalCode = "9876"
+            }
+        }) as ResponseStatus;
 
-            Assert.Null(response.Errors);
-        }
+        Assert.Null(response.Errors);
     }
 }

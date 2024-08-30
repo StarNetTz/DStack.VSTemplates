@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace TemplateDomain.ReadModel;
 
-namespace TemplateDomain.ReadModel
+public interface IOrganizationQueries
 {
-    public interface IOrganizationQueries
-    {
-        Task<PaginatedResult<Organization>> Execute(PaginatedQueryRequest qry);
-    }
+    Task<PaginatedResult<Organization>> Execute(PaginatedQueryRequest qry);
 }

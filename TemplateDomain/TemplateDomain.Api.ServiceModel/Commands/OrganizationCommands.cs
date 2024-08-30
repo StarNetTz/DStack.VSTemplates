@@ -1,11 +1,8 @@
-﻿using TemplateDomain.Common;
+﻿namespace TemplateDomain.Api.ServiceModel.Commands;
 
-namespace TemplateDomain.Api.ServiceModel.Commands
+public class RegisterOrganization 
 {
-    public class RegisterOrganization 
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public Address Address { get; set; }
-    }
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public Address Address { get; set; }
 }

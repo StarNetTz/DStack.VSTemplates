@@ -1,8 +1,7 @@
-﻿namespace TemplateDomain.ReadModel
+﻿namespace TemplateDomain.ReadModel;
+
+public class LookupItem
 {
-    public class LookupItem
-    {
-        public string Id { get; set; }
-        public string Value { get; set; }
-    }
+    public string Id { get; set; }
+    public string Value { get; set; }
 }

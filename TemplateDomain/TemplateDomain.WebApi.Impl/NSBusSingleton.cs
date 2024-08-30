@@ -1,51 +1,53 @@
-﻿using TemplateDomain.WebApi.ServiceInterface;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using NServiceBus;
-using System.Threading.Tasks;
 
-namespace TemplateDomain.WebApi.Impl
+namespace TemplateDomain.WebApi.Impl;
+
+public class NSBus : IMessageBus
 {
-    public class NSBus : IMessageBus
+    public Task Publish(object message)
     {
-        public async Task Send(object message)
-            => await NSBusSingleton.AppEndpointInstance.Send(message);
+        throw new NotImplementedException();
     }
 
-    class NSBusSingleton
+    public async Task Send(object message)
+        => await NSBusSingleton.AppEndpointInstance.Send(message);
+}
+
+class NSBusSingleton
+{
+    public static IEndpointInstance AppEndpointInstance;
+
+    static NSBusSingleton()
     {
-        public static IEndpointInstance AppEndpointInstance;
+        AppEndpointInstance = Endpoint.Start(CreateEndpointConfiguration()).GetAwaiter().GetResult();
+    }
 
-        static NSBusSingleton()
-        {
-            AppEndpointInstance = Endpoint.Start(CreateEndpointConfiguration()).GetAwaiter().GetResult();
-        }
+    static EndpointConfiguration CreateEndpointConfiguration()
+    {
+        var config = new ConfigurationBuilder().AddJsonFile("config/appsettings.json", true, true).Build();
+        var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
+        endpointConfiguration.UseSerialization<SystemJsonSerializer>();
+        endpointConfiguration.LicensePath("config/license.xml");
 
-        static EndpointConfiguration CreateEndpointConfiguration()
-        {
-            var config = new ConfigurationBuilder().AddJsonFile("config/appsettings.json", true, true).Build();
-            var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
-            endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
-            endpointConfiguration.LicensePath("config/license.xml");
+        var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
+        transport.UseConventionalRoutingTopology(QueueType.Classic);
 
-            var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-            transport.UseConventionalRoutingTopology(QueueType.Classic);
+        transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
 
-            transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
+        var routing = transport.Routing();
+        routing.RouteToEndpoint(
+            assembly: typeof(PL.Commands.RegisterOrganization).Assembly,
+            destination: config["NSBus:AppEndpointName"]);
 
-            var routing = transport.Routing();
-            routing.RouteToEndpoint(
-                assembly: typeof(PL.Commands.RegisterOrganization).Assembly,
-                destination: config["NSBus:AppEndpointName"]);
+        var conventions = endpointConfiguration.Conventions();
+        conventions.DefiningCommandsAs(
+            type =>
+                type.Namespace == "TemplateDomain.PL.Commands"
+            );
 
-            var conventions = endpointConfiguration.Conventions();
-            conventions.DefiningCommandsAs(
-                type =>
-                    type.Namespace == "TemplateDomain.PL.Commands"
-                );
-
-            endpointConfiguration.SendOnly();
-            endpointConfiguration.EnableInstallers();
-            return endpointConfiguration;
-        }
+        endpointConfiguration.SendOnly();
+        endpointConfiguration.EnableInstallers();
+        return endpointConfiguration;
     }
 }

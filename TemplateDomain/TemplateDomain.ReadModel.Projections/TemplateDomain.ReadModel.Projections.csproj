@@ -1,16 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="4.0.3" />
+    <PackageReference Include="DStack.Projections" Version="9.0.0-alpha004" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.PL\TemplateDomain.PL.csproj" />
     <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Starnet.Common" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="DStack.Projections" />
+		<Using Include="TemplateDomain.PL.Events" />
+	</ItemGroup>
 
 </Project>

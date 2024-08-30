@@ -3,7 +3,7 @@
   <TemplateData>
     <DefaultName>AggregateName.cs</DefaultName>
     <Name>DStack Aggregate</Name>
-    <Description>Creates new Aggregate, AggregateState, and AggregateInteractor</Description>
+    <Description>Creates new Aggregate, AggregateState, AggregateInteractor and Command extensions</Description>
     <ProjectType>CSharp</ProjectType>
     <SortOrder>10</SortOrder>
     <Icon>AggregateItemTemplate.ico</Icon>
@@ -13,6 +13,7 @@
     <ProjectItem SubType="" TargetFileName="$fileinputname$\$fileinputname$AggregateState.cs" ReplaceParameters="true">CompanyAggregateState.cs</ProjectItem>
     <ProjectItem SubType="" TargetFileName="$fileinputname$\$fileinputname$Aggregate.cs" ReplaceParameters="true">CompanyAggregate.cs</ProjectItem>
     <ProjectItem SubType="" TargetFileName="$fileinputname$\$fileinputname$Interactor.cs" ReplaceParameters="true">CompanyInteractor.cs</ProjectItem>
+	<ProjectItem SubType="" TargetFileName="$fileinputname$\$fileinputname$CmdExtensions.cs" ReplaceParameters="true">CompanyCmdExtensions.cs</ProjectItem>
   </TemplateContent>
   <WizardExtension>
       <Assembly>DStackItemTemplates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=f972ab9edd582320</Assembly>

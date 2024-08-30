@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="4.0.3" />
-    <PackageReference Include="DStack.Projections.Testing" Version="4.0.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+    <PackageReference Include="DStack.Projections" Version="9.0.0-alpha004" />
+    <PackageReference Include="DStack.Projections.Testing" Version="9.0.0-alpha004" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -19,5 +19,18 @@
     <ProjectReference Include="..\TemplateDomain.ReadModel.Projections\TemplateDomain.ReadModel.Projections.csproj" />
     <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Starnet.Common" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Xunit" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="DStack.Projections.Testing" />
+		<Using Include="TemplateDomain.Testing.ReadModel" />
+		<Using Include="TemplateDomain.Testing.PL" />
+	</ItemGroup>
 
 </Project>

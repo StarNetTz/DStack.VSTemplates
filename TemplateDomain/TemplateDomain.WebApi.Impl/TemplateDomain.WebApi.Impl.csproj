@@ -1,18 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NServiceBus" Version="7.8.0" />
-    <PackageReference Include="NServiceBus.Newtonsoft.Json" Version="2.4.0" />
-    <PackageReference Include="NServiceBus.RabbitMQ" Version="7.0.3" />
+    <PackageReference Include="NServiceBus" Version="9.1.1" />
+    <PackageReference Include="NServiceBus.RabbitMQ" Version="9.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Common\TemplateDomain.Common.csproj" />
     <ProjectReference Include="..\TemplateDomain.WebApi.ServiceInterface\TemplateDomain.WebApi.ServiceInterface.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Starnet.Common" />
+	</ItemGroup>
 
 </Project>

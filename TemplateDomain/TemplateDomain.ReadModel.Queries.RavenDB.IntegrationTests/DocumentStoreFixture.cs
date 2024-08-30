@@ -3,33 +3,32 @@ using Raven.Client.Documents;
 using Raven.Client.Documents.Indexes;
 using Raven.TestDriver;
 
-namespace TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests
+namespace TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests;
+
+public class DocumentStoreFixture : RavenTestDriver
 {
-    public class DocumentStoreFixture : RavenTestDriver
+    public IDocumentStore DocumentStore;
+
+    public DocumentStoreFixture()
     {
-        public IDocumentStore DocumentStore;
+        DocumentStore = GetDocumentStore();
+        CreateTestDocuments();
+        WaitForIndexing(DocumentStore);
+    }
 
-        public DocumentStoreFixture()
+    void CreateTestDocuments()
+    {
+        using (var s = DocumentStore.OpenSession())
         {
-            DocumentStore = GetDocumentStore();
-            CreateTestDocuments();
-            WaitForIndexing(DocumentStore);
+            s.Store(new Organization { Id = $"{Consts.IdPrefixes.Organization}1", Name = "Slime Ltd" });
+            s.Store(new Organization { Id = $"{Consts.IdPrefixes.Organization}2", Name = "Blood Inc." });
+            s.SaveChanges();
         }
+    }
 
-        void CreateTestDocuments()
-        {
-            using (var s = DocumentStore.OpenSession())
-            {
-                s.Store(new Organization { Id = "Organizations-1", Name = "Slime Ltd" });
-                s.Store(new Organization { Id = "Organizations-2", Name = "Blood Inc." });
-                s.SaveChanges();
-            }
-        }
-
-        protected override void SetupDatabase(IDocumentStore documentStore)
-        {
-            base.SetupDatabase(documentStore);
-            IndexCreation.CreateIndexes(typeof(Organizations_Search).Assembly, documentStore);
-        }
+    protected override void SetupDatabase(IDocumentStore documentStore)
+    {
+        base.SetupDatabase(documentStore);
+        IndexCreation.CreateIndexes(typeof(Organizations_Search).Assembly, documentStore);
     }
 }

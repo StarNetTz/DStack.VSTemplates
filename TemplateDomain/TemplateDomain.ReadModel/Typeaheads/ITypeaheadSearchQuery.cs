@@ -1,14 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿namespace TemplateDomain.ReadModel;
 
-namespace TemplateDomain.ReadModel
+public interface ITypeaheadQueries
 {
-    public interface ITypeaheadQueries
-    {
-        Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
-    }
+    Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
+}
 
-    public interface ITypeaheadQuery
-    {
-        Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
-    }
+public interface ITypeaheadQuery
+{
+    Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
 }

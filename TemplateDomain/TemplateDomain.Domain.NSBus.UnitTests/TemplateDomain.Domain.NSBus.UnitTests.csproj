@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
-    <PackageReference Include="Moq" Version="4.18.2" />
-    <PackageReference Include="NServiceBus" Version="7.8.0" />
-    <PackageReference Include="NServiceBus.Testing" Version="7.4.1" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="NServiceBus" Version="9.1.1" />
+    <PackageReference Include="NServiceBus.Testing" Version="9.0.0" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -18,6 +18,24 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Domain.NSBus\TemplateDomain.Domain.NSBus.csproj" />
+    <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="DStack.Aggregates" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+		<Using Include="Xunit" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.PL.Commands" />
+		<Using Include="TemplateDomain.PL.Events" />
+		<Using Include="TemplateDomain.Testing" />
+		<Using Include="TemplateDomain.Testing.PL" />
+		<Using Include="NServiceBus.Testing" />
+		<Using Include="Moq" />
+	</ItemGroup>
 
 </Project>

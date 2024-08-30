@@ -1,15 +1,12 @@
-﻿using TemplateDomain.Common;
+﻿namespace TemplateDomain.PL.Events;
 
-namespace TemplateDomain.PL.Events
+public record OrganizationRegistered : Event
 {
-    public record OrganizationRegistered : Event
-    {
-        public string Name { get; set; }
-        public Address Address { get; set; }
-    }
+    public string Name { get; set; }
+    public Address Address { get; set; }
+}
 
-    public record OrganizationNameCorrected : Event
-    {
-        public string Name { get; set; }
-    }
+public record OrganizationNameCorrected : Event
+{
+    public string Name { get; set; }
 }

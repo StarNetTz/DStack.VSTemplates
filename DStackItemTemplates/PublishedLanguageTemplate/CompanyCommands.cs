@@ -1,9 +1,6 @@
-﻿using $domain$.Common;
+﻿namespace $domain$.PL.Commands;
 
-namespace $domain$.PL.Commands
+public record Create$fileinputname$ : Command
 {
-    public record Create$fileinputname$ : Command
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

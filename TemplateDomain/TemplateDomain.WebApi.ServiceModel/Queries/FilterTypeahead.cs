@@ -1,10 +1,9 @@
 ﻿using TemplateDomain.ReadModel;
 using ServiceStack;
 
-namespace TemplateDomain.WebApi.ServiceModel
+namespace TemplateDomain.WebApi.ServiceModel;
+
+[Route("/typeaheads")]
+public record FilterTypeahead : PaginatedQueryRequest, IReturn<PaginatedResult<TypeaheadItem>>
 {
-    [Route("/typeaheads")]
-    public class FilterTypeahead : PaginatedQueryRequest, IReturn<PaginatedResult<TypeaheadItem>>
-    {
-    }
 }

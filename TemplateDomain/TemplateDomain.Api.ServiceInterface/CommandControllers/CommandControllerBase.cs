@@ -1,34 +1,57 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using NServiceBus;
+using System.Security.Claims;
 using TemplateDomain.Common;
 
-namespace TemplateDomain.Api.ServiceInterface
+namespace TemplateDomain.Api.ServiceInterface;
+
+[ApiController]
+public class CommandControllerBase : ControllerBase
 {
-    [ApiController]
-    public class CommandControllerBase : ControllerBase
+
+    protected readonly ITimeProvider TimeProvider;
+    readonly IMapper Mapper;
+    readonly IMessageSession Bus;
+
+    public CommandControllerBase(IMessageSession bus, ITimeProvider timeProvider, IMapper mapper)
     {
-        readonly IMessageBus Bus;
-        readonly ITimeProvider TimeProvider;
-        readonly IMapper Mapper;
+        Bus = bus;
+        TimeProvider = timeProvider;
+        Mapper = mapper;
+    }
 
-        public CommandControllerBase(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper)
-        {
-            Bus = bus;
-            TimeProvider = timeProvider;
-            Mapper = mapper;
-        }
+    protected virtual async Task MapAndProcessRequest<T>(object command)
+    {
+        T cmd = Mapper.Map<T>(command);
+        AddAuditInfoToCommand(cmd as PL.Commands.Command);
+        await Bus.Send(cmd);
+    }
 
-        protected async Task TryProcessRequest<T>(object command)
-        {
-            T cmd = Mapper.Map<T>(command);
-            AddAuditInfoToCommand(cmd as PL.Commands.Command);
-            await Bus.Send(cmd);
-        }
+    protected virtual async Task ProcessRequest(object cmd)
+    {
+        AddAuditInfoToCommand(cmd as PL.Commands.Command);
+        await Bus.Send(cmd);
+    }
 
-        void AddAuditInfoToCommand(PL.Commands.Command cmd)
+    void AddAuditInfoToCommand(PL.Commands.Command cmd)
+    {
+        string? id = GetUserId();
+        var email = User.Claims.Where(c => c.Type == ClaimTypes.Email)
+               .Select(c => c.Value).SingleOrDefault();
+
+        cmd.AuditInfo = new AuditInfo
         {
-            cmd.IssuedBy = User.Identity.Name;
-            cmd.TimeIssued = TimeProvider.GetUtcTime();
-        }
+            Time = TimeProvider.GetUtcTime(),
+            Issuer = id
+        };
+    }
+
+
+    protected string? GetUserId()
+    {
+        var userId = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier)
+                           .Select(c => c.Value).SingleOrDefault();
+        return userId == null ? null : $"{Consts.IdPrefixes.User}{userId}";
     }
 }

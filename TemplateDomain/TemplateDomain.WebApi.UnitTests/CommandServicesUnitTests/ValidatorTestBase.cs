@@ -6,35 +6,34 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace TemplateDomain.WebApi.UnitTests
+namespace TemplateDomain.WebApi.UnitTests;
+
+public abstract class ValidatorTestBase<T>
 {
-    public abstract class ValidatorTestBase<T>
+    protected IValidator<T> Validator;
+
+    public ValidatorTestBase(IValidator<T> validator)
     {
-        protected IValidator<T> Validator;
+        Validator = validator;
+    }
 
-        public ValidatorTestBase(IValidator<T> validator)
+    protected async Task AssertRuleBroken(T obj, string property, string errorCode)
+    {
+        var res = await Validator.ValidateAsync(obj);
+        AssertPropertyInvalid(res.Errors, property, errorCode);
+    }
+
+        void AssertPropertyInvalid(IList<ValidationFailure> errors, string property, string errorCode)
         {
-            Validator = validator;
+            var item = (from e in errors where e.PropertyName == property && e.ErrorCode == errorCode select e).FirstOrDefault();
+            Assert.NotNull(item);
         }
 
-        protected async Task AssertRuleBroken(T obj, string property, string errorCode)
-        {
-            var res = await Validator.ValidateAsync(obj);
-            AssertPropertyInvalid(res.Errors, property, errorCode);
-        }
-
-            void AssertPropertyInvalid(IList<ValidationFailure> errors, string property, string errorCode)
-            {
-                var item = (from e in errors where e.PropertyName == property && e.ErrorCode == errorCode select e).FirstOrDefault();
-                Assert.NotNull(item);
-            }
-
-        protected string CreateStringOfLength(int length)
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < length; i++)
-                sb.Append("X");
-            return sb.ToString();
-        }
+    protected string CreateStringOfLength(int length)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++)
+            sb.Append("X");
+        return sb.ToString();
     }
 }

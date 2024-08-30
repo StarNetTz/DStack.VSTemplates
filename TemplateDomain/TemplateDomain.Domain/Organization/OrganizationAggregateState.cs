@@ -1,27 +1,22 @@
-﻿using TemplateDomain.Common;
-using TemplateDomain.PL.Events;
-using DStack.Aggregates;
+﻿namespace TemplateDomain.Domain.Organization;
 
-namespace TemplateDomain.Domain.Organization
+public class OrganizationAggregateState : AggregateState
 {
-    public class OrganizationAggregateState : AggregateState
+    internal string Name { get; set; }
+    internal Address Address { get; set; }
+
+    protected override void DelegateWhenToConcreteClass(object ev)
+        => When((dynamic)ev);
+
+    void When(OrganizationRegistered e)
     {
-        internal string Name { get; set; }
-        internal Address Address { get; set; }
+        Id = e.Id;
+        Name = e.Name;
+        Address = e.Address;
+    }
 
-        protected override void DelegateWhenToConcreteClass(object ev)
-            => When((dynamic)ev);
-
-        void When(OrganizationRegistered e)
-        {
-            Id = e.Id;
-            Name = e.Name;
-            Address = e.Address;
-        }
-
-        void When(OrganizationNameCorrected e)
-        {
-            Name = e.Name;
-        }
+    void When(OrganizationNameCorrected e)
+    {
+        Name = e.Name;
     }
 }

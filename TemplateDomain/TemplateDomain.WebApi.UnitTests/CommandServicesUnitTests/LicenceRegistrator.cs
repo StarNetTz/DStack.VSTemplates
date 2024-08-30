@@ -1,14 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ServiceStack;
 
-namespace TemplateDomain.WebApi.UnitTests
+namespace TemplateDomain.WebApi.UnitTests;
+
+public static class LicenceRegistrator
 {
-    public static class LicenceRegistrator
+    public static void RegisterServiceStackLicenceWhenNrOfServicesExceedesFreeThreshold()
     {
-        public static void RegisterServiceStackLicenceWhenNrOfServicesExceedesFreeThreshold()
-        {
-            IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
-            Licensing.RegisterLicense(configuration["ServiceStack:Licence"]);
-        }
+        IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", true, true).Build();
+        Licensing.RegisterLicense(configuration["ServiceStack:Licence"]);
     }
 }
