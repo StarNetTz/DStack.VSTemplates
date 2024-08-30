@@ -17,7 +17,7 @@ namespace TemplateDomain.Domain.NSBus.Tests
         {
             var handler = new RegisterOrganizationHandler(CreateMockThatReturnsNoPublishedEvents());
             var context = new TestableMessageHandlerContext();
-            await handler.Handle(new RegisterOrganization(), context).ConfigureAwait(false);
+            await handler.Handle(new RegisterOrganization(), context);
         }
 
             static IOrganizationInteractor CreateMockThatReturnsNoPublishedEvents()
@@ -33,7 +33,7 @@ namespace TemplateDomain.Domain.NSBus.Tests
         {
             var handler = new RegisterOrganizationHandler(CreateMockThatThrowsDomainError());
             var context = new TestableMessageHandlerContext();
-            await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context).ConfigureAwait(false);
+            await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context);
         }
 
             static IOrganizationInteractor CreateMockThatThrowsDomainError()

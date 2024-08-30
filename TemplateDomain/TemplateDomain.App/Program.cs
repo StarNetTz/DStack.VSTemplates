@@ -6,7 +6,6 @@ using NServiceBus;
 using NServiceBus.Extensions.Logging;
 using NServiceBus.Logging;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace TemplateDomain.App
 {

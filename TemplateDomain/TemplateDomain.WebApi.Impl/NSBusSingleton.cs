@@ -27,7 +27,7 @@ namespace TemplateDomain.WebApi.Impl
         {
             var config = new ConfigurationBuilder().AddJsonFile("config/appsettings.json", true, true).Build();
             var endpointConfiguration = new EndpointConfiguration(config["NSBus:EndpointName"]);
-            endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
+            endpointConfiguration.UseSerialization<SystemJsonSerializer>();
             endpointConfiguration.LicensePath("config/license.xml");
 
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();

@@ -31,7 +31,7 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
             return result;
         }
 
-        IQueryable<Organizations_Search.Result> QueryData(PaginatedQueryRequest req, out QueryStatistics? qryStats, IAsyncDocumentSession ses)
+        IQueryable<Organizations_Search.Result> QueryData(PaginatedQueryRequest req, out QueryStatistics qryStats, IAsyncDocumentSession ses)
         {
             return ses.Query<Organizations_Search.Result, Organizations_Search>()
                     .Statistics(out qryStats).Search(x => x.Query,

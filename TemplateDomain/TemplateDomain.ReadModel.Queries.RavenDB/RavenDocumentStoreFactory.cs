@@ -18,8 +18,8 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB
         public string CertificateFilePath { get; set; }
         public string CertificateFilePassword { get; set; }
 
-        public static RavenConfig FromConfiguration(IConfiguration conf)
-            => new RavenConfig { Urls = conf["RavenDB:Urls"].Split(';'), CertificateFilePassword = conf["RavenDB:CertificatePassword"], CertificateFilePath = conf["RavenDB:CertificatePath"], DatabaseName = conf["RavenDB:DatabaseName"] };
+        public static RavenConfig FromConfiguration(IConfiguration conf, string configName = "RavenDB")
+            => new RavenConfig { Urls = conf[$"{configName}:Urls"].Split(';'), CertificateFilePassword = conf[$"{configName}:CertificatePassword"], CertificateFilePath = conf[$"{configName}:CertificatePath"], DatabaseName = conf[$"{configName}:DatabaseName"] };
     }
 
     public class RavenDocumentStoreFactory

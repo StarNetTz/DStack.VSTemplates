@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Npgsql;
-using NpgsqlTypes;
 using NServiceBus;
 using DStack.Aggregates.EventStoreDB;
 using EventStore.Client;
