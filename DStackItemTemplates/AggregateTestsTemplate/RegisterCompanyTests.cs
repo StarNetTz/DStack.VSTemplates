@@ -2,6 +2,7 @@
 using $domain$.Common;
 using $domain$.PL.Commands;
 using $domain$.PL.Events;
+using $domain$.Testing;
 using System;
 using System.Threading.Tasks;
 

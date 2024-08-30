@@ -22,10 +22,15 @@
 
 	<ItemGroup>
 		<Using Include="System" />
+		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
 		<Using Include="Xunit" />
 		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.PL.Commands" />
+		<Using Include="TemplateDomain.PL.Events" />
+		<Using Include="TemplateDomain.Testing" />
+		<Using Include="TemplateDomain.Testing.PL" />
 	</ItemGroup>
 	
 </Project>
