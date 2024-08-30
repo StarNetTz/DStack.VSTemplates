@@ -1,20 +1,24 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NLog.Extensions.Logging;
 using NServiceBus;
 using NServiceBus.Extensions.Logging;
 using NServiceBus.Logging;
+using Serilog;
 using System.IO;
 
 namespace TemplateDomain.App;
 
 partial class Program
 {
+    const string AppSettingsPath = "config/appsettings.json";
+    const string SerilogEmailSinkSection = "SerilogEmailSink";
     async static Task Main(string[] args)
     {
-        NLog.LogManager.LoadConfiguration("config/nlog.config");
-        LogManager.UseFactory(new ExtensionsLoggerFactory(new NLogLoggerFactory()));
+
+        var config = new ConfigurationBuilder().AddJsonFile(AppSettingsPath, false, false).Build();
+        var staticLoggerConf = new LoggerConfiguration().ReadFrom.Configuration(config);
+        Log.Logger = staticLoggerConf.CreateLogger();
         await CreateHostBuilder(args).Build().RunAsync();
     }
 
@@ -26,11 +30,9 @@ partial class Program
                 configHost.AddJsonFile("config/appsettings.json", optional: false);
                 configHost.AddEnvironmentVariables(prefix: "STARNET_");
                 configHost.AddCommandLine(args);
-            }).ConfigureLogging(logging =>
-            {
-                logging.ClearProviders();
-                logging.AddNLog();
             }).UseNServiceBus(hostBuilderContext =>
                 new EndpointConfigurationFactory().Create(hostBuilderContext.Configuration)
-            );
+            ).UseSerilog((context, services, loggerConfiguration) => {
+                loggerConfiguration.ReadFrom.Configuration(context.Configuration);
+            });
 }

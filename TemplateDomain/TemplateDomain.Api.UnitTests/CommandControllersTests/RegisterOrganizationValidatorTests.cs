@@ -23,7 +23,7 @@ public class RegisterOrganizationValidatorTests : ValidatorTestBase<RegisterOrga
     {
         var srcAssembly = typeof(ServiceModel.Commands.RegisterOrganization).Assembly;
         var dstAssembly = typeof(PL.Commands.RegisterOrganization).Assembly;
-        var svcModelCommands = srcAssembly.GetTypes().Where(x => x.FullName.Contains("ServiceModel.Commands"));
+        var svcModelCommands = srcAssembly.GetTypes().Where(x => x.FullName!.Contains("ServiceModel.Commands"));
         foreach (var t in svcModelCommands)
         {
             var destType = dstAssembly.GetTypes().Where(x=>x.Name == t.Name).FirstOrDefault();

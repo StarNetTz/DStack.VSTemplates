@@ -52,7 +52,6 @@ class EndpointConfigurationFactory
                 reg.AddTransient(type.Key, type.Value);
         }
 
-
         static void InitializeTransport(IConfiguration config, EndpointConfiguration endpointConfiguration)
         {
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
@@ -75,6 +74,7 @@ class EndpointConfigurationFactory
             var conventions = endpointConfiguration.Conventions();
             conventions.DefiningCommandsAs(type => type.Namespace == "TemplateDomain.PL.Commands");
             conventions.DefiningEventsAs(type => type.Namespace == "TemplateDomain.PL.Events");
+            conventions.DefiningMessagesAs(type => type.Namespace == "TemplateDomain.PL.Messages");
         }
 
         static void SetupAuditing(IConfiguration config, EndpointConfiguration endpointConfiguration)

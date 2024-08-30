@@ -1,15 +1,19 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using ServiceStack;
+using Serilog;
 
 namespace TemplateDomain.WebApi;
 
 public class Program
 {
+    const string AppSettingsPath = "config/appsettings.json";
     public static void Main(string[] args)
     {
+        var config = new ConfigurationBuilder().AddJsonFile(AppSettingsPath, false, false).Build();
+        var staticLoggerConf = new LoggerConfiguration().ReadFrom.Configuration(config);
+        Log.Logger = staticLoggerConf.CreateLogger();
         var builder = WebApplication.CreateBuilder(args);
+        builder.Host.UseSerilog((context, services, loggerConfiguration) => {
+            loggerConfiguration.ReadFrom.Configuration(context.Configuration);
+        });
 
         var app = builder.Build();
 

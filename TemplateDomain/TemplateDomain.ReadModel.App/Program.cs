@@ -6,11 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NLog.Extensions.Logging;
+using Serilog;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using TemplateDomain.ReadModel.Impl;
 using TemplateDomain.ReadModel.Projections;
 using TemplateDomain.ReadModel.Queries.RavenDB;
@@ -21,7 +20,9 @@ class Program
 {
     async static Task Main(string[] args)
     {
-        NLog.LogManager.LoadConfiguration("config/nlog.config");
+        var config = new ConfigurationBuilder().AddJsonFile(Consts.AppSettingsPath, false, false).Build();
+        var staticLoggerConf = new LoggerConfiguration().ReadFrom.Configuration(config);
+        Log.Logger = staticLoggerConf.CreateLogger();
         await CreateHostBuilder(args).Build().RunAsync();
     }
 
@@ -52,10 +53,8 @@ class Program
                 configHost.AddJsonFile("config/appsettings.json", optional: false);
                 configHost.AddEnvironmentVariables(prefix: "STARNET_");
                 configHost.AddCommandLine(args);
-            }).ConfigureLogging(logging =>
-            {
-                logging.ClearProviders();
-                logging.AddNLog();
+            }).UseSerilog((context, services, loggerConfiguration) => {
+                loggerConfiguration.ReadFrom.Configuration(context.Configuration);
             });
 
     static void RegisterProjectionHandlers(IServiceCollection services)
