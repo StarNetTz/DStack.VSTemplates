@@ -14,14 +14,14 @@ namespace TemplateDomain.Api.ServiceInterface;
 [Authorize]
 public class OrganizationCommandController : CommandControllerBase
 {
-    public OrganizationCommandController(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper) : base(bus, timeProvider, mapper)
+    public OrganizationCommandController(IMessageSession bus, ITimeProvider timeProvider, IMapper mapper) : base(bus, timeProvider, mapper)
     {
     }
 
     [HttpPost("register")]
     public async Task Register([FromBody]RegisterOrganization cmd)
     {
-        await TryProcessRequest<PL.Commands.RegisterOrganization>(cmd);
+        await MapAndProcessRequest<PL.Commands.RegisterOrganization>(cmd);
     }
 }
 

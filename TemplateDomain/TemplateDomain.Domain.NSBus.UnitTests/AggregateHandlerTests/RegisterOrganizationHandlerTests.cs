@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xunit;
 using DStack.Aggregates;
 using System;
+using TemplateDomain.Testing.PL;
+using TemplateDomain.Common;
 
 namespace TemplateDomain.Domain.NSBus.Tests;
 
@@ -17,7 +19,7 @@ public class RegisterOrganizationHandlerTests
     {
         var handler = new RegisterOrganizationHandler(CreateMockThatReturnsNoPublishedEvents());
         var context = new TestableMessageHandlerContext();
-        await handler.Handle(new RegisterOrganization(), context);
+        await handler.Handle(OrganizationCommandsFactory.CreateRegisterOrganizationCommand("Orgs-1"), context);
     }
 
         static IOrganizationInteractor CreateMockThatReturnsNoPublishedEvents()
@@ -33,7 +35,7 @@ public class RegisterOrganizationHandlerTests
     {
         var handler = new RegisterOrganizationHandler(CreateMockThatThrowsDomainError());
         var context = new TestableMessageHandlerContext();
-        await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context);
+        await handler.Handle(OrganizationCommandsFactory.CreateRegisterOrganizationCommand("Orgs-1"), context);
     }
 
         static IOrganizationInteractor CreateMockThatThrowsDomainError()
@@ -48,7 +50,7 @@ public class RegisterOrganizationHandlerTests
     {
         var handler = new RegisterOrganizationHandler(CreateMockThatThrowsArgumentException());
         var context = new TestableMessageHandlerContext();
-        await Assert.ThrowsAnyAsync<ArgumentException>(async () => await handler.Handle(new RegisterOrganization { Id = "Organizations-1" }, context).ConfigureAwait(false));
+        await Assert.ThrowsAnyAsync<ArgumentException>(async () => await handler.Handle(OrganizationCommandsFactory.CreateRegisterOrganizationCommand($"{Consts.IdPrefixes.Organization}1"), context).ConfigureAwait(false));
     }
 
         static IOrganizationInteractor CreateMockThatThrowsArgumentException()

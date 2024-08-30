@@ -30,9 +30,10 @@
 
 	<ItemGroup>
 		<Using Include="System" />
-		<Using Include="Xunit" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="Xunit" />
 	</ItemGroup>
 
 </Project>

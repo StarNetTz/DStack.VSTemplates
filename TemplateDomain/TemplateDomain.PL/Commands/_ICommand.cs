@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TemplateDomain.PL.Commands;
+﻿namespace TemplateDomain.PL.Commands;
 
 public interface ICommand
 {
@@ -10,6 +8,5 @@ public interface ICommand
 public abstract record Command : ICommand
 {
     public string Id { get; set; }
-    public string IssuedBy { get; set; }
-    public DateTime TimeIssued { get; set; }
+    public required AuditInfo AuditInfo { get; set; }
 }

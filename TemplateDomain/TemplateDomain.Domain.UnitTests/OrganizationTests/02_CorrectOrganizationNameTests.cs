@@ -9,7 +9,7 @@ public class CorrectOrganizationNameTests : OrganizationAggregateTester
     [Fact]
     public async Task Should_Execute_Command()
     {
-        var aggId = "Organizations-1";
+        var aggId = $"{Consts.IdPrefixes.Organization}1";
         Given(OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId));
         When(OrganizationCommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
         await Expect(OrganizationEventsFactory.CreateOrganizationNameCorrectedEvent(aggId));
@@ -18,7 +18,7 @@ public class CorrectOrganizationNameTests : OrganizationAggregateTester
     [Fact]
     public async Task Should_Throw_DomainError_On_No_Organization()
     {
-        var aggId = "Organizations-1";
+        var aggId = $"{Consts.IdPrefixes.Organization}1";
         Given();
         When(OrganizationCommandsFactory.CreateCorrectOrganizationNameCommand(aggId));
         await ExpectError("OrganizationDoesNotExist");
@@ -27,7 +27,7 @@ public class CorrectOrganizationNameTests : OrganizationAggregateTester
     [Fact]
     public async Task Command_Is_Idempotent()
     {
-        var aggregateId = "Organizations-1";
+        var aggregateId = $"{Consts.IdPrefixes.Organization}1";
         Given(
             OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggregateId),
             OrganizationEventsFactory.CreateOrganizationNameCorrectedEvent(aggregateId));

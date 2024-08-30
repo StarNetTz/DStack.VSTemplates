@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Security.Claims;
 using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.Api.ServiceModel;
-using TemplateDomain.Common;
 using TemplateDomain.Testing;
-using Xunit;
 
 namespace TemplateDomain.Api.UnitTests;
 
@@ -17,7 +14,7 @@ public class OrganizationCommandControllerTests
 
     public OrganizationCommandControllerTests()
     {
-        Controller = new OrganizationCommandController(new Mock<IMessageBus>().Object, new MockTimeProvider(), CreateMapper());
+        Controller = new OrganizationCommandController(new Mock<IMessageSession>().Object, new MockTimeProvider(), CreateMapper());
         Controller.ControllerContext = CreateTestHttpContext();
     }
 
@@ -38,8 +35,8 @@ public class OrganizationCommandControllerTests
         var hc = new DefaultHttpContext();
         var claims = new List<Claim>()
         {
-            new Claim(ClaimTypes.Name, AuditTestData.DefaultIssuedBy),
-            new Claim(ClaimTypes.Role, AuditTestData.AdminRole)
+            new Claim(ClaimTypes.Name, AuditInfoTestData.DefaultIssuerEmail),
+            new Claim(ClaimTypes.Role, AuditInfoTestData.AdminRole)
         };
         var claimsIdentity = new ClaimsIdentity(claims);
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

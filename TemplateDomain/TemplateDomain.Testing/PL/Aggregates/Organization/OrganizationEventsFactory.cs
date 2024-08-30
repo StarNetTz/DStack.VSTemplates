@@ -8,8 +8,7 @@ public class OrganizationEventsFactory
         => new OrganizationRegistered()
         {
             Id = id,
-            IssuedBy = AuditTestData.DefaultIssuedBy,
-            TimeIssued = AuditTestData.DefaultTimeIssued,
+            AuditInfo = AuditInfoTestData.CreateDefault(),
             Name = "Xamics Ltd",
             Address = AddressTestData.CreateDefault()
         };
@@ -18,8 +17,7 @@ public class OrganizationEventsFactory
         => new OrganizationNameCorrected()
         {
             Id = id,
-            IssuedBy = AuditTestData.DefaultIssuedBy,
-            TimeIssued = AuditTestData.DefaultTimeIssued,
+            AuditInfo = AuditInfoTestData.CreateDefault(),
             Name = "New name"
         };
 }

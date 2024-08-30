@@ -1,5 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using NServiceBus;
+using System.Security.Claims;
 using TemplateDomain.Common;
 
 namespace TemplateDomain.Api.ServiceInterface;
@@ -7,27 +9,49 @@ namespace TemplateDomain.Api.ServiceInterface;
 [ApiController]
 public class CommandControllerBase : ControllerBase
 {
-    readonly IMessageBus Bus;
-    readonly ITimeProvider TimeProvider;
-    readonly IMapper Mapper;
 
-    public CommandControllerBase(IMessageBus bus, ITimeProvider timeProvider, IMapper mapper)
+    protected readonly ITimeProvider TimeProvider;
+    readonly IMapper Mapper;
+    readonly IMessageSession Bus;
+
+    public CommandControllerBase(IMessageSession bus, ITimeProvider timeProvider, IMapper mapper)
     {
         Bus = bus;
         TimeProvider = timeProvider;
         Mapper = mapper;
     }
 
-    protected async Task TryProcessRequest<T>(object command)
+    protected virtual async Task MapAndProcessRequest<T>(object command)
     {
         T cmd = Mapper.Map<T>(command);
         AddAuditInfoToCommand(cmd as PL.Commands.Command);
         await Bus.Send(cmd);
     }
 
+    protected virtual async Task ProcessRequest(object cmd)
+    {
+        AddAuditInfoToCommand(cmd as PL.Commands.Command);
+        await Bus.Send(cmd);
+    }
+
     void AddAuditInfoToCommand(PL.Commands.Command cmd)
     {
-        cmd.IssuedBy = User.Identity.Name;
-        cmd.TimeIssued = TimeProvider.GetUtcTime();
+        string? id = GetUserId();
+        var email = User.Claims.Where(c => c.Type == ClaimTypes.Email)
+               .Select(c => c.Value).SingleOrDefault();
+
+        cmd.AuditInfo = new AuditInfo
+        {
+            Time = TimeProvider.GetUtcTime(),
+            Issuer = id
+        };
+    }
+
+
+    protected string? GetUserId()
+    {
+        var userId = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier)
+                           .Select(c => c.Value).SingleOrDefault();
+        return userId == null ? null : $"{Consts.IdPrefixes.User}{userId}";
     }
 }

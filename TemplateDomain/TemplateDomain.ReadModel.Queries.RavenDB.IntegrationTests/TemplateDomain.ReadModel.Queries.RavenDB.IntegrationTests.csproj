@@ -8,6 +8,8 @@
 		<Using Include="System" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
+		<Using Include="Xunit" />
+		<Using Include="TemplateDomain.Common" />
 	</ItemGroup>
 
   <ItemGroup>

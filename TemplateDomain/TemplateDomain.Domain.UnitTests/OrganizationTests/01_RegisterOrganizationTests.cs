@@ -10,7 +10,7 @@ public class RegisterOrganizationTests : OrganizationAggregateTester
     [Fact]
     public async Task Should_Execute_Command()
     {
-        string aggId = "Organizations-1";
+        string aggId = $"{Consts.IdPrefixes.Organization}1";
         Given();
         When(OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId));
         await Expect(OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId));
@@ -19,7 +19,7 @@ public class RegisterOrganizationTests : OrganizationAggregateTester
     [Fact]
     public async Task Command_Is_Idempotent()
     {
-        string aggId = "Organizations-1";
+        string aggId = $"{Consts.IdPrefixes.Organization}1";
         var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
         var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);
 
@@ -31,7 +31,7 @@ public class RegisterOrganizationTests : OrganizationAggregateTester
     [Fact]
     public async Task NonIdempotent_Command_Should_Throw_DomainError()
     {
-        string aggId = "Organizations-1";
+        string aggId = $"{Consts.IdPrefixes.Organization}1";
         var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
         cmd.Address.Country = new Starnet.Common.Ref { Id = "DE" , Val = "Germany" };
         var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);

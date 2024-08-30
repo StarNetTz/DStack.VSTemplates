@@ -12,7 +12,7 @@ builder.Host.UseSerilog((context, services, loggerConfiguration) => {
     loggerConfiguration.ReadFrom.Configuration(context.Configuration);
 });
 
-builder.Configuration.AddJsonFile("config/appsettings.json", optional: false);
+builder.Configuration.AddJsonFile(AppSettingsPath, optional: false);
 
 var app = builder
     .ConfigureServices()

@@ -2,11 +2,9 @@
 using TemplateDomain.WebApi.ServiceInterface;
 using TemplateDomain.WebApi.ServiceModel;
 using System.Threading.Tasks;
-using Xunit;
-using Funq;
 using Moq;
 using ServiceStack;
-using System.Collections.Generic;
+
 
 namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests;
 
@@ -34,7 +32,7 @@ public class OrganizationQueryServiceTests
      [Fact]
      public async Task Should_find_by_id()
      {
-         var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { QueryKeys.FindByIdKey, "Organizations-1" } } }) as PaginatedResult<Organization>;
+         var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { QueryKeys.FindByIdKey, $"{Consts.IdPrefixes.Organization}1" } } }) as PaginatedResult<Organization>;
          Assert.NotNull(response.Data);
      }
 

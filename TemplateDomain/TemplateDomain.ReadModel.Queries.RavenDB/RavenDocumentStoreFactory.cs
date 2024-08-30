@@ -80,7 +80,7 @@ public class RavenDocumentStoreFactory
     {
         using (var ses = store.OpenSession())
         {
-            ses.Load<Organization>("Organizations-1");
+            ses.Load<Organization>($"{Consts.IdPrefixes.Organization}1");
         }
     }
 }

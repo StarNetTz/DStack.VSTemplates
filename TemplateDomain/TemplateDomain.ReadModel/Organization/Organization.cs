@@ -1,5 +1,4 @@
-﻿using TemplateDomain.Common;
-namespace TemplateDomain.ReadModel;
+﻿namespace TemplateDomain.ReadModel;
 
 public class Organization : ITypeAheadable
 {
@@ -12,7 +11,7 @@ public class Organization : ITypeAheadable
 
         return new TypeaheadItem
         {
-            Id = IdUtils.ToInt64(Id).ToString(),
+            Id = Starnet.Common.Utils.IdUtils.ToInt64(Id).ToString(),
             Value = Name
         };
     }

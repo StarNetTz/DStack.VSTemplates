@@ -20,8 +20,8 @@ public class DocumentStoreFixture : RavenTestDriver
     {
         using (var s = DocumentStore.OpenSession())
         {
-            s.Store(new Organization { Id = "Organizations-1", Name = "Slime Ltd" });
-            s.Store(new Organization { Id = "Organizations-2", Name = "Blood Inc." });
+            s.Store(new Organization { Id = $"{Consts.IdPrefixes.Organization}1", Name = "Slime Ltd" });
+            s.Store(new Organization { Id = $"{Consts.IdPrefixes.Organization}2", Name = "Blood Inc." });
             s.SaveChanges();
         }
     }

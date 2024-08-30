@@ -24,8 +24,7 @@ public class OrganizationAggregate : Aggregate
         var e = new OrganizationRegistered()
         {
             Id = c.Id,
-            IssuedBy = c.IssuedBy,
-            TimeIssued = c.TimeIssued,
+            AuditInfo = c.AuditInfo,
             Name = c.Name,
             Address = c.Address
         };
@@ -43,8 +42,7 @@ public class OrganizationAggregate : Aggregate
         var e = new OrganizationNameCorrected()
         {
             Id = c.Id,
-            IssuedBy = c.IssuedBy,
-            TimeIssued = c.TimeIssued,
+            AuditInfo = c.AuditInfo,
             Name = c.Name
         };
         Apply(e);

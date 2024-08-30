@@ -10,6 +10,5 @@ public interface IEvent
 public abstract record Event : IEvent
 {
     public string Id { get; set; }
-    public string IssuedBy { get; set; }
-    public DateTime TimeIssued { get; set; }
+    public required AuditInfo AuditInfo { get; set; }
 }

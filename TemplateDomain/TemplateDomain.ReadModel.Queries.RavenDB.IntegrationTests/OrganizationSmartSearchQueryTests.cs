@@ -34,7 +34,7 @@ public class OrganizationSearchQueryTests : IClassFixture<DocumentStoreFixture>
     public async Task Should_GetById()
     {
         var q = new QueryById(DocumentStore);
-        var cmp = await q.GetById<Organization>("Organizations-1");
+        var cmp = await q.GetById<Organization>($"{Consts.IdPrefixes.Organization}1");
         Assert.Equal("Slime Ltd", cmp.Name);
     }
 }

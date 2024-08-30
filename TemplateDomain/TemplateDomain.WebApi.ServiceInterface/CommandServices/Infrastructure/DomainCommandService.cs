@@ -1,26 +1,42 @@
-﻿using ServiceStack;
-using System.Threading.Tasks;
-using TemplateDomain.Common;
+﻿using TemplateDomain.Common;
 
 namespace TemplateDomain.WebApi.ServiceInterface;
 
+
 public class DomainCommandService : Service
 {
-    public IMessageBus Bus { get; set; }
-    public ITimeProvider TimeProvider { get; set; }
+    protected IMessageBus Bus { get; set; }
+    protected ITimeProvider TimeProvider { get; set; }
 
-    protected async Task<ResponseStatus> TryProcessRequest<T>(object command)
+    public DomainCommandService(IMessageBus bus, ITimeProvider timeProvider)
+    {
+        Bus = bus;
+        TimeProvider = timeProvider;
+    }
+
+    protected async Task<ResponseStatus> TryAutoMapAndProcessRequest<T>(object command)
     {
         T cmd = command.ConvertTo<T>();
         AddAuditInfoToCommand(cmd as PL.Commands.Command);
-        await Bus.Send(cmd);
+        await Bus.Send(cmd).ConfigureAwait(false);
         return new ResponseStatus();
     }
 
-    void AddAuditInfoToCommand(PL.Commands.Command cmd)
+    protected async Task<ResponseStatus> TryProcessRequest(PL.Commands.Command cmd)
+    {
+        AddAuditInfoToCommand(cmd);
+        await Bus.Send(cmd).ConfigureAwait(false);
+        return new ResponseStatus();
+    }
+
+    protected void AddAuditInfoToCommand(PL.Commands.Command cmd)
+    {
+        cmd.AuditInfo = GetAuditInfo();
+    }
+
+    protected AuditInfo GetAuditInfo()
     {
         var ses = Request.GetSession();
-        cmd.IssuedBy = ses.Email;
-        cmd.TimeIssued = TimeProvider.GetUtcTime();
+        return new AuditInfo { Time = TimeProvider.GetUtcTime(), Issuer = $"{Consts.IdPrefixes.User}{ses.Id}" };
     }
 }

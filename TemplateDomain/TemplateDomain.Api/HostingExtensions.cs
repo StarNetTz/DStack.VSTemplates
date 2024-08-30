@@ -6,6 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using TemplateDomain.Api.ServiceInterface;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 namespace TemplateDomain.Api
 {
@@ -17,8 +20,6 @@ namespace TemplateDomain.Api
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<ITimeProvider, StarnetTimeProvider>();
-            builder.Services.AddTransient<IMessageBus, NSBus>();
-
             var store = new RavenDocumentStoreFactory().CreateAndInitializeDocumentStore(RavenConfig.FromConfiguration(builder.Configuration));  // leave it here to avoid lazy loading until this is refactored so that this comment is NOT NEEDED
             builder.Services.AddSingleton(store);
             builder.Services.AddTransient<ITypeaheadQueries, TypeaheadQueries>();
@@ -37,31 +38,38 @@ namespace TemplateDomain.Api
                 cfg.DisableBuiltInModelValidation = true;
             });
 
+            //AddAuthenticationAndAuthorizationWithBearerAndCookieSupport(builder);
 
-            builder.Services.AddAuthentication("Bearer")
-            .AddJwtBearer("Bearer", options =>
-            {
-                options.Authority = "https://localhost:5001";
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateAudience = false
-                };
-            });
-
-            builder.Services.AddAuthorization(options =>
-            {
-                options.AddPolicy("ApiScope", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "raapi");
-                });
-            });
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Host.UseNServiceBus((ctx) => EndpointConfigurationFactory.Create(ctx.Configuration));
             return builder.Build();
         }
+
+            static void AddAuthenticationAndAuthorizationWithBearerAndCookieSupport(WebApplicationBuilder builder)
+            {
+                builder.Services
+                    .AddAuthentication("Bearer")
+                    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                    {
+                        options.Authority = builder.Configuration["IdentityServer:Url"];
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateAudience = false,
+                            NameClaimType = ClaimTypes.NameIdentifier
+                        };
+                    });
+
+                builder.Services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("ApiScope", policy =>
+                    {
+                        policy.RequireAuthenticatedUser();
+                        policy.RequireClaim("scope", "api");
+                    });
+                });
+            }
 
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
@@ -76,9 +84,10 @@ namespace TemplateDomain.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseAuthentication();
 
-            app.UseAuthorization();
+            // app.UseAuthentication();
+
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

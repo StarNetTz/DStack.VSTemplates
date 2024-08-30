@@ -21,7 +21,7 @@ public class OrganizationCommandServiceTests : IClassFixture<CommandServiceTestB
     {
         var response = await Service.Any(new RegisterOrganization
         {
-            Id = "Organizations-1",
+            Id = $"{Consts.IdPrefixes.Organization}1",
             Name = "My company",
             Address = new Address
             {
