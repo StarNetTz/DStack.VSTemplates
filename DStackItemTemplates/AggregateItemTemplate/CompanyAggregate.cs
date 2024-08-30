@@ -15,22 +15,12 @@ namespace $rootnamespace$.$fileinputname$
         internal void Create$fileinputname$(Create$fileinputname$ c)
         {
             if (State.Version > 0)
-                if (IsIdempotent(c))
+                if (c.IsIdempotent(State))
                     return;
                 else
                     throw DomainError.Named("$fileinputname$AlreadyExists", string.Empty); 
     
-            var e = new $fileinputname$Created() 
-			{ 
-				Id = c.Id, 
-				IssuedBy = c.IssuedBy, 
-				TimeIssued = c.TimeIssued,
-                Name = c.Name
-            };
-            Apply(e);
+            Apply(c.ToEvent());
         }
-
-            bool IsIdempotent(Create$fileinputname$ c)
-                => c.Name == State.Name;
     }
 }
