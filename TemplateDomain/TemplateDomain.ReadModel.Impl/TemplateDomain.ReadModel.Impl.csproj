@@ -17,6 +17,7 @@
 		<Using Include="System.Linq" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="Starnet.Common" />
+		<Using Include="System.Collections.Generic" />
 	</ItemGroup>
 
 </Project>

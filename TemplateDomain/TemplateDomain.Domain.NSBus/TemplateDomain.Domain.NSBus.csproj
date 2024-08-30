@@ -13,4 +13,18 @@
     <ProjectReference Include="..\TemplateDomain.PL\TemplateDomain.PL.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.PL.Commands" />
+		<Using Include="TemplateDomain.PL.Events" />
+		<Using Include="NServiceBus" />
+		<Using Include="NServiceBus.Logging" />
+		<Using Include="DStack.Aggregates" />
+	</ItemGroup>
+
 </Project>

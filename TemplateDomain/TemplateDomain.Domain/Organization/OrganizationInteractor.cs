@@ -1,9 +1,4 @@
-﻿using TemplateDomain.PL.Commands;
-using DStack.Aggregates;
-using System;
-using System.Threading.Tasks;
-
-namespace TemplateDomain.Domain.Organization;
+﻿namespace TemplateDomain.Domain.Organization;
 
 public interface IOrganizationInteractor : IInteractor { }
 

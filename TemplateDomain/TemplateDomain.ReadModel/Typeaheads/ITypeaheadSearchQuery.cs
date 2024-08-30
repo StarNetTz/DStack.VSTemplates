@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace TemplateDomain.ReadModel;
+﻿namespace TemplateDomain.ReadModel;
 
 public interface ITypeaheadQueries
 {

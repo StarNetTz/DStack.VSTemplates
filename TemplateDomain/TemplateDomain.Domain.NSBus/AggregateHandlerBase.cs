@@ -1,10 +1,4 @@
-﻿using NServiceBus;
-using NServiceBus.Logging;
-using DStack.Aggregates;
-using System;
-using System.Threading.Tasks;
-
-namespace TemplateDomain.Domain.NSBus;
+﻿namespace TemplateDomain.Domain.NSBus;
 
 public abstract class AggregateHandlerBase
 {

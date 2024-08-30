@@ -1,8 +1,4 @@
-﻿using TemplateDomain.PL.Commands;
-using TemplateDomain.PL.Events;
-using DStack.Aggregates;
-
-namespace TemplateDomain.Domain.Organization;
+﻿namespace TemplateDomain.Domain.Organization;
 
 public static class OrganizationCmdExtensions
 {

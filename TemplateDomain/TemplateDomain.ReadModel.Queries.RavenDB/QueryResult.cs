@@ -1,5 +1,4 @@
 ﻿using Raven.Client.Documents.Session;
-using System.Collections.Generic;
 
 namespace TemplateDomain.ReadModel.Queries.RavenDB;
 

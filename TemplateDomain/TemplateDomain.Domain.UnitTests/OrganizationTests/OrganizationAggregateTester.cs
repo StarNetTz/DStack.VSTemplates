@@ -1,9 +1,4 @@
 ﻿using TemplateDomain.Domain.Organization;
-using TemplateDomain.PL.Commands;
-using TemplateDomain.PL.Events;
-using DStack.Aggregates.Testing;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
 

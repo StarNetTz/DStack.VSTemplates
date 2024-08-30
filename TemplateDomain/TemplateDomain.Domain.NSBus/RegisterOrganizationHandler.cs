@@ -1,7 +1,4 @@
 ﻿using TemplateDomain.Domain.Organization;
-using TemplateDomain.PL.Commands;
-using NServiceBus;
-using System.Threading.Tasks;
 
 namespace TemplateDomain.Domain.NSBus;
 

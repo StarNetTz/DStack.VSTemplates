@@ -14,8 +14,13 @@
 
 	<ItemGroup>
 		<Using Include="System" />
+		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.PL.Commands" />
+		<Using Include="TemplateDomain.PL.Events" />
+		<Using Include="DStack.Aggregates" />
 	</ItemGroup>
 
 </Project>

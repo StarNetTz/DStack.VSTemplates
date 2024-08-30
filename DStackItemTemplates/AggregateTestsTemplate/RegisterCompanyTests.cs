@@ -1,48 +1,39 @@
-﻿using Xunit;
-using $domain$.Common;
-using $domain$.PL.Commands;
-using $domain$.PL.Events;
-using $domain$.Testing;
-using System;
-using System.Threading.Tasks;
+﻿namespace $rootnamespace$.$fileinputname$Tests;
 
-namespace $rootnamespace$.$fileinputname$Tests
+public class Create$fileinputname$Tests : $fileinputname$AggregateTester
 {
-    public class Create$fileinputname$Tests : $fileinputname$AggregateTester
+    [Fact]
+    public async Task Should_Execute_Command()
     {
-        [Fact]
-        public async Task Should_Execute_Command()
-        {
-            var id = "$fileinputname$s-1";
-            var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
-            var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
+        var id = "$fileinputname$s-1";
+        var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
+        var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
        
-            Given();
-            When(cmd);
-            await Expect(ev);
-        }
+        Given();
+        When(cmd);
+        await Expect(ev);
+    }
 
-        [Fact]
-        public async Task Command_Is_Idempotent()
-        {
-            var id = "$fileinputname$s-2";
-            var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
-            var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
-            Given(ev);
-            When(cmd);
-            await ExpectNoEvents();
-        }
+    [Fact]
+    public async Task Command_Is_Idempotent()
+    {
+        var id = "$fileinputname$s-2";
+        var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
+        var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
+        Given(ev);
+        When(cmd);
+        await ExpectNoEvents();
+    }
 
-        [Fact]
-        public async Task NonIdempotent_Command_Should_Throw_DomainError()
-        {
-            var id = "$fileinputname$s-3";
-            var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Different aggregate name" };
-            var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
+    [Fact]
+    public async Task NonIdempotent_Command_Should_Throw_DomainError()
+    {
+        var id = "$fileinputname$s-3";
+        var cmd = new Create$fileinputname$() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Different aggregate name" };
+        var ev = new $fileinputname$Created() { Id = id, AuditInfo = AuditInfoTestData.CreateDefault(), Name = "Aggregate name" };
             
-            Given(ev);
-            When(cmd);
-            await ExpectError("$fileinputname$AlreadyExists");
-        }
+        Given(ev);
+        When(cmd);
+        await ExpectError("$fileinputname$AlreadyExists");
     }
 }

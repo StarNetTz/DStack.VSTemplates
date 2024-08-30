@@ -13,4 +13,14 @@
     <ProjectReference Include="..\TemplateDomain.ReadModel\TemplateDomain.ReadModel.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="Starnet.Common" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="DStack.Projections" />
+		<Using Include="TemplateDomain.PL.Events" />
+	</ItemGroup>
+
 </Project>

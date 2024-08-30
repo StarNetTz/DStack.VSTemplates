@@ -1,5 +1,4 @@
 ﻿using Raven.Client.Documents;
-using System.Threading.Tasks;
 
 namespace TemplateDomain.ReadModel.Queries.RavenDB;
 

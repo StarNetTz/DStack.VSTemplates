@@ -1,8 +1,4 @@
-﻿using System.Threading.Tasks;
-using TemplateDomain.Testing.PL;
-using Xunit;
-
-namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
+﻿namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
 
 public class CorrectOrganizationNameTests : OrganizationAggregateTester
 {

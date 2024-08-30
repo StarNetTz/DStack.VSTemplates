@@ -1,5 +1,4 @@
 ﻿namespace TemplateDomain.ReadModel;
-
 public class Organization : ITypeAheadable
 {
     public string Id { get; set; }

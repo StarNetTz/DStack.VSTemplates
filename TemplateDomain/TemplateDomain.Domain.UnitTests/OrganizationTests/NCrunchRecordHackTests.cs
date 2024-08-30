@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
+﻿namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
 
 public class NCrunchRecordHackTests
 {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TemplateDomain.ReadModel;
+﻿namespace TemplateDomain.ReadModel;
 
 public class TypeaheadItem
 {

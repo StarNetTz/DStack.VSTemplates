@@ -6,7 +6,6 @@ using Raven.Client.Exceptions;
 using Raven.Client.Exceptions.Database;
 using Raven.Client.ServerWide;
 using Raven.Client.ServerWide.Operations;
-using System;
 using System.Security.Cryptography.X509Certificates;
 
 namespace TemplateDomain.ReadModel.Queries.RavenDB;

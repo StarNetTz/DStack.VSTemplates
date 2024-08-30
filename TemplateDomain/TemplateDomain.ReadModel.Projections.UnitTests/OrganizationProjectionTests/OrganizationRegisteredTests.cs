@@ -1,11 +1,4 @@
-﻿using DStack.Projections.Testing;
-using System;
-using System.Threading.Tasks;
-using Xunit;
-using TemplateDomain.Testing.ReadModel;
-using TemplateDomain.Testing.PL;
-
-namespace TemplateDomain.ReadModel.Projections.Tests;
+﻿namespace TemplateDomain.ReadModel.Projections.Tests;
 
 public class OrganizationRegisteredTests : ProjectionSpecification<OrganizationProjection>
 {

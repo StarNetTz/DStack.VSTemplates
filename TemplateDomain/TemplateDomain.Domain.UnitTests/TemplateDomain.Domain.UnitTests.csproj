@@ -22,6 +22,8 @@
 
 	<ItemGroup>
 		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="DStack.Aggregates.Testing" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />

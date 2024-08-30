@@ -1,8 +1,4 @@
-﻿using TemplateDomain.PL.Events;
-using DStack.Projections;
-using System.Threading.Tasks;
-
-namespace TemplateDomain.ReadModel.Projections;
+﻿namespace TemplateDomain.ReadModel.Projections;
 
 [SubscribesToStream(StreamName)]
 public class OrganizationProjection : Projection, IHandledBy<OrganizationProjectionHandler>

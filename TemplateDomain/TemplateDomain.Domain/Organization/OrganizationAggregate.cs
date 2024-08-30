@@ -1,7 +1,4 @@
-﻿using TemplateDomain.PL.Commands;
-using DStack.Aggregates;
-
-namespace TemplateDomain.Domain.Organization;
+﻿namespace TemplateDomain.Domain.Organization;
 
 public class OrganizationAggregate : Aggregate
 {

@@ -21,4 +21,21 @@
     <ProjectReference Include="..\TemplateDomain.Testing\TemplateDomain.Testing.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="DStack.Aggregates" />
+		<Using Include="System.Threading.Tasks" />
+		<Using Include="System.Collections.Generic" />
+		<Using Include="Starnet.Common" />
+		<Using Include="Xunit" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.PL.Commands" />
+		<Using Include="TemplateDomain.PL.Events" />
+		<Using Include="TemplateDomain.Testing" />
+		<Using Include="TemplateDomain.Testing.PL" />
+		<Using Include="NServiceBus.Testing" />
+		<Using Include="Moq" />
+	</ItemGroup>
+
 </Project>

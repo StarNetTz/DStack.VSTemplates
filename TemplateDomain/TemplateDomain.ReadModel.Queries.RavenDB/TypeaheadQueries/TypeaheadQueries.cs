@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-
-namespace TemplateDomain.ReadModel.Queries.RavenDB;
+﻿namespace TemplateDomain.ReadModel.Queries.RavenDB;
 
 public static class TypeaheadConsts
 {
