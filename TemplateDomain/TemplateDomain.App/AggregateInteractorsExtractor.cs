@@ -1,7 +1,5 @@
 ﻿using TemplateDomain.Domain.Organization;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using DStack.Aggregates;
 
@@ -9,10 +7,17 @@ namespace TemplateDomain.App
 {
     public class AggregateInteractorsExtractor
     {
-        public static List<Type> GetInteractors()
+        public static Dictionary<Type, Type> GetInteractors()
         {
-            Assembly assembly = Assembly.GetAssembly(typeof(OrganizationInteractor));
-            return assembly.GetTypes().Where(p => typeof(IInteractor).IsAssignableFrom(p) && p.IsClass).ToList();
+            var ret = new Dictionary<Type, Type>();
+            var assembly = Assembly.GetAssembly(typeof(OrganizationInteractor));
+            var data = assembly.GetTypes().Where(p => typeof(IInteractor).IsAssignableFrom(p) && p.IsClass).ToList();
+            foreach (var t in data)
+            {
+                var itype = t.GetInterfaces().Where(x => x.Name != "IInteractor").First();
+                ret.Add(itype, t);
+            }
+            return ret;
         }
     }
 }

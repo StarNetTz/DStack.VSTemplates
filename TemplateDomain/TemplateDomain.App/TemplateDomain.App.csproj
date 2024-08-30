@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TemplateDomain.Domain.Impl\TemplateDomain.Domain.Impl.csproj" />
     <ProjectReference Include="..\TemplateDomain.Domain.NSBus\TemplateDomain.Domain.NSBus.csproj" />
+    <ProjectReference Include="..\TemplateDomain.ReadModel.Queries.RavenDB\TemplateDomain.ReadModel.Queries.RavenDB.csproj" />
   </ItemGroup>
 
   <ItemGroup>
