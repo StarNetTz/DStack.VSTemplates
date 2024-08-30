@@ -8,9 +8,9 @@
   <ItemGroup>
     <PackageReference Include="DStack.Aggregates" Version="4.0.3" />
     <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="4.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageReference Include="NLog" Version="5.0.4" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" />
     <PackageReference Include="Npgsql" Version="6.0.7" />
