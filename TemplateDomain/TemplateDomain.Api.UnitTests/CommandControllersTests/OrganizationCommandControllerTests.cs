@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Moq;
 using System.Security.Claims;
-using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.Testing;
 
 namespace TemplateDomain.Api.UnitTests;
 

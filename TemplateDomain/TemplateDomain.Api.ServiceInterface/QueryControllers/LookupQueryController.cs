@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using TemplateDomain.ReadModel;
-
 namespace TemplateDomain.Api.ServiceInterface;
 
 [ApiController]

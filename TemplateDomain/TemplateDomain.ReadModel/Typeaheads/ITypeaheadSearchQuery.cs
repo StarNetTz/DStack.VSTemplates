@@ -2,10 +2,10 @@
 
 public interface ITypeaheadQueries
 {
-    Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
+    Task<PaginatedResult<RefEx>> Execute(PaginatedQueryRequest qry);
 }
 
 public interface ITypeaheadQuery
 {
-    Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest qry);
+    Task<PaginatedResult<RefEx>> Execute(PaginatedQueryRequest qry);
 }

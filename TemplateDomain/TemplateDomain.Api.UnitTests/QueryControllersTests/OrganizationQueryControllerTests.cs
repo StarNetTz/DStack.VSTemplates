@@ -1,8 +1,4 @@
-﻿using Moq;
-using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.ReadModel;
-using TemplateDomain.Testing.ReadModel;
-using Xunit;
+﻿using TemplateDomain.Testing.ReadModel;
 
 namespace TemplateDomain.Api.UnitTests;
 

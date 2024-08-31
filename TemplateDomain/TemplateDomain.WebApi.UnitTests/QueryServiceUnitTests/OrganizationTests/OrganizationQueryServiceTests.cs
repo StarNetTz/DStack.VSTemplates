@@ -1,12 +1,4 @@
-﻿using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using System.Threading.Tasks;
-using Moq;
-using ServiceStack;
-
-
-namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests;
+﻿namespace TemplateDomain.WebApi.UnitTests.OrganizationQueryServiceTests;
 
 [Collection("AppHost collection")]
 public class OrganizationQueryServiceTests

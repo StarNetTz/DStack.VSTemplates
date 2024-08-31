@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using ServiceStack;
 
 namespace TemplateDomain.WebApi.UnitTests;
 

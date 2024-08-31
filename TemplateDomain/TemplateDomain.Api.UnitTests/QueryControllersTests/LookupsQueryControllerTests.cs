@@ -1,10 +1,4 @@
-﻿using Moq;
-using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.ReadModel;
-using TemplateDomain.Testing.ReadModel;
-using Xunit;
-
-namespace TemplateDomain.Api.UnitTests;
+﻿namespace TemplateDomain.Api.UnitTests;
 
 public class LookupsQueryControllerTests
 {

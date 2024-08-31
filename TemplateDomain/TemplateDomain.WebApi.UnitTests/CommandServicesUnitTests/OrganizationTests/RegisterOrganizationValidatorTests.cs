@@ -1,9 +1,4 @@
-﻿using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace TemplateDomain.WebApi.UnitTests;
+﻿namespace TemplateDomain.WebApi.UnitTests;
 
 public class RegisterOrganizationValidatorTests : ValidatorTestBase<RegisterOrganization>
 {

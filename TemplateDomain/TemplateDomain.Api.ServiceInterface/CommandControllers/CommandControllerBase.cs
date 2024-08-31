@@ -1,8 +1,4 @@
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using NServiceBus;
 using System.Security.Claims;
-using TemplateDomain.Common;
 
 namespace TemplateDomain.Api.ServiceInterface;
 

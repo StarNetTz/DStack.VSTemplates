@@ -24,9 +24,17 @@
 
 	<ItemGroup>
 		<Using Include="System" />
-		<Using Include="Xunit" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="Xunit" />
+		<Using Include="TemplateDomain.Api.ServiceInterface" />
+		<Using Include="TemplateDomain.Api.ServiceModel" />
+		<Using Include="TemplateDomain.ReadModel" />
+		<Using Include="TemplateDomain.Testing" />
+		<Using Include="Moq" />
 	</ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 
 namespace TemplateDomain.WebApi.ServiceInterface;
 
-public class ReferenceValidator : AbstractValidator<Ref>
+public class ReferenceValidator : AbstractValidator<Starnet.Common.Ref>
 {
     public ReferenceValidator()
     {

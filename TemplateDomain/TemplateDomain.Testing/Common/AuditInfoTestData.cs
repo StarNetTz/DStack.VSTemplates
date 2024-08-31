@@ -1,6 +1,4 @@
-﻿using TemplateDomain.Common;
-
-namespace TemplateDomain.Testing;
+﻿namespace TemplateDomain.Testing;
 
 public static class AuditInfoTestData
 {

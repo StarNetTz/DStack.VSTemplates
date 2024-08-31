@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using TemplateDomain.ReadModel;
-
 namespace TemplateDomain.Api.ServiceInterface;
 
 [ApiController]
@@ -22,6 +19,4 @@ public class OrganizationQueryController : QueryControllerBase
         else
             return await Query.Execute(req);
     }
-
-
 }

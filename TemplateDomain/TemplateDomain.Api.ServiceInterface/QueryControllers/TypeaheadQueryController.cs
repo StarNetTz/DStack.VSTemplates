@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using TemplateDomain.ReadModel;
-
 namespace TemplateDomain.Api.ServiceInterface;
 
 [ApiController]
@@ -15,7 +12,7 @@ public class TypeaheadQueryController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<PaginatedResult<TypeaheadItem>> Find(PaginatedQueryRequest req)
+    public async Task<PaginatedResult<RefEx>> Find(PaginatedQueryRequest req)
     {
         return await Query.Execute(req);
     }
