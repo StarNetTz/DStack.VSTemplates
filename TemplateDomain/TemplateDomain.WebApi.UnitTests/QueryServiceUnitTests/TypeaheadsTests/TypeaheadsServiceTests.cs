@@ -1,13 +1,4 @@
-﻿using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using System.Threading.Tasks;
-using Xunit;
-using ServiceStack;
-using Moq;
-using System.Collections.Generic;
-
-namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests;
+﻿namespace TemplateDomain.WebApi.UnitTests.TypeaheadsServiceTests;
 
 [Collection("AppHost collection")]
 public class TypeaheadsServiceTests
@@ -25,14 +16,14 @@ public class TypeaheadsServiceTests
     {
         var service = AppHost.Container.Resolve<TypeaheadQueryService>();
         var req = new FilterTypeahead();
-        var response = await service.Any(req) as PaginatedResult<TypeaheadItem>;
+        var response = await service.Any(req) as PaginatedResult<RefEx>;
         Assert.NotNull(response);
     }
 
         static ITypeaheadQueries CreateIOrganizationSearchQueryMock()
         {
             var queryByIdMock = new Mock<ITypeaheadQueries>();
-            queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
+            queryByIdMock.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<RefEx>());
             return queryByIdMock.Object;
         }
 }

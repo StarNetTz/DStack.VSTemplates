@@ -2,6 +2,6 @@
 
 public interface ITypeAheadable
 {
-    TypeaheadItem CovertToTypeaheadItem();
-    TypeaheadItem CovertToTypeaheadItem(string lng);
+    RefEx CovertToTypeaheadItem();
+    RefEx CovertToTypeaheadItem(string lng);
 }

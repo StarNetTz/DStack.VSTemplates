@@ -1,7 +1,4 @@
-﻿using TemplateDomain.ReadModel;
-using ServiceStack;
-
-namespace TemplateDomain.WebApi.ServiceModel;
+﻿namespace TemplateDomain.WebApi.ServiceModel;
 
 [Route("/lookups")]
 public class GetLookup : IReturn<Lookup>

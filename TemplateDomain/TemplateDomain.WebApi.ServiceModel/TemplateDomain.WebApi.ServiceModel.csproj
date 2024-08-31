@@ -18,6 +18,8 @@
 		<Using Include="System.Linq" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="Starnet.Common" />
+		<Using Include="ServiceStack" />
+		<Using Include="TemplateDomain.ReadModel" />
 	</ItemGroup>
 
 </Project>

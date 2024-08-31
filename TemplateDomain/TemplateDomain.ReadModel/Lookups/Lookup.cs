@@ -3,10 +3,10 @@
 public class Lookup
 {
     public string Id { get; set; }
-    public List<LookupItem> Data { get; set; }
+    public List<Ref> Data { get; set; }
 
     public Lookup()
     {
-        Data = new List<LookupItem>();
+        Data = new List<Ref>();
     }
 }

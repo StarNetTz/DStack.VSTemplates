@@ -24,7 +24,12 @@
 		<Using Include="System" />
 		<Using Include="System.Linq" />
 		<Using Include="System.Threading.Tasks" />
+		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.ReadModel" />
+		<Using Include="AutoMapper" />
+		<Using Include="Microsoft.AspNetCore.Mvc" />
 	</ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
-﻿using ServiceStack.FluentValidation;
+using FluentValidation;
+using TemplateDomain.Api.ServiceModel.Commands;
 
-namespace TemplateDomain.WebApi.ServiceInterface;
+namespace TemplateDomain.Api.ServiceInterface;
 
 public class RegisterOrganizationValidator : AbstractValidator<RegisterOrganization>
 {

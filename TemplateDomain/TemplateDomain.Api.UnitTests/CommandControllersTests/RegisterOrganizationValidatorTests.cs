@@ -1,6 +1,4 @@
-﻿using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.Api.ServiceModel.Commands;
-using Xunit;
+﻿using TemplateDomain.Api.ServiceModel.Commands;
 
 namespace TemplateDomain.Api.UnitTests;
 

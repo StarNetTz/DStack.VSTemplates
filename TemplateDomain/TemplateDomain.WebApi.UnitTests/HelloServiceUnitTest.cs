@@ -1,8 +1,3 @@
-using ServiceStack;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using Xunit;
-
 namespace TemplateDomain.WebApi.UnitTests.HelloServiceUnitTest;
 
 [Collection("AppHost collection")]

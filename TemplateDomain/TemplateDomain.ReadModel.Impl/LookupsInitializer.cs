@@ -24,22 +24,22 @@ public class LookupsInitializer : ILookupsInitializer
     async Task CreateTimezones()
     {
         const string DocumentId = "lookups-timezones";
-        List<LookupItem> data = (from t in TimeZoneInfo.GetSystemTimeZones() select new LookupItem { Id = t.Id, Value = t.DisplayName }).ToList();
+        List<Ref> data = (from t in TimeZoneInfo.GetSystemTimeZones() select new Ref { Id = t.Id, Val = t.DisplayName }).ToList();
         await CreateLookupDocument(DocumentId, data);
     }
 
     async Task CreateLanguages()
     {
         const string DocumentId = "lookups-languages";
-        List<LookupItem> data = new List<LookupItem>() {
-                        new LookupItem { Id = "en", Value = "English" },
-                        new LookupItem { Id = "de", Value = "German" }
+        List<Ref> data = new List<Ref>() {
+                        new Ref { Id = "en", Val = "English" },
+                        new Ref { Id = "de", Val = "German" }
                     };
 
         await CreateLookupDocument(DocumentId, data);
     }
 
-    async Task CreateLookupDocument(string DocumentId, List<LookupItem> data)
+    async Task CreateLookupDocument(string DocumentId, List<Ref> data)
     {
 
         var doc = await Store.LoadAsync<Lookup>(DocumentId);

@@ -37,16 +37,16 @@ public class OrganizationQueries : QueryBase<Organization>, IOrganizationQueries
                     );
     }
 
-    async Task<PaginatedResult<TypeaheadItem>> ITypeaheadQuery.Execute(PaginatedQueryRequest req)
+    async Task<PaginatedResult<RefEx>> ITypeaheadQuery.Execute(PaginatedQueryRequest req)
     {
         var res = await Execute(req);
         var lng = GetParamValue(req, QueryKeys.LanguageKey);
         return CreateFrom(res, res.Data.Select(x => x.CovertToTypeaheadItem(lng)).ToList());
     }
 
-        static PaginatedResult<TypeaheadItem> CreateFrom(IPaginatedResult src, List<TypeaheadItem> data)
+        static PaginatedResult<RefEx> CreateFrom(IPaginatedResult src, List<RefEx> data)
         {
-            return new PaginatedResult<TypeaheadItem>
+            return new PaginatedResult<RefEx>
             {
                 CurrentPage = src.CurrentPage,
                 PageSize = src.PageSize,

@@ -1,12 +1,10 @@
 using Funq;
-using ServiceStack;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.ReadModel.Queries.RavenDB;
-using ServiceStack.Validation;
-using TemplateDomain.Common;
-using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.Impl;
 using ServiceStack.DataAnnotations;
+using ServiceStack.Validation;
+using TemplateDomain.ReadModel;
+using TemplateDomain.ReadModel.Queries.RavenDB;
+using TemplateDomain.WebApi.Impl;
+using TemplateDomain.WebApi.ServiceInterface;
 
 [assembly: HostingStartup(typeof(TemplateDomain.WebApi.AppHost))]
 namespace TemplateDomain.WebApi;

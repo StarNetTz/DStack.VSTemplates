@@ -1,9 +1,4 @@
-﻿using Moq;
-using TemplateDomain.Api.ServiceInterface;
-using TemplateDomain.ReadModel;
-
-
-namespace TemplateDomain.Api.UnitTests;
+﻿namespace TemplateDomain.Api.UnitTests;
 
 public class TypeaheadQueryControllerTests
 {
@@ -24,7 +19,7 @@ public class TypeaheadQueryControllerTests
     static ITypeaheadQueries CreateQueryStub()
     {
         var stub = new Mock<ITypeaheadQueries>();
-        stub.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<TypeaheadItem>());
+        stub.Setup(x => x.Execute(It.IsAny<PaginatedQueryRequest>())).ReturnsAsync(new PaginatedResult<RefEx>());
         return stub.Object;
     }
 }

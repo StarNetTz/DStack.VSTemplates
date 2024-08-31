@@ -1,7 +1,3 @@
-using System;
-using ServiceStack;
-using TemplateDomain.WebApi.ServiceModel;
-
 namespace TemplateDomain.WebApi.ServiceInterface;
 
 public class HelloServices : Service

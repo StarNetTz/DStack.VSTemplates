@@ -30,10 +30,17 @@
 
 	<ItemGroup>
 		<Using Include="System" />
+		<Using Include="System.Linq" />
+		<Using Include="System.Threading.Tasks" />
 		<Using Include="System.Collections.Generic" />
 		<Using Include="Starnet.Common" />
 		<Using Include="TemplateDomain.Common" />
 		<Using Include="Xunit" />
+		<Using Include="ServiceStack" />
+		<Using Include="TemplateDomain.WebApi.ServiceInterface" />
+		<Using Include="TemplateDomain.WebApi.ServiceModel" />
+		<Using Include="TemplateDomain.ReadModel" />
+		<Using Include="Moq" />
 	</ItemGroup>
 
 </Project>

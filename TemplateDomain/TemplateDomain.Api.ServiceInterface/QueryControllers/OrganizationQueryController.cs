@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-using TemplateDomain.ReadModel;
-
 namespace TemplateDomain.Api.ServiceInterface;
 
 [ApiController]
-[Route("organizations")]
+[Route("qry")]
 public class OrganizationQueryController : QueryControllerBase
 {
     readonly IOrganizationQueries Query;
@@ -14,7 +11,7 @@ public class OrganizationQueryController : QueryControllerBase
         Query = query;
     }
 
-    [HttpPost]
+    [HttpPost("organizations")]
     public async Task<PaginatedResult<Organization>> Find(PaginatedQueryRequest req)
     {
         if (req.Qry.ContainsKey(QueryKeys.FindByIdKey))
@@ -22,6 +19,4 @@ public class OrganizationQueryController : QueryControllerBase
         else
             return await Query.Execute(req);
     }
-
-
 }

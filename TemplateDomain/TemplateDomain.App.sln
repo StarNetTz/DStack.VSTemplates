@@ -91,6 +91,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.ServiceI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateDomain.Api.Impl", "TemplateDomain.Api.Impl\TemplateDomain.Api.Impl.csproj", "{6258F211-A8E7-4E6D-A90A-32E48772FF70}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09_Docker", "09_Docker", "{4298F898-50A0-4642-979D-2E7E00120E3A}"
+	ProjectSection(SolutionItems) = preProject
+		databases-stack.yml = databases-stack.yml
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

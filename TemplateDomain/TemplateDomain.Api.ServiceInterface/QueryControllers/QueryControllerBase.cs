@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace TemplateDomain.Api.ServiceInterface;
 
 public class QueryControllerBase : ControllerBase

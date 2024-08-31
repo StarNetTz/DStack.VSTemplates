@@ -1,6 +1,4 @@
-﻿using TemplateDomain.WebApi.ServiceModel;
-
-namespace TemplateDomain.WebApi.ServiceInterface;
+﻿namespace TemplateDomain.WebApi.ServiceInterface;
 
 public class OrganizationService: DomainCommandService
 {

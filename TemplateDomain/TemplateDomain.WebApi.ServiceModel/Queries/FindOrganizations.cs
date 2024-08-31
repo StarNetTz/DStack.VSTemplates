@@ -1,9 +1,6 @@
-﻿using TemplateDomain.ReadModel;
-using ServiceStack;
+﻿namespace TemplateDomain.WebApi.ServiceModel;
 
-namespace TemplateDomain.WebApi.ServiceModel;
-
-[Route("/organizations", Verbs = "GET")]
+[Route("/qry/organizations", Verbs = "POST")]
 public record FindOrganizations : PaginatedQueryRequest, IReturn<PaginatedResult<Organization>>
 {
 }

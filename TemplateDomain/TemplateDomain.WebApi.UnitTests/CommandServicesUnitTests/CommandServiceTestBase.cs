@@ -1,12 +1,7 @@
-﻿using TemplateDomain.WebApi.ServiceInterface;
-using Microsoft.Extensions.Configuration;
-using ServiceStack;
+﻿using Moq;
 using ServiceStack.Auth;
 using ServiceStack.Testing;
 using ServiceStack.Validation;
-using System;
-using Moq;
-using TemplateDomain.Common;
 
 namespace TemplateDomain.WebApi.UnitTests;
 

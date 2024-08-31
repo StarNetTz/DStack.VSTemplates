@@ -17,7 +17,7 @@ public class TypeaheadQueries :  ITypeaheadQueries
         OrganizationQueries = organizationQueries;
     }
 
-    public async Task<PaginatedResult<TypeaheadItem>> Execute(PaginatedQueryRequest req)
+    public async Task<PaginatedResult<RefEx>> Execute(PaginatedQueryRequest req)
     {
         return await GetQueryByCollection(req).Execute(req);
     }

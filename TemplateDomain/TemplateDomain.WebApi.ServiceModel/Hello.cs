@@ -1,5 +1,3 @@
-using ServiceStack;
-
 namespace TemplateDomain.WebApi.ServiceModel;
 
 [Route("/hello")]

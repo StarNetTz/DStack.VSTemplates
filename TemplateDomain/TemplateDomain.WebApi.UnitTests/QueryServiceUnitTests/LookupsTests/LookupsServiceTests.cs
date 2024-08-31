@@ -1,13 +1,4 @@
-﻿using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using System.Threading.Tasks;
-using ServiceStack;
-using Moq;
-using Xunit;
-using System.Linq;
-
-namespace TemplateDomain.WebApi.UnitTests.LookupsServiceTests;
+﻿namespace TemplateDomain.WebApi.UnitTests.LookupsServiceTests;
 
 [Collection("AppHost collection")]
 public class LookupsServiceTests
@@ -29,7 +20,7 @@ public class LookupsServiceTests
         var doc = response.Data.First();
 
         Assert.Equal("1", doc.Id);
-        Assert.Equal("USA", doc.Value);
+        Assert.Equal("USA", doc.Val);
     }
 
     static IQueryById CreateQueryByIdMock()
@@ -38,8 +29,8 @@ public class LookupsServiceTests
         queryByIdMock.Setup(x => x.GetById<Lookup>(It.IsAny<string>())).ReturnsAsync(new Lookup
         {
             Id = "Lookups-Countries",
-            Data = new System.Collections.Generic.List<LookupItem> {
-                new LookupItem { Id = "1", Value = "USA" }
+            Data = new List<Ref> {
+                new Ref { Id = "1", Val = "USA" }
             }
         });
         return queryByIdMock.Object;

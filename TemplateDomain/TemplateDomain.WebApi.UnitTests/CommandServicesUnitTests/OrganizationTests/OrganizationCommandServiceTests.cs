@@ -1,11 +1,4 @@
-﻿using ServiceStack;
-using TemplateDomain.WebApi.ServiceInterface;
-using TemplateDomain.WebApi.ServiceModel;
-using System.Threading.Tasks;
-using Xunit;
-using TemplateDomain.Common;
-
-namespace TemplateDomain.WebApi.UnitTests;
+﻿namespace TemplateDomain.WebApi.UnitTests;
 
 public class OrganizationCommandServiceTests : IClassFixture<CommandServiceTestBase<OrganizationService>>
 {

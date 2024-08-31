@@ -1,1 +1,0 @@
-namespace TemplateDomain.Api.ServiceModel;
