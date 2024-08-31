@@ -1,6 +1,4 @@
-﻿using TemplateDomain.Common;
-
-namespace TemplateDomain.WebApi.ServiceInterface;
+﻿namespace TemplateDomain.WebApi.ServiceInterface;
 
 
 public class DomainCommandService : Service

@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace TemplateDomain.WebApi.ServiceInterface;
+﻿namespace TemplateDomain.WebApi.ServiceInterface;
 
 public interface IIdentityProvider
 {

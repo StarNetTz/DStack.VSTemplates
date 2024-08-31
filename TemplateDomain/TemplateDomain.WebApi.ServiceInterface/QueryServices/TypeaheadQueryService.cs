@@ -1,9 +1,4 @@
-﻿using TemplateDomain.ReadModel;
-using TemplateDomain.WebApi.ServiceModel;
-using ServiceStack;
-using System.Threading.Tasks;
-
-namespace TemplateDomain.WebApi.ServiceInterface;
+﻿namespace TemplateDomain.WebApi.ServiceInterface;
 
 public class TypeaheadQueryService : Service
 {

@@ -1,5 +1,4 @@
-﻿using TemplateDomain.WebApi.ServiceModel;
-using ServiceStack.FluentValidation;
+﻿using ServiceStack.FluentValidation;
 
 namespace TemplateDomain.WebApi.ServiceInterface;
 

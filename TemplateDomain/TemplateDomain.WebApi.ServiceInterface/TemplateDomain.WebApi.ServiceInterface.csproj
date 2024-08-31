@@ -16,10 +16,14 @@
 
 	<ItemGroup>
 		<Using Include="System" />
+		<Using Include="System.Collections.Generic" />
 		<Using Include="System.Linq" />
 		<Using Include="System.Threading.Tasks" />
 		<Using Include="ServiceStack" />
 		<Using Include="Starnet.Common" />
+		<Using Include="TemplateDomain.Common" />
+		<Using Include="TemplateDomain.WebApi.ServiceModel" />
+		<Using Include="TemplateDomain.ReadModel" />
 	</ItemGroup>
 
 </Project>

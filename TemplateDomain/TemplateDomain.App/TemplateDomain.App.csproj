@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Aggregates" Version="9.0.0-alpha004" />
-    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="9.0.0-alpha004" />
+    <PackageReference Include="DStack.Aggregates" Version="9.0.0-alpha005" />
+    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="9.0.0-alpha005" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
