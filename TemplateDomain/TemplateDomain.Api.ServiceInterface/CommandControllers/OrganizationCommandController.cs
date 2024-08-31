@@ -3,7 +3,7 @@ using TemplateDomain.Api.ServiceModel.Commands;
 namespace TemplateDomain.Api.ServiceInterface;
 
 
-[Route("commands/organization")]
+[Route("cmd/organizations")]
 [ApiController]
 //[Authorize]
 public class OrganizationCommandController : CommandControllerBase

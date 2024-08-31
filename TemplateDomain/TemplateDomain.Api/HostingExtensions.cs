@@ -91,7 +91,7 @@ public static class HostingExtensions
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers().RequireAuthorization("ApiScope");
+            endpoints.MapControllers();//.RequireAuthorization("ApiScope");
         });
 
         return app;
