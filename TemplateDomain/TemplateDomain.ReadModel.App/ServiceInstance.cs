@@ -86,7 +86,7 @@ internal class ServiceInstance : IHostedService
                 if (enabledProjections.Contains(p.Name) && (!disabledProjections.Contains(p.Name)))
                 {
                     Logger.LogInformation($"Starting projection {p.Name} on stream {p.Subscription.StreamName}.");
-                    await p.StartAsync();
+                    _= p.StartAsync();
                 }
             }
         }
