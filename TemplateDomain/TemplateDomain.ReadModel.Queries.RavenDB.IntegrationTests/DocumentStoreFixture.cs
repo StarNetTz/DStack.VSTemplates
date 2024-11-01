@@ -8,9 +8,15 @@ namespace TemplateDomain.ReadModel.Queries.RavenDB.IntegrationTests;
 public class DocumentStoreFixture : RavenTestDriver
 {
     public IDocumentStore DocumentStore;
+    static bool IsConfigured = false;
 
     public DocumentStoreFixture()
     {
+        if (!IsConfigured)
+        {
+            ConfigureServer(new TestServerOptions { Licensing = new Raven.Embedded.ServerOptions.LicensingOptions { ThrowOnInvalidOrMissingLicense = false } });
+            IsConfigured = true;
+        }
         DocumentStore = GetDocumentStore();
         CreateTestDocuments();
         WaitForIndexing(DocumentStore);

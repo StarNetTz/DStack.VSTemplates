@@ -1,8 +1,9 @@
-﻿namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
+﻿using TemplateDomain.Domain.Organization;
 
-public class RegisterOrganizationTests : OrganizationAggregateTester
+namespace TemplateDomain.Domain.UnitTests.OrganizationTests;
+
+public class RegisterOrganizationTests : AggregateTester<OrganizationInteractor>
 {
-
     [Fact]
     public async Task Should_Execute_Command()
     {
