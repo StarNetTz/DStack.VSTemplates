@@ -2,37 +2,11 @@
 
 public interface IOrganizationInteractor : IInteractor { }
 
-public class OrganizationInteractor : Interactor, IOrganizationInteractor
+public class OrganizationInteractor : Interactor<OrganizationAggregate>, IOrganizationInteractor
 {
-    readonly IAggregateRepository AggRepository;
-
     public OrganizationInteractor(IAggregateRepository aggRepository)
     {
-        AggRepository = aggRepository;
-    }
-
-    async Task IdempotentlyCreateAgg(string id, Action<OrganizationAggregate> usingThisMethod)
-    {
-        var agg = await AggRepository.GetAsync<OrganizationAggregate>(id);
-        if (agg == null)
-            agg = new OrganizationAggregate(new OrganizationAggregateState());
-        var ov = agg.Version;
-        usingThisMethod(agg);
-        PublishedEvents = agg.PublishedEvents;
-        if (ov != agg.Version)
-            await AggRepository.StoreAsync(agg);
-    }
-
-    async Task IdempotentlyUpdateAgg(string id, Action<OrganizationAggregate> usingThisMethod)
-    {
-        var agg = await AggRepository.GetAsync<OrganizationAggregate>(id);
-        if (agg == null)
-            throw DomainError.Named("OrganizationDoesNotExist", string.Empty);
-        var ov = agg.Version;
-        usingThisMethod(agg);
-        PublishedEvents = agg.PublishedEvents;
-        if (ov != agg.Version)
-            await AggRepository.StoreAsync(agg);
+        AggregateRepository = aggRepository;
     }
 
     public override async Task ExecuteAsync(object command)

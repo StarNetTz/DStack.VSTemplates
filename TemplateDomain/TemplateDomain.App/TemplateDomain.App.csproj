@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Aggregates" Version="9.0.0-alpha005" />
-    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="9.0.0-alpha005" />
+    <PackageReference Include="DStack.Aggregates" Version="9.0.0-alpha010" />
+    <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="9.0.0-alpha008" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Npgsql" Version="8.0.3" />
-    <PackageReference Include="NServiceBus" Version="9.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Npgsql" Version="8.0.5" />
+    <PackageReference Include="NServiceBus" Version="9.2.3" />
     <PackageReference Include="NServiceBus.Extensions.Hosting" Version="3.0.0" />
     <PackageReference Include="NServiceBus.Extensions.Logging" Version="3.0.0" />
     <PackageReference Include="NServiceBus.Heartbeat" Version="5.0.0" />
@@ -20,11 +20,11 @@
     <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="5.0.0" />
     <PackageReference Include="NServiceBus.RabbitMQ" Version="9.1.1" />
     <PackageReference Include="NServiceBus.RavenDB" Version="9.0.0" />
-    <PackageReference Include="RavenDB.Client" Version="6.0.105" />
-    <PackageReference Include="Serilog" Version="4.0.1" />
-    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="RavenDB.Client" Version="6.2.1" />
+    <PackageReference Include="Serilog" Version="4.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.2" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.Email" Version="4.0.0" />
   </ItemGroup>

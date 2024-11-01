@@ -1,14 +1,7 @@
 ﻿namespace TemplateDomain.Domain.Organization;
 
-public class OrganizationAggregate : Aggregate
+public class OrganizationAggregate :  Aggregate<OrganizationAggregateState>
 {
-    OrganizationAggregateState State;
-
-    public OrganizationAggregate(OrganizationAggregateState state) : base(state)
-    {
-        State = state;
-    }
-
     internal void RegisterOrganization(RegisterOrganization c)
     {
         if (State.Version > 0)
