@@ -11,7 +11,7 @@
   <TemplateContent>
     <References />
     <ProjectItem SubType="" TargetFileName="$fileinputname$Tests\Create$fileinputname$Tests.cs" ReplaceParameters="true">RegisterCompanyTests.cs</ProjectItem>
-    <ProjectItem SubType="" TargetFileName="$fileinputname$Tests\AggregateTesterBase.cs" ReplaceParameters="true">AggregateTesterBase.cs</ProjectItem>
+    <ProjectItem SubType="" TargetFileName="$fileinputname$Tests\$fileinputname$AggregateTester.cs" ReplaceParameters="true">CompanyAggregateTester.cs</ProjectItem>
   </TemplateContent>
   <WizardExtension>
     <Assembly>DStackItemTemplates, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=f972ab9edd582320</Assembly>

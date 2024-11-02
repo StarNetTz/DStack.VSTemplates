@@ -1,12 +1,7 @@
 ﻿namespace $rootnamespace$.$fileinputname$;
 
-public class $fileinputname$Aggregate : Aggregate
+public class $fileinputname$Aggregate : Aggregate<$fileinputname$AggregateState>
 {
-    $fileinputname$AggregateState State;
-
-    public $fileinputname$Aggregate($fileinputname$AggregateState state) : base(state)
-        => State = state;
-
     internal void Create$fileinputname$(Create$fileinputname$ c)
     {
         if (State.Version > 0)

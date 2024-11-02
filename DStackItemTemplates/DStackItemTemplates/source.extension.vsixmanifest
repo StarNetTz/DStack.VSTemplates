@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="MyProjectWizard.af6c6eb8-4bcb-4445-bb5b-8706abdcf508" Version="2.0" Language="en-US" Publisher="Starnet" />
+        <Identity Id="MyProjectWizard.af6c6eb8-4bcb-4445-bb5b-8706abdcf508" Version="3.0" Language="en-US" Publisher="Starnet" />
         <DisplayName>DStackItemTemplates</DisplayName>
         <Description xml:space="preserve">DStack item templates</Description>
     </Metadata>
