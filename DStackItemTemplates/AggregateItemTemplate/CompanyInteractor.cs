@@ -2,42 +2,17 @@
 
 public interface I$fileinputname$Interactor : IInteractor { }
 
-public class $fileinputname$Interactor : Interactor, I$fileinputname$Interactor
+public class $fileinputname$Interactor : Interactor<$fileinputname$Aggregate>, I$fileinputname$Interactor
 {
-    readonly IAggregateRepository AggRepository;
 
     public $fileinputname$Interactor(IAggregateRepository aggRepository)
     {
-        AggRepository = aggRepository;
-    }
-
-    async Task IdempotentlyCreateAgg(string id, Action<$fileinputname$Aggregate> usingThisMethod)
-    {
-        var agg = await AggRepository.GetAsync<$fileinputname$Aggregate>(id);
-        if (agg == null)
-            agg = new $fileinputname$Aggregate(new $fileinputname$AggregateState());
-        var ov = agg.Version;
-        usingThisMethod(agg);
-        PublishedEvents = agg.PublishedEvents;
-        if (ov != agg.Version)
-            await AggRepository.StoreAsync(agg);
-    }
-
-    async Task IdempotentlyUpdateAgg(string id, Action<$fileinputname$Aggregate> usingThisMethod)
-    {
-        var agg = await AggRepository.GetAsync<$fileinputname$Aggregate>(id);
-        if (agg == null)
-            throw DomainError.Named("$fileinputname$DoesNotExist", string.Empty);
-        var ov = agg.Version;
-        usingThisMethod(agg);
-        PublishedEvents = agg.PublishedEvents;
-        if (ov != agg.Version)
-            await AggRepository.StoreAsync(agg);
+        AggregateRepository = aggRepository;
     }
 
     public override async Task ExecuteAsync(object command)
         => await When((dynamic)command);
 
-    private async Task When(Create$fileinputname$ c)
+    async Task When(Create$fileinputname$ c)
         => await IdempotentlyCreateAgg(c.Id, agg => agg.Create$fileinputname$(c));
 }

@@ -2,16 +2,10 @@
 
 namespace $rootnamespace$.$fileinputname$Tests;
 
-public class $fileinputname$AggregateTester: AggregateTesterBase<ICommand, IEvent>
+public class $fileinputname$AggregateTester: AggregateTester<$fileinputname$Interactor>
 {
-    protected override async Task<ExecuteCommandResult<IEvent>> ExecuteCommand(IEvent[] given, ICommand cmd)
+    public override void Initialize()
     {
-        var repository = new BDDAggregateRepository();
-        repository.Preload(cmd.Id, given);
-        var svc = new $fileinputname$Interactor(repository);
-        await svc.ExecuteAsync(cmd).ConfigureAwait(false);
-        var arr = repository.Appended != null ? repository.Appended.Cast<IEvent>().ToArray() : null;
-		var publishedEvents = svc.GetPublishedEvents();
-		return new ExecuteCommandResult<IEvent> { ProducedEvents = arr ?? new IEvent[0], PublishedEvents = publishedEvents.Cast<IEvent>().ToArray() };
+        Tester = new $fileinputname$Interactor(Repository);
     }
 }
