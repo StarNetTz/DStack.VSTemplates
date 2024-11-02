@@ -107,7 +107,7 @@
     <None Include="RegisterCompanyTests.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="AggregateTesterBase.cs">
+    <None Include="CompanyAggregateTester.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
