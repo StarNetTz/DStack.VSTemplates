@@ -4,7 +4,7 @@ public class OrganizationAggregate :  Aggregate<OrganizationAggregateState>
 {
     internal void RegisterOrganization(RegisterOrganization c)
     {
-        if (State.Version > 0)
+        if (ShouldHandleIdempotency)
             if (c.IsIdempotent(State))
                 return;
             else
