@@ -4,7 +4,7 @@ public class $fileinputname$Aggregate : Aggregate<$fileinputname$AggregateState>
 {
     internal void Create$fileinputname$(Create$fileinputname$ c)
     {
-        if (State.Version > 0)
+        if (ShouldHandleIdempotency)
             if (c.IsIdempotent(State))
                 return;
             else
