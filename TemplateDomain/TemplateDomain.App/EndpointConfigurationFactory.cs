@@ -55,6 +55,9 @@ class EndpointConfigurationFactory
         static void InitializeTransport(IConfiguration config, EndpointConfiguration endpointConfiguration)
         {
             var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
+            transport.ManagementApiConfiguration(
+                url: $"{config["RabbitMQ:ManagementApi:Scheme"]}://{config["RabbitMQ:ManagementApi:Host"]}:{config["RabbitMQ:ManagementApi:Port"]}"
+               );
             transport.UseConventionalRoutingTopology(QueueType.Classic);
             transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
         }
