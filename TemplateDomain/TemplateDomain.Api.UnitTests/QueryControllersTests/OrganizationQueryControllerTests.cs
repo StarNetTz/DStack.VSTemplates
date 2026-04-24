@@ -14,7 +14,7 @@ public class OrganizationQueryControllerTests
     [Fact]
     public async Task Should_GetById()
     {
-        var res = await Controller.Find(new PaginatedQueryRequest { Qry = new Dictionary<string, string> { { QueryKeys.FindByIdKey,"" } } });
+        var res = await Controller.Find(new PaginatedQueryRequest { Qry = new Starnet.Common.RecordDictionary<string, string> { { QueryKeys.FindByIdKey,"" } } });
         Assert.NotNull(res);
     }
 

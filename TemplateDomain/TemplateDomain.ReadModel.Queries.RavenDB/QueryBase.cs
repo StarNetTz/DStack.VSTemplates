@@ -24,15 +24,19 @@ public abstract class QueryBase<T>
 
         protected PaginatedResult<T> ToPaginatedResult(PaginatedQueryRequest request, QueryResult<T> qr)
         {
-            PaginatedResult<T> retVal = new PaginatedResult<T>() { Data = new List<T>() };
-            retVal.Data = qr.Data;
-            retVal.TotalItems = qr.Statistics.TotalResults;
-            retVal.TotalPages = retVal.TotalItems / request.PageSize;
-            if ((retVal.TotalItems % request.PageSize) > 0)
-                retVal.TotalPages += 1;
-            retVal.PageSize = request.PageSize;
-            retVal.CurrentPage = request.CurrentPage;
-            return retVal;
+            var totalItems = qr.Statistics.TotalResults;
+            var totalPages = totalItems / request.PageSize;
+            if ((totalItems % request.PageSize) > 0)
+                totalPages += 1;
+
+            return new PaginatedResult<T>()
+            {
+                Data = qr.Data,
+                TotalItems = totalItems,
+                TotalPages = totalPages,
+                PageSize = request.PageSize,
+                CurrentPage = request.CurrentPage
+            };
         }
 
         static bool CurrentPageIsOverflown(PaginatedResult<T> result)

@@ -17,14 +17,14 @@ public class OrganizationQueryServiceTests
     [Fact]
      public async Task Should_search()
      {
-         var response = await Service.Any(new FindOrganizations {  CurrentPage = 0, PageSize = 10, Qry = new Dictionary<string, string> { { QueryKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
+         var response = await Service.Any(new FindOrganizations {  CurrentPage = 0, PageSize = 10, Qry = new(){ { QueryKeys.SearchKey, "*" } } }) as PaginatedResult<Organization>;
          Assert.NotNull(response);
      }
 
      [Fact]
      public async Task Should_find_by_id()
      {
-         var response = await Service.Any(new FindOrganizations { Qry = new Dictionary<string, string> { { QueryKeys.FindByIdKey, $"{Consts.IdPrefixes.Organization}1" } } }) as PaginatedResult<Organization>;
+         var response = await Service.Any(new FindOrganizations { Qry = new () { { QueryKeys.FindByIdKey, $"{Consts.IdPrefixes.Organization}1" } } }) as PaginatedResult<Organization>;
          Assert.NotNull(response.Data);
      }
 

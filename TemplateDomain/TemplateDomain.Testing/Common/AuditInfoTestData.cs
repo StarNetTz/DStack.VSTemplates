@@ -7,6 +7,6 @@ public static class AuditInfoTestData
     public static DateTime DefaultTimeIssued => new DateTime(2008, 5, 5, 7, 15, 21);
     public static string AdminRole => "admin";
     public static string UserName => "admin";
-    public static AuditInfo CreateDefault() => new AuditInfo { Time = DefaultTimeIssued, Data = new RecordDictionary<string, string> { { "email", DefaultIssuerEmail } }, Issuer = DefaultIssuerId };
+    public static AuditInfo CreateDefault() => new AuditInfo { Time = DefaultTimeIssued, Data = new () { { "email", DefaultIssuerEmail } }, Issuer = DefaultIssuerId };
 }
 

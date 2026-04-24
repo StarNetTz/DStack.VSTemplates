@@ -22,7 +22,7 @@ public class TypeaheadSearchQueryTests : IClassFixture<DocumentStoreFixture>
     public async Task Should_execute()
     {
         var qry = new TypeaheadQueries(OrganizationQueries);
-        var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Dictionary<string, string> {
+        var res = await qry.Execute(new PaginatedQueryRequest { Qry = new Starnet.Common.RecordDictionary<string, string> {
             { TypeaheadConsts.CollectionKey, TypeaheadConsts.OrganizationsCollection },
             { TypeaheadConsts.SearchParamKey, "*" }
         }, CurrentPage = 0, PageSize = 10 });
@@ -36,7 +36,7 @@ public class TypeaheadSearchQueryTests : IClassFixture<DocumentStoreFixture>
         await Assert.ThrowsAsync<NotImplementedException>(async () => 
             await qry.Execute(new PaginatedQueryRequest
             {
-                Qry = new Dictionary<string, string> {
+                Qry = new Starnet.Common.RecordDictionary<string, string> {
                     { TypeaheadConsts.CollectionKey, "none" },
                     { TypeaheadConsts.SearchParamKey, "*" }
                 },

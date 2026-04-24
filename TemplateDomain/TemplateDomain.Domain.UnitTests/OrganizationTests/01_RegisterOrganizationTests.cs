@@ -30,7 +30,7 @@ public class RegisterOrganizationTests : AggregateTester<OrganizationInteractor>
     {
         string aggId = $"{Consts.IdPrefixes.Organization}1";
         var cmd = OrganizationCommandsFactory.CreateRegisterOrganizationCommand(aggId);
-        cmd.Address.Country = new Starnet.Common.Ref { Id = "DE" , Val = "Germany" };
+        cmd.Address = cmd.Address with { Country = new Starnet.Common.Ref { Id = "DE" , Val = "Germany" } };
         var evt = OrganizationEventsFactory.CreateOrganizationRegisteredEvent(aggId);
 
         Given(evt);
