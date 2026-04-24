@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DStack.Projections" Version="9.1.0" />
-    <PackageReference Include="DStack.Projections.EventStoreDB" Version="9.1.0" />
-    <PackageReference Include="DStack.Projections.RavenDB" Version="9.1.0" />
+    <PackageReference Include="DStack.Projections" Version="10.0.0" />
+    <PackageReference Include="DStack.Projections.EventStoreDB" Version="10.0.0" />
+    <PackageReference Include="DStack.Projections.RavenDB" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.7" />
