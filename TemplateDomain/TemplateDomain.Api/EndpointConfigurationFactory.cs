@@ -23,7 +23,7 @@
             url: $"{config["RabbitMQ:ManagementApi:Scheme"]}://{config["RabbitMQ:ManagementApi:Host"]}:{config["RabbitMQ:ManagementApi:Port"]}"
            );
         transport.UseConventionalRoutingTopology(QueueType.Classic);
-        transport.ConnectionString(config["RabbitMQ:ConnectionString"]);
+        transport.ConnectionString(config["RabbitMQ:ConnectionString"]!);
         SetupRouting(transport, config);
     }
 
