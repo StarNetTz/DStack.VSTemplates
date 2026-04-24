@@ -1,7 +1,6 @@
 ﻿using TemplateDomain.Api.Impl;
 using TemplateDomain.ReadModel.Queries.RavenDB;
 using TemplateDomain.ReadModel;
-using FluentValidation.AspNetCore;
 using Microsoft.IdentityModel.Tokens;
 using TemplateDomain.Api.ServiceInterface;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
@@ -25,7 +24,10 @@ public static class HostingExtensions
         builder.Services.AddTransient<ITypeaheadQueries, TypeaheadQueries>();
         builder.Services.AddTransient<IOrganizationQueries, OrganizationQueries>();
         builder.Services.AddTransient<IQueryById, QueryById>();
-        builder.Services.AddAutoMapper(typeof(CommandsProfile).Assembly);
+        builder.Services.AddAutoMapper(cfg =>
+        {
+            cfg.AddProfile<CommandsProfile>();
+        });
 
 
         var a = typeof(OrganizationQueryController).Assembly;

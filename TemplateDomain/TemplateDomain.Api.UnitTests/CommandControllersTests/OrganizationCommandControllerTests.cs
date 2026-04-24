@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
 using System.Security.Claims;
 
 namespace TemplateDomain.Api.UnitTests;
@@ -23,7 +24,7 @@ public class OrganizationCommandControllerTests
 
     IMapper CreateMapper()
     {
-        var config = new MapperConfiguration(cfg => cfg.CreateMap<ServiceModel.Commands.RegisterOrganization, PL.Commands.RegisterOrganization>());
+        var config = new MapperConfiguration(cfg => cfg.CreateMap<ServiceModel.Commands.RegisterOrganization, PL.Commands.RegisterOrganization>(), NullLoggerFactory.Instance);
         return config.CreateMapper();
     }
 
